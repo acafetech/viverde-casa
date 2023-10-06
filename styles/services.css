@@ -1,0 +1,44 @@
+/*deixando os serviços um ao lado do outro*/
+.services-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+/*estilizando o card de serviços*/
+.services-row-card {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  padding: 10px;
+  background-color: fff;
+  width: 120px;
+  height: 120px;
+  box-shadow: 0 5px 5px rgba(158, 158, 158, 0.5);
+}
+
+/*parágrafo do card de serviços*/
+.services-row-card p {
+  font-size: 16px;
+  word-wrap: break-word;
+}
+
+/*Tamanho dos ícones de serviços*/
+.services-row-card img {
+  width: 50px;
+  height: 50px;
+}
+
+/*Fazendo todo o card se tornar clicável*/
+a.card-clicavel {
+  text-align: center;
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  color: black;
+}
