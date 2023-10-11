@@ -1,0 +1,140 @@
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+.image .landing-page {
+    position: fixed;
+    width: 1366px;
+    height: 867px;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+.trabalhe-hero {
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 556px;
+    height: 472px;
+    background-color: #ece8e8;
+    border-radius: 58.61px;
+    box-shadow: 11.82px 45.22px 71.87px #0000002e;
+}
+
+.trabalhe-hero .overlap {
+    position: absolute;
+    width: 306px;
+    height: 49px;
+    top: 380px;
+    left: 58px;
+    background-color: #008037;
+    border-radius: 24.5px;
+}
+
+.trabalhe-hero .button {
+    position: absolute;
+    width: 273px;
+    top: 11px;
+    left: 17px;
+    font-weight: 700;
+    color: #ece8e8;
+    font-size: 21.7px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.trabalhe-hero .text-wrapper {
+    position: absolute;
+    width: 461px;
+    top: 124px;
+    left: 58px;
+    font-weight: 800;
+    color: #008037;
+    font-size: 48px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.trabalhe-hero .div {
+    position: absolute;
+    width: 441px;
+    top: 274px;
+    left: 58px;
+    font-weight: 400;
+    color: #008037;
+    font-size: 30px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.trabalhe-hero .overlap-group {
+    position: absolute;
+    width: 78px;
+    height: 56px;
+    top: 23px;
+    left: 66px;
+}
+
+.trabalhe-hero .text-wrapper-2 {
+    position: absolute;
+    width: 78px;
+    top: 39px;
+    left: 0;
+    font-weight: 500;
+    color: #008037;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.trabalhe-hero .casa {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    left: 19px;
+    object-fit: cover;
+}
+
+.trabalhe-hero .overlap-2 {
+    position: absolute;
+    width: 77px;
+    height: 56px;
+    top: 23px;
+    left: 246px;
+}
+
+.trabalhe-hero .text-wrapper-3 {
+    position: absolute;
+    width: 77px;
+    top: 39px;
+    left: 0;
+    font-weight: 700;
+    color: #008037;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.trabalhe-hero .trabalhador {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    left: 18px;
+    object-fit: cover;
+}
+
+.trabalhe-hero .line {
+    position: absolute;
+    width: 100px;
+    height: 4px;
+    top: 91px;
+    left: 234px;
+}
+
+   
