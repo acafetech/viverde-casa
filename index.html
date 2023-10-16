@@ -5,37 +5,101 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./styles/styles.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Viverde casa</title>
   </head>
-<body>
+  <body>
     <header>
-      <header>
-        <nav class="container">
-          <img class="logonav" src="./midia/LogoNavbar.png" alt="">
-              <ul class="itens">
-                <li><a href="#">Como funciona</a></li>
-                <li><a href="#">Serviços</a></li>
-              </ul>
-            <section class="botaonav">
-                <button class="verde" href="#">Encontre um profissional</button>
-                <button class="laranja" href="#">Ofereça seus serviços</button>
-            </section>
-        </nav>
-</header>  
-<main>
-
-</main>
-<footer>
-    <section class="rodape">
-        <img class="logobranca" src="./midia/LogoFooter.png" alt="">        
+      <nav class="container">
+        <img class="logonav" src="./midia/LogoNavbar.png" alt="" />
+        <ul class="itens">
+          <li><a href="#">Como funciona</a></li>
+          <li><a href="#">Serviços</a></li>
+        </ul>
+        <section class="botaonav">
+          <button class="verde" href="#">Encontre um profissional</button>
+          <button class="laranja" href="#">Ofereça seus serviços</button>
+        </section>
+      </nav>
+    </header>
+    <!--Início da seção de serviços-->
+    <section class="services">
+      <!--Linha de serviços-->
+      <div class="services-row">
+        <!--Card de planejar ou decorar-->
+        <div class="services-row-card">
+          <a href="#" class="card-clicavel" id="planejar-decorar">
+            <img
+              class="services-image"
+              src="midia/planejar-decorar.png"
+              alt="planejar ou decorar"
+            />
+            <p>Planejar ou decorar</p>
+          </a>
+        </div>
+        <!--Card de pintura-->
+        <div class="services-row-card">
+          <a href="#" class="card-clicavel" id="pintura">
+            <img class="services-image" src="midia/pintura.png" alt="pintura" />
+            <p>Pintura</p>
+          </a>
+        </div>
+        <!--Card de construir-->
+        <div class="services-row-card">
+          <a href="#" class="card-clicavel" id="construr">
+            <img
+              class="services-image"
+              src="midia/construir.png"
+              alt="construir"
+            />
+            <p>Construir</p>
+          </a>
+        </div>
+        <!--Card de reformar-->
+        <div class="services-row-card">
+          <a href="#" class="card-clicavel" id="reformar">
+            <img
+              class="services-image"
+              src="midia/reformar.png"
+              alt="reformar"
+            />
+            <p>Reformar</p>
+          </a>
+        </div>
+        <!--Card de pequenos reparos-->
+        <div class="services-row-card">
+          <a href="#" class="card-clicavel" id="pequenos-reparos">
+            <img
+              class="services-image"
+              src="midia/pequenos-reparos.png"
+              alt="planejar ou decorar"
+            />
+            <p>Pequenos Reparos</p>
+          </a>
+        </div>
+        <!--Card de serviços elétricos-->
+        <div class="services-row-card">
+          <a href="#" class="card-clicavel" id="servicos-eletricos">
+            <img
+              class="services-image"
+              src="midia/servicos-eletricos.png"
+              alt="serviços elétricos e automação"
+            />
+            <p>Serviços Elétricos e Automação</p>
+          </a>
+        </div>
+      </div>
     </section>
-<div class="fim">
-     <p>
-        © 2023 | Viverde Casa - Todos os direitos reservados.
-     </p>
-</footer>
+    <!--Fim da seção de serviços-->
+    <footer>
+      <section class="rodape">
+        <img class="logobranca" src="./midia/LogoFooter.png" alt="" />
+      </section>
+      <p>© 2023 | Viverde Casa - Todos os direitos reservados.</p>
     </footer>
-   
-</body>
+  </body>
 </html>
