@@ -68,7 +68,6 @@
 .rodape {
   background-color: var(--cor1);
   bottom: 0;
-  position: fixed;
   width: 100%;
 }
 .rodape p {
@@ -292,7 +291,6 @@ a.card-clicavel {
 .rodape {
   background-color: var(--cor1);
   bottom: 0;
-  position: fixed;
   width: 100%;
 }
 .rodape p {
@@ -312,4 +310,61 @@ a.card-clicavel {
   position: fixed;
   width: 100%;
   text-align: center;
+}
+
+.galeria {
+  position: absolute;
+  width: 100%;
+}
+
+.galeria img {
+  width: 100%;
+  height: 800px;
+}
+
+#contrate-secao {
+  top: 120px;
+  left: 58px;
+  position: relative;
+  background-color: #ece8e8;
+  border-radius: 58.61px;
+  width: 556px;
+  height: 472px;
+  box-shadow: 11.82px 45.22px 71.87px #0000002e;
+}
+
+.contrate-icons a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #008037;
+}
+
+.contrate-card h2 {
+  font-weight: 800;
+  font-size: 48px;
+  color: #008037;
+}
+
+.contrate-card p {
+  font-weight: 400;
+  font-size: 30px;
+  color: #008037;
+}
+
+.contrate-card button {
+  width: 306px;
+  height: 49px;
+  background-color: #ff914c;
+  border-radius: 24.5px;
+  font-weight: 700;
+  font-size: 21.7px;
+  color: #ece8e8;
+  border: none;
+  cursor: pointer;
+}
+
+#tijolos {
+  width: 1366px;
+  height: 311px;
+  object-position: bottom;
 }
