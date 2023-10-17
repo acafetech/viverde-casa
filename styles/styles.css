@@ -1,5 +1,93 @@
+
+/*---------PALETA DE CORES---------*/
+:root {
+  --cor1:#008037;
+  --cor2:#3F841A;
+  --cor3:#79D351;
+  --cor4:#FF914C;
+  --cor5:#FFBE48;
+  --cor6:#C4C4C4;
+  --cor7:#EDE9E9;
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+/*---------------------------------------NAVBAR----------------------------------*/
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--cor7);
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%;
+  height: 86px;
+  margin: auto;
+  padding-right: 100px;
+}
+.logonav{
+  width: 64px;
+  height: 64px;
+  margin-left: 64px;
+}
+.itens{
+  padding-right: 300px;
+  list-style-type: none;
+  display: flex;
+}
+.itens li a{
+  padding-left: 30px;
+  text-decoration: none;
+  color: var(--cor1);
+}
+.itens a:hover{
+  color: var(--cor4);
+}
+.laranja{
+  background-color: var(--cor4);
+  color: var(--cor7);
+  border-style: none;
+  border-radius: 30px;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 23px;
+}
+.verde{
+  background-color: var(--cor2);
+  color: var(--cor7);
+  border-style: none;
+  border-radius: 30px;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+/*------------------------------------------FOOTER----------------------------------------------------------------------------------*/
+.rodape{
+  background-color:var(--cor1);
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+}
+.rodape p{
+  color: var(--cor7);
+}
+.logobranca{
+  width: 190px;
+  height: 190px;
+  margin-left: 114px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.fim{
+  background-color:var(--cor2);
+  color:var(--cor7);
+  bottom: 0;
+      position: fixed;
+      width: 100%;
+      text-align: center;
 }
