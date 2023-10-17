@@ -96,13 +96,13 @@ body {
 
 /* Faz o "card" principal com background*/
 #contrate-secao {
-  top: 274px;
-  left: 58px;
+  top: 50px;
+  left: 100px;
   position: relative;
   background-color: #ece8e8;
   border-radius: 58.61px;
   width: 100%;
-  max-width: 556px;
+  max-width: 550px;
   height: auto;
   max-height: 472px;
   box-shadow: 11.82px 45.22px 71.87px #0000002e;
@@ -115,22 +115,35 @@ body {
   align-items: center;
   padding-right: 100px;
 }
-.contrate-opcoes img {padding-top: 20px;}
 
-.contrate-opcoes p { color: #008037;}
+.contrate-opcoes img {
+  padding-top: 15px;
+  padding-left: 15px;
+}
+
+.contrate-opcoes .contrate { 
+  /*font-weight: bold;*/
+  color: #008037;
+  padding-left: 15px;
+}
+
+.contrate-opcoes .trabalhe {
+  /*font-weight: bold;*/
+  color: #008037;
+  padding-left: 15px;
+}
+
+.contrate-opcoes .linha {
+  padding-top: 0;
+}
 
 /* Começo da estilização do conteúdo modificável */
 .contrate-icons {
   display: flex;
   justify-content: start;
+  padding-top: 30px;
   max-width: 460px;
   margin: auto;
-}
-
-.contrate-icons a {
-  text-decoration: none;
-  font-size: 18px;
-  color: #008037;
 }
 
 .contrate-card {
@@ -300,3 +313,5 @@ a.card-clicavel {
   width: 100%;
   text-align: center;
 }
+
+
