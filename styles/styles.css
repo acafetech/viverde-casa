@@ -16,18 +16,15 @@
   font-family: "Inter", sans-serif;
 }
 /*---------------------------------------NAVBAR----------------------------------*/
-
 .container{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   background-color: var(--cor7);
   font-size: 18px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
   width: 100%;
-  height: 86px;
-  margin: auto;
-  padding-right: 100px;
 }
 .logonav{
   width: 64px;
@@ -47,6 +44,11 @@
 .itens a:hover{
   color: var(--cor4);
 }
+.botaonav{
+  display: flex;
+  align-items: center;
+  margin-right: 55px;
+}
 .laranja{
   background-color: var(--cor4);
   color: var(--cor7);
@@ -57,6 +59,10 @@
   font-weight: bold;
   margin-left: 23px;
 }
+.laranja:hover{
+  color: var(--cor1);
+}
+
 .verde{
   background-color: var(--cor2);
   color: var(--cor7);
@@ -66,28 +72,49 @@
   font-size: 20px;
   font-weight: bold;
 }
+.verde:hover{
+  color: var(--cor4);
+}
+
+/*----------------------------------MISSÃO----------------------------------------------------------------------*/
+.missao{
+  width: 1368px;
+  height: 867px;
+}
+.sobre{
+ color: var(--cor1);
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
 /*------------------------------------------FOOTER----------------------------------------------------------------------------------*/
 .rodape{
   background-color:var(--cor1);
-  bottom: 0;
-  position: fixed;
+  display: flex;
+  justify-content: space-between;  
+  list-style-type: none;
   width: 100%;
 }
-.rodape p{
+.rodape li{
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 90px;
+  margin-top: 45px;
+}
+.rodape a{
+  text-decoration: none;
   color: var(--cor7);
 }
 .logobranca{
-  width: 190px;
-  height: 190px;
+  width: 130px;
+  height: 130px;
   margin-left: 114px;
   margin-top: 25px;
   margin-bottom: 25px;
 }
-.fim{
-  background-color:var(--cor2);
+.direitos{
+  background-color:#7FBC54;
   color:var(--cor7);
-  bottom: 0;
-      position: fixed;
-      width: 100%;
-      text-align: center;
+  text-align: center;
 }
