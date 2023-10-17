@@ -26,32 +26,32 @@
         </section>
       </nav>
     </header>
-    <section>
-      <div class="carousel">
-        <div class="galeria">
-          <img src="assets/carousel1.png" />
-        </div>
-        <div id="contrate-secao">
-          <div class="contrate-icons">
-            <div class="casa">
-              <img src="assets/icon-contrate.png" />
-              <a href="#">Contrate</a>
-            </div>
-            <div class="trabalhador">
-              <img src="assets/icon-trabalhe.png" />
-              <a href="#">Trabalhe</a>
-            </div>
-            <img class="linha" src="assets/linha.png" />
+
+    <!--Início da seção principal-->
+    <section class="carousel" id="carousel">
+      <div id="contrate-secao">
+        <!--Ícones clicáveis para modificar o conteúdo dentro do container-->
+        <div class="contrate-icons">
+          <div class="contrate-opcoes"  onclick="contrateOpcoes(0)">
+            <img src="./assets/icon-contrate.png" />
+            <p>Contrate</p>
           </div>
-          <div class="contrate-card">
-            <h2>Encontre o profissional ideal</h2>
-            <p>Mão de obra qualificada e acessível, perto de você.</p>
-            <button>Encontre um profissional</button>
+
+          <div class="contrate-opcoes" onclick="contrateOpcoes(1)">
+            <img src="./assets/icon-trabalhe.png" />
+            <p>Trabalhe</p>
           </div>
         </div>
-        <img id="tijolos" src="assets/tijolos.png" />
+        <!--Conteúdo que irá mudar de acordo com o javascript-->
+        <div class="contrate-card" id="contrate-card">
+          <h2>Encontre o profissional ideal</h2>
+          <p>Mão de obra qualificada e acessível, perto de você.</p>
+          <a href="https://forms.gle/D8NprQg2McPBtnsT8" target="_blank"><button>Encontre um profissional</button></a>
+        </div>
       </div>
-    </section>
+    </section> 
+    <!---------------------------------------------------------FIM-------------------------------------------------->
+
     <!--Início da seção de serviços-->
     <section class="services">
       <!--Linha de serviços-->
@@ -131,5 +131,7 @@
       </section>
       <p>© 2023 | Viverde Casa - Todos os direitos reservados.</p>
     </footer>
+
+    <script src="javascript.js"></script>
   </body>
 </html>
