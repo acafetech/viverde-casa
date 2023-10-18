@@ -1,6 +1,7 @@
 const contrateOpcoes = opt => {
     const contrateCard = document.getElementById('contrate-card');
     const carouselImg = document.getElementById('carousel');
+    const barraTrabalhe = document.getElementById('')
 
     switch(opt){
         case 0:
@@ -19,4 +20,6 @@ const contrateOpcoes = opt => {
             break
         
     }
+
 }
+

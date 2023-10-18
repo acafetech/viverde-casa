@@ -13,11 +13,13 @@
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
 }
+
 html {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
+  font-size: 62.5%; /*Truque para deixar o tamanho das fontes responsivas!!! ao invés de usar pixel, divide o tamanho por 10 e coloca como 'rem'. */
 }
 
 body {
@@ -27,7 +29,7 @@ body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
-  background-color: #d1d1d1; /*talvez seja bom colocar para quando as imagens demorar a carregar*/
+  background-color: #008037; /*talvez seja bom colocar para quando as imagens demorar a carregar*/
 }
 
 
@@ -38,13 +40,14 @@ body {
   align-items: center;
   justify-content: space-between;
   background-color: var(--cor7);
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: bold;
   width: 100%;
   height: 86px;
   margin: auto;
   padding-right: 100px;
 }
+
 .logonav {
   width: 64px;
   height: 64px;
@@ -63,24 +66,26 @@ body {
 .itens a:hover {
   color: var(--cor4);
 }
+
+.botaonav button {
+  cursor: pointer;
+  border-style: none;
+  border-radius: 30px;
+  border-style: none;
+  padding: 10px;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
 .laranja {
   background-color: var(--cor4);
   color: var(--cor7);
-  border-style: none;
-  border-radius: 30px;
-  padding: 10px;
-  font-size: 20px;
-  font-weight: bold;
-  margin-left: 23px;
 }
+
 .verde {
-  background-color: var(--cor2);
+  background-color: var(--cor1);
   color: var(--cor7);
-  border-style: none;
-  border-radius: 30px;
-  padding: 10px;
-  font-size: 20px;
-  font-weight: bold;
+  margin-left: 23px;
 }
 
 /*--------------------------------------------CONTEÚDO PRINCIPAL----------------------------------------------------------*/
@@ -101,9 +106,11 @@ body {
   background-color: #ece8e8;
   border-radius: 58.61px;
   width: 100%;
-  max-width: 550px;
-  height: auto;
-  max-height: 472px;
+  min-width: 55.0rem;
+  max-width: 55.0rem;
+  height: 100%;
+  min-height: 47.2rem;
+  max-height: 47.2rem;
   box-shadow: 11.82px 45.22px 71.87px #0000002e;
 }
 
@@ -120,6 +127,9 @@ body {
   padding-left: 15px;
 }
 
+.contrate-opcoes p {
+  font-size: 1.6rem;
+}
 .contrate-opcoes .contrate { 
   /*font-weight: bold;*/
   color: #008037;
@@ -145,6 +155,8 @@ body {
   margin: auto;
 }
 
+
+
 .contrate-card {
   max-width: 460px;
   justify-content: center;
@@ -153,13 +165,13 @@ body {
 }
 
 .contrate-card h2 {
-  font-size: 40px;
+  font-size: 4.0rem;
   color: #008037;
   margin: 0;
 }
 
 .contrate-card p {
-  font-size: 25px;
+  font-size: 2.5rem;
   color: #008037;
 }
 
@@ -172,7 +184,7 @@ body {
   background-color: #ff914c;
   border-radius: 24.5px;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 1.8rem;
   color: #ece8e8;
   border: none;
   cursor: pointer;
@@ -198,7 +210,7 @@ body {
 
 /*estilizando o card de serviços*/
 .services-row-card {
-  cursor: pointer;
+  /*cursor: pointer;*/
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -212,7 +224,7 @@ body {
 /*parágrafo do card de serviços*/
 .services-row-card p {
   font-weight: bold;
-  font-size: 1.125rem;
+  font-size: 1.8rem;
   color: #fff;
   max-width: 160px;
 }
@@ -230,6 +242,7 @@ body {
 
 /*Fazendo todo o card se tornar clicável*/
 a.card-clicavel {
+  cursor: auto; /* Retirar o pointer por enquanto */
   text-align: center;
   display: block;
   height: 100%;
@@ -237,7 +250,7 @@ a.card-clicavel {
   text-decoration: none;
 }
 
-/*----------------------------------MISSÃO----------------------------------------------------------------------*/
+/*----------------------------------QUEM SOMOS----------------------------------------------------------------------*/
 .quem-somos {
   width: 100vw;
   height: 100vh;
@@ -273,7 +286,7 @@ a.card-clicavel {
 
 .somos {
   color: var(--cor1);
-  font-size: 30px;
+  font-size: 3.0rem;
   font-weight: bold;
   text-align: center;
   max-width: 600px;
@@ -291,7 +304,7 @@ a.card-clicavel {
 
 .rodape li{
   font-weight: bold;
-  font-size: 20px;
+  font-size: 2.0rem;
   margin-right: 90px;
   margin-top: 45px;
 }
@@ -312,3 +325,31 @@ a.card-clicavel {
   justify-content: center;
   text-align: center;
 }
+.direitos p { 
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 450px) {
+
+  #contrate-secao {
+    top: 0px;
+    left: 0px;
+    min-width: 33rem;
+    max-width: 36rem;
+  }
+
+   .quem-somos-esquerda {
+    display: none;
+   }
+   .quem-somos-direita {
+    width: 100%;
+    justify-content: center;
+    background-image: none;
+   }
+   .somos {
+    font-size: 2.5rem;
+   }
+  }
+  
