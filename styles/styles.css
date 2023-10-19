@@ -156,6 +156,18 @@ body {
 }
 
 
+#contrate-barra {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 5px;
+  background-color: #008037;
+  position: absolute;
+  bottom: 330px;
+  left: 17%;
+  transform: translateX(-50%);
+}
+
 
 .contrate-card {
   max-width: 460px;

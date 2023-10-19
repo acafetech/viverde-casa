@@ -1,7 +1,8 @@
 const contrateOpcoes = opt => {
+    const contrateBarra = document.getElementById('contrate-barra');
     const contrateCard = document.getElementById('contrate-card');
     const carouselImg = document.getElementById('carousel');
-    const barraTrabalhe = document.getElementById('')
+    contrateBarra.style.marginLeft = `${0+opt*33}%`
 
     switch(opt){
         case 0:
