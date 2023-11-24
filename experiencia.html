@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/styles/experiencia.css" rel="stylesheet" />
+    <title>Experiência Profissional</title>
+</head>
+<body>
+    <header>
+        <nav class="nav-container">
+          <a href="./financeiro.html"><img  class="setanav" src="./assets/seta.png" alt="seta"></a>
+          <img class="logonav" src="./assets/LogoNavbar.png" alt="logo">  
+        </nav>  
+  </header>
+    <main>
+        <div class="container">
+            <div class="geral-box">
+                <div class="text-box">
+
+             <div class="line-text">
+                <h1>Experiência Profissional</h1>
+                <div class="box-line"></div>
+                 <p class="text-italic">Anexe fotos ou documentos que comprovem suas experiência. Seu cadastro só estará completo após estas confirmações.</p>
+            </div>
+                    <section class="anexo">
+
+                        <form action="processa_imagem_perfil.php" method="post" enctype="multipart/form-data">
+
+                            <label>             
+                                 <input class="arquivo" type="file" name="image">
+                            </label>
+                        </form>
+                    </section>
+                
+                    <div class="informe">
+                        <p class="text-inter">Informe pelo menos dois contatos de referência profissional</p>
+
+                    <label class="contatos"  for="contatos">
+                           <input class="contato" type="text" name="contato" id="contato" placeholder="Digite seu número">
+                        <input class="contato2" type="text" name="contato" id="contato" placeholder="Digite seu número">
+                    </label>
+                      
+                        <p class="text-inter">Possui certifições complementares? Quais?</p>
+
+                            <label  class="Certificado" for="certificacoes"><input class="certificacoes" type="text" name="certificacoes" id="certificacoes" placeholder=""></label>
+                    </div>
+                </div>
+             </div>
+             <img  class="img-pessoas" src="./assets/pessoas-02 1.png" alt="imagens">
+        </div>
+    </main>
+    <footer>
+    <div class="direitos">
+        <p>
+            © 2023 | Viverde Casa - Todos os direitos reservados.
+        </p>
+    </footer>
+    </div>
+</body>
+</html>
