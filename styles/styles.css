@@ -53,18 +53,16 @@ body {
   height: 64px;
   margin-left: 64px;
 }
+
 .itens {
-  padding-right: 300px;
+  padding-right: 10px; 
   list-style-type: none;
-  display: flex;
 }
+
 .itens li a {
-  padding-left: 30px;
+  padding-left: 10px; 
   text-decoration: none;
   color: var(--cor1);
-}
-.itens a:hover {
-  color: var(--cor4);
 }
 
 .botaonav button {
@@ -87,7 +85,6 @@ body {
   color: var(--cor7);
   margin-left: 23px;
 }
-
 /*--------------------------------------------CONTEÚDO PRINCIPAL----------------------------------------------------------*/
 .carousel {
   width: 100vw;
@@ -342,26 +339,50 @@ a.card-clicavel {
   text-align: center;
 }
 
+  @media screen and (max-width: 768px) {
+    .container {
+      flex-direction: column; 
+      height: auto; 
+      padding: 20px; 
+    }
+  
+    .logonav {
+      margin-left: 0; 
+      margin-bottom: 20px;
+    }
+  
+    .itens {
+      display: flex; 
+      flex-direction: column; 
+    }
+  
+    .itens li a {
+      padding: 10px 0; 
+      text-align: center; 
+    }
+  
+    .botaonav {
+      margin-top: 20px; 
+      display: flex;
+      gap: 20px; /* espaçamento entre os botões */
+    }
 
-@media screen and (max-width: 450px) {
-
-  #contrate-secao {
-    top: 0px;
-    left: 0px;
-    min-width: 33rem;
-    max-width: 36rem;
+    #contrate-secao {
+      width: 80%; 
+      height: auto;
+      border-radius: 20px; 
+      left: 0; 
   }
-
-   .quem-somos-esquerda {
+  
+    .quem-somos-esquerda {
     display: none;
    }
-   .quem-somos-direita {
+    .quem-somos-direita {
     width: 100%;
     justify-content: center;
     background-image: none;
    }
-   .somos {
+    .somos {
     font-size: 2.5rem;
    }
   }
-  
