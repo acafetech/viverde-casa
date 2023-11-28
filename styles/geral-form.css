@@ -51,6 +51,7 @@ svg {
   width: 40%;
   max-width: 609px;
   height: 50%;
+  min-height: 612px;
   background-color: #EDE9E9;
   border-radius: 50px;
   margin: 5% 0% 0% 8%;
