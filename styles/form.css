@@ -1,3 +1,7 @@
+html {
+  overflow-x: hidden
+}
+
 h1 {
     font-size: 2.5rem;
     padding: 25px 0px;
@@ -35,9 +39,12 @@ input[type="text"], input[type="date"] {
     margin-top: 5px;
 }
 
+input[type="date"] {
+  width: 50%;
+}
+
 ::-webkit-calendar-picker-indicator {
     margin-right: 20px;
-
 }
 
 

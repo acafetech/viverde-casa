@@ -5,6 +5,7 @@
     color: #008037;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 html {
@@ -100,12 +101,14 @@ footer p {
   }
 
   #form-container {
-    width: 80%; /* 80% da largura do aparelho */
-    height: auto; /* altura automatica para se ajustar ao conteúdo */
+    width: 80%;
+    height: auto;
     margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
     overflow-x: hidden;
     padding: 20px;
-  }
+}
 
   .navegacao-form {
     max-width: 50%;
