@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="stylesheet" type="text/css" href="../styles/form-geral.css">
+    <link rel="stylesheet" type="text/css" href="../styles/form.css">
+
+
+    <title>Formulário de Cadastro de Profissionais</title>
+</head>
+<body>
+<header>
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="42" viewBox="0 0 22 42" fill="none">
+        <path d="M21.307 3.5151C21.4949 3.3162 21.6419 3.08223 21.7394 2.82655C21.8369 2.57086 21.8831 2.29847 21.8754 2.02493C21.8677 1.75138 21.8061 1.48204 21.6943 1.23228C21.5825 0.982513 21.4225 0.757223 21.2236 0.569269C21.0247 0.381314 20.7908 0.234376 20.5351 0.136844C20.2794 0.0393119 20.007 -0.00690488 19.7335 0.000833337C19.4599 0.00857156 19.1906 0.0701129 18.9408 0.181944C18.691 0.293774 18.4657 0.453704 18.2778 0.652602L0.569464 19.4026C0.203763 19.7894 0 20.3015 0 20.8339C0 21.3662 0.203763 21.8783 0.569464 22.2651L18.2778 41.0172C18.4645 41.2204 18.6897 41.3846 18.9404 41.5C19.1911 41.6155 19.4622 41.68 19.7381 41.6898C20.0139 41.6996 20.2889 41.6545 20.5471 41.5571C20.8054 41.4597 21.0417 41.312 21.2424 41.1225C21.443 40.933 21.6041 40.7056 21.7161 40.4533C21.8281 40.2011 21.8889 39.9291 21.8949 39.6531C21.9009 39.3772 21.852 39.1028 21.7511 38.846C21.6502 38.5891 21.4992 38.3548 21.307 38.1568L4.94863 20.8339L21.307 3.5151Z" fill="#008037"/>
+    </svg>
+
+    <img class="logonav" src="../assets/logo.png">
+</header>
+
+<main>
+    <form id="form-container" action="https://api.sheetmonkey.io/form/9z8GbUnyWFk3PvoRT5Lejd" method="post">
+        <!--------------------------------------PARTE MODIFICÁVEL----------------------------------------------------->
+
+        <section class="Dadospessoas">
+            <h1>Dados Pessoais</h1>
+
+            <div class="box-line"></div>
+            <div class="left-right">
+                <div class="left">
+                    <label for="nome-completo">
+                        <h3 class="pergunta-label">Nome completo</h3>
+                        </label>
+                    <p class="caracteres"> Conforme consta nos seus documentos</p>
+                    <input type="text" name="nome-completo" id="nome-completo">
+                    
+
+                    <label for="endereco"> 
+                        <h3  class="pergunta-label" > Endereço Completo </h3>
+                    </label> 
+
+                    <p class="caracteres"> Ex.: Nome da Rua, número - Bairro, Cidade </p>
+                    <input type="text" name="endereco" id="endereco" >
+
+                    <label for="data-nascimento">
+                        <h3 class="pergunta-label">Data de nascimento</h3>
+                    </label>
+
+                    <p class="caracteres">Ex.: 06/09/1975</p>
+                    <input type="date" name="data-nascimento" id="data-nascimento">
+                
+                </div>
+
+                <div class="right">
+
+                    <label for="rg">
+                        <h3 class="pergunta-label">RG</h3>
+                    </label>
+
+                    <p class="caracteres">Apenas números</p>
+                    <input type="text" name="rg" id="rg">
+                            
+                        
+                    <label for="cpf">
+                        <h3 class="pergunta-label">CPF</h3>
+                    </label>
+
+                    <p class="caracteres">Apenas números</p>
+                    <input type="text" name="cpf" id="cpf">
+
+                    <label for="telefone">
+                        <h3 class="pergunta-label">Telefone</h3>
+                    </label>
+                        <p class="caracteres">Apenas números</p>
+                    <input type="text" name="telefone" id="telefone">
+
+                   
+                </div>
+            </div>
+        </section>
+
+        <section class="dadosProfissionais">
+            <h1>Dados Profissionais</h1>
+
+            <div class="box-line"></div>
+
+            <div class="cnpj">
+                <h3 class="pergunta-label"> Possui CNPJ</h3>
+                
+                <input type="radio" name="cnpj-sim-nao" value="sim" id="sim-cnpj" > 
+                <label for="sim-cnpj" class="sim-nao">Sim</label>
+
+                <input type="radio" name="cnpj-sim-nao" value="nao" id="nao-cnpj">
+                <label for="nao-cnpj" class="sim-nao">Não</label>
+                    
+
+                <div>
+
+                <label for="cnpj">
+                    <h3 class="pergunta-label"> CNJP <em>(opcional)</em> </h3>
+                </label> 
+                    <p class="caracteres">Caso possua, informe apenas números</p>
+                    <input type="text" name="cnpj" id="cnpj">
+                    
+                </div>
+
+                <label for="area-atuacao">
+                    <h3 class="pergunta-label"> Qual sua área de atuação? </h3>
+                </label>
+                <input type="text" name="area-atuacao" id="area-atuacao">
+
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos">
+        <h1>Serviços</h1>
+
+        <div class="box-line"></div>
+
+        <h3 class="pergunta-label">Quais serviços você se sente mais seguro(a) em fazer?</h3>
+
+        <div id="checklistServicos" class="dropdown-check-list" tabindex="100">
+            <span class="anchor">Marque quantas opções desejar</span>
+            <ul class="items">
+            <li>
+                <label for="arquitetura">
+                    <input type="checkbox" name="servicos" value="arquitetura" id="arquitetura"/>
+                    Arquitetura
+                </label>
+            </li>
+            <li>
+                <label for="assentamento">
+                    <input type="checkbox" name="servicos" value="assentamento" id="assentamento"/>
+                    Assentamento de piso e revestimento
+                </label>
+            </li>
+            <li>
+                <label for="consertos">
+                    <input type="checkbox" name="servicos" value="consertos" id="consertos"/>
+                    Consertos de portas e janelas
+                </label>
+            </li>
+            <li>
+                <label for="construcao">
+                    <input type="checkbox" name="servicos" value="construcao" id="construcao"/>
+                    Construção
+                </label>
+            </li>
+            <li>
+                <label for="design">
+                    <input type="checkbox" name="servicos" value="design" id="design"/>
+                    Design de interiores
+                </label>
+            </li>
+            <li>
+                <label for="engenharia">
+                    <input type="checkbox" name="servicos" value="engenharia" id="engenharia"/>
+                    Engenharia
+                </label>
+            </li>
+            <li>
+                <label for="instalacaoBancadas">
+                    <input type="checkbox" name="servicos" value="instalacaoBancadas" id="instalacaoBancadas"/>
+                    Instalação de bancadas em Mármore, Quartzo e Granito
+                </label>
+            </li>
+            <li>
+                <label for="instalacaoSeguranca">
+                    <input type="checkbox" name="servicos" value="instalacaoSeguranca" id="instalacaoSeguranca"/>
+                    Instalação de câmeras e sensores de monitoramento e segurança
+                </label>
+            </li>
+            <li>
+                <label for="instalacaoEsquadrias">
+                    <input type="checkbox" name="servicos" value="instalacaoEsquadrias" id="instalacaoEsquadrias"/>
+                    Instalação de esquadrias
+                </label>
+            </li>
+            <li>
+                <label for="instalacaoGesso">
+                    <input type="checkbox" name="servicos" value="instalacaoGesso" id="instalacaoGesso"/>
+                    Instalação de gesso
+                </label>
+            </li>
+            <li>
+                <label for="instalacaoDG">
+                    <input type="checkbox" name="servicos" value="instalacaoDG" id="instalacaoDG"/>
+                    Instalação em drywall e gesso acartonado
+                </label>
+            </li>
+            <li>
+                <label for="instalacaoPapel">
+                    <input type="checkbox" name="servicos" value="instalacaoPapel" id="instalacaoPapel"/>
+                    Instalação de papel de parede
+                </label>
+            </li>
+            <li>
+                <label for="limpeza">
+                    <input type="checkbox" name="servicos" value="limpeza" id="limpeza"/>
+                    Limpeza pós obra
+                </label>
+            </li>
+            <li>
+                <label for="marcenaria">
+                    <input type="checkbox" name="servicos" value="marcenaria" id="marcenaria"/>
+                    Marcenaria
+                </label>
+            </li>
+            <li>
+                <label for="pedreiro">
+                    <input type="checkbox" name="servicos" value="pedreiro" id="pedreiro"/>
+                    Pedreiro de alvenaria
+                </label>
+            </li>
+            <li>
+                <label for="pequenosReparos">
+                    <input type="checkbox" name="servicos" value="pequenosReparos" id="pequenosReparos"/>
+                    Pequenos Reparos
+                </label>
+            </li>
+            <li>
+                <label for="pinturaFerragens">
+                    <input type="checkbox" name="servicos" value="pinturaFerragens" id="pinturaFerragens"/>
+                    Pintura de ferragens
+                </label>
+            </li>
+            <li>
+                <label for="pinturaGeral">
+                    <input type="checkbox" name="servicos" value="pinturaGeral" id="pinturaGeral"/>
+                    Pintura Geral
+                </label>
+            </li>
+            <li>
+                <label for="reformaCompleta">
+                    <input type="checkbox" name="servicos" value="reformaCompleta" id="reformaCompleta"/>
+                    Reforma completa
+                </label>
+            </li>
+            <li>
+                <label for="servicosAcabamento">
+                    <input type="checkbox" name="servicos" value="servicosAcabamento" id="servicosAcabamento"/>
+                    Serviços de acabamento geral 
+                </label>
+            </li>
+            <li>
+                <label for="servicosJardinagem">
+                    <input type="checkbox" name="servicos" value="servicosJardinagem" id="servicosJardinagem"/>
+                    Serviços de Jardinagem
+                </label>
+            </li>
+            <li>
+                <label for="servicosEletricos">
+                    <input type="checkbox" name="servicos" value="servicosEletricos" id="servicosEletricos"/>
+                    Serviços elétricos
+                </label>
+            </li>
+            <li>
+                <label for="servicosHidraulicos">
+                    <input type="checkbox" name="servicos" value="servicosHidraulicos" id="servicosHidraulicos"/>
+                    Serviços hidráulicos
+                </label>
+            </li>
+            <li>
+                <label for="vidracarias">
+                    <input type="checkbox" name="servicos" value="vidracarias" id="vidracarias"/>
+                    Vidraçarias
+                </label>
+            </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="agenda">
+        <h1>Agenda</h1>
+
+        <div class="box-line"></div>
+
+        <div class="horarios">
+            <h3 class="pergunta-label"> Qual sua disponibilidade de horário?</h3>
+
+                <input type="checkbox" name="horarios" value="manha" id="manha" />
+                <label for="manha" class="escolha-horario">Manhã</label>
+            
+                <input type="checkbox" name="horarios" value="tarde" id="tarde" />
+                <label for="tarde" class="escolha-horario">Tarde</label> 
+            
+                <input type="checkbox" name="horarios" value="noite" id="noite" />
+                <label for="noite" class="escolha-horario">Noite</label> 
+        </div>
+
+        <div class="finais-semana">
+            <h3 class="pergunta-label">Aceita prestar serviços nos finais de semana? </h3>
+            
+            <input type="radio" name="fim-semana" value="sim" id="sim-fim-semana"> 
+            <label for="sim-fim-semana" class="sim-nao">Sim</label>
+
+            <input type="radio" name="fim-semana" value="nao" id="nao-fim-semana">
+            <label for="nao-fim-semana" class="sim-nao"> Não </label>
+        </div>
+
+        <div class="cateira-assinada">
+            <h3 class="pergunta-label">Você está trabalhando de carteira assinada? </h3>
+
+            <input type="radio" name="cart-assinada" value="sim" id="sim-cart-assinada" > 
+            <label for="sim-cart-assinada" class="sim-nao">Sim</label>
+
+            <input type="radio" name="cart-assinada" value="nao" id="nao-cart-assinada">
+            <label for="nao-cart-assinada" class="sim-nao">Não</label>
+        </div>
+    </section>
+    
+
+    <section id="financeiro">
+        <h1>Financeiro</h1>
+
+        <div class="box-line"></div>
+
+        <div class="financeiro-servico">
+            <h3 class="pergunta-label">Como você costuma cobrar pelo serviço?</h3>
+
+                <input type="checkbox" name="cobrar-servico" value="por-hora" id="por-hora" />
+                <label for="por-hora" class="escolha-horario">Por Hora</label>
+            
+                <input type="checkbox" name="cobrar-servico" value="por-dia" id="por-dia" />
+                <label for="por-dia" class="escolha-horario">Por Diária</label> 
+            
+                <input type="checkbox" name="cobrar-servico" value="por-metro" id="por-metro" />
+                <label for="por-metro" class="escolha-horario">Por Metro</label>
+
+                <input type="checkbox" name="cobrar-servico" value="por-empreitada" id="por-empreitada" />
+                <label for="por-empreitada" class="escolha-horario">Por Empreitada</label>  
+        </div>
+
+    </section>
+
+    <label for="cpf">
+        <h3 class="pergunta-label">Quanto você costuma cobrar em média pelo serviço seu ?</h3>
+    </label>
+    <p class="caracteres"> Ex.: Se cobrar por diária, quanto custa sua diária?</p>
+    <input type="text" name="cpf" >
+
+
+
+
+    <!------------------------------------------------------------------>
+    <div class="line-text">
+        <h1>Experiência Profissional</h1>
+
+        <div class="box-line"></div>
+
+            <section class="informe">
+                <label class="contato"  for="contato">
+                    <h3 class="pergunta-label"> Informe pelo menos dois contatos de  referência profissional: <em>(opcional)</em></h3>
+                </label>
+                <input class="contato" type="text" name="contato" id="contato" placeholder="Digite o primeiro">
+                <input class="contato" type="text" name="contato" id="contato2" placeholder="Digite o segundo">
+
+                <label  class="Certificado" for="certificacoes"> 
+                    <h3 class="pergunta-label">Possui certifições complementares? Quais? <em>(opcional)</em></h3>
+                </label>
+                    <input class="certificacoes" type="text" name="certificacoes" id="certificacoes" placeholder=""> 
+            </section>
+
+
+
+            <div id="button">
+                <button type="submit">Enviar</button>
+            </div>
+
+    
+    <!--------------------------------------fim da parte modificável----------------------------------------------------->
+    </form>
+<!--
+    <div class="navegacao-form">
+        <a href="servicos.html">
+            <img src="../assets/preview.svg" alt="seta clicável que retorna para a página anterior" / >
+        </a>
+
+        <a href="#">
+            <img src="../assets/next.svg"  alt="seta clicável que avança para a próxima página" />
+        </a>
+
+    </div>  
+
+-->
+</main>
+
+<footer>
+    <p>© 2023 | Viverde Casa - Todos os direitos reservados.</p>
+</footer>
+
+
+<script src="../servicos.js"></script>
+</body>
+</html>
