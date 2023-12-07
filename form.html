@@ -50,7 +50,11 @@
 
                     <p class="caracteres">Ex.: 06/09/1975</p>
                     <input type="date" name="data-nascimento" id="data-nascimento">
-                
+                    
+                    <label for="e-mail">
+                        <h3 class="pergunta-label">E-mail</h3>
+                    </label>
+                    <input type="email" name="e-mail" id="e-mail" maxlength="40" required>
                 </div>
 
                 <div class="right">
@@ -60,7 +64,7 @@
                     </label>
 
                     <p class="caracteres">Apenas números</p>
-                    <input type="text" name="rg" id="rg">
+                    <input type="text" name="rg" id="rg" maxlength="14" required>
                             
                         
                     <label for="cpf">
@@ -68,15 +72,13 @@
                     </label>
 
                     <p class="caracteres">Apenas números</p>
-                    <input type="text" name="cpf" id="cpf">
+                    <input type="text" name="cpf" id="cpf" maxlength="14" required>
 
                     <label for="telefone">
                         <h3 class="pergunta-label">Telefone</h3>
                     </label>
                         <p class="caracteres">Apenas números</p>
-                    <input type="text" name="telefone" id="telefone">
-
-                   
+                    <input type="tel" name="telefone" id="telefone" pattern="[0-9]{11}" maxlength="11" required>
                 </div>
             </div>
         </section>
