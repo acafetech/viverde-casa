@@ -13,15 +13,16 @@
 </head>
 <body>
 <header>
+    <a href="index.html">
     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="42" viewBox="0 0 22 42" fill="none">
         <path d="M21.307 3.5151C21.4949 3.3162 21.6419 3.08223 21.7394 2.82655C21.8369 2.57086 21.8831 2.29847 21.8754 2.02493C21.8677 1.75138 21.8061 1.48204 21.6943 1.23228C21.5825 0.982513 21.4225 0.757223 21.2236 0.569269C21.0247 0.381314 20.7908 0.234376 20.5351 0.136844C20.2794 0.0393119 20.007 -0.00690488 19.7335 0.000833337C19.4599 0.00857156 19.1906 0.0701129 18.9408 0.181944C18.691 0.293774 18.4657 0.453704 18.2778 0.652602L0.569464 19.4026C0.203763 19.7894 0 20.3015 0 20.8339C0 21.3662 0.203763 21.8783 0.569464 22.2651L18.2778 41.0172C18.4645 41.2204 18.6897 41.3846 18.9404 41.5C19.1911 41.6155 19.4622 41.68 19.7381 41.6898C20.0139 41.6996 20.2889 41.6545 20.5471 41.5571C20.8054 41.4597 21.0417 41.312 21.2424 41.1225C21.443 40.933 21.6041 40.7056 21.7161 40.4533C21.8281 40.2011 21.8889 39.9291 21.8949 39.6531C21.9009 39.3772 21.852 39.1028 21.7511 38.846C21.6502 38.5891 21.4992 38.3548 21.307 38.1568L4.94863 20.8339L21.307 3.5151Z" fill="#008037"/>
     </svg>
-
+</a>
     <img class="logonav" src="../assets/logo.png">
 </header>
 
 <main>
-    <form id="form-container" action="https://api.sheetmonkey.io/form/9z8GbUnyWFk3PvoRT5Lejd" method="post">
+    <form id="form-container">
         <!--------------------------------------PARTE MODIFICÁVEL----------------------------------------------------->
 
         <section class="Dadospessoas">
@@ -80,6 +81,37 @@
                         <p class="caracteres">Apenas números</p>
                     <input type="tel" name="telefone" id="telefone" pattern="[0-9]{11}" maxlength="11" required>
                 </div>
+            </div>
+
+            <div class="port-deficiencia">
+                <h3 class="pergunta-label">Você é uma pessoa com deficiência?</h3>
+
+                <input type="radio" name="deficiencia" value="sim" id="sim-deficiencia"> 
+                <label for="sim-deficiencia" class="sim-nao">Sim</label>
+
+                <input type="radio" name="deficiencia" value="nao" id="nao-deficiencia">
+                <label for="nao-deficiencia" class="sim-nao">Não</label>
+
+
+                <h3 class="pergunta-label">Se sim, qual o tipo de deficiência?</h3>
+
+                <input type="checkbox" name="tipo-deficiencia" value="defic-fisica" id="defic-fisica" />
+                <label for="defic-fisica" class="escolha-horario">Física</label>
+
+                <input type="checkbox" name="tipo-deficiencia" value="defic-intelectual" id="defic-intelectual" />
+                <label for="defic-intelectual" class="escolha-horario">Intelectual</label> 
+
+                <input type="checkbox" name="tipo-deficiencia" value="defic-motora" id="defic-motora" />
+                <label for="defic-motora" class="escolha-horario">Motora</label>
+
+                <input type="checkbox" name="tipo-deficiencia" value="defic-visual" id="defic-visual" />
+                <label for="defic-visual" class="escolha-horario">Visual</label> 
+
+                <input type="checkbox" name="tipo-deficiencia" value="defic-auditiva" id="defic-auditiva" />
+                <label for="defic-auditiva" class="escolha-horario">Auditiva</label>
+
+                <input type="checkbox" name="tipo-deficiencia" value="defic-outras" id="defic-outras" />
+                <label for="defic-outras" class="escolha-horario">Outras</label>
             </div>
         </section>
 
@@ -271,6 +303,12 @@
                     Vidraçarias
                 </label>
             </li>
+            <li>
+                <label for="outros">
+                    <input type="checkbox" name="servicos" value="outros" id="outros"/>
+                    Outros
+                </label>
+            </li>
             </ul>
         </div>
     </section>
@@ -342,7 +380,7 @@
         <h3 class="pergunta-label">Quanto você costuma cobrar em média pelo serviço seu ?</h3>
     </label>
     <p class="caracteres"> Ex.: Se cobrar por diária, quanto custa sua diária?</p>
-    <input type="text" name="cpf" >
+    <input type="text" name="preco-medio"  id="preco=medio">
 
 
 
@@ -358,8 +396,8 @@
                     <h3 class="pergunta-label"> Informe pelo menos dois contatos de  referência profissional: <em>(opcional)</em></h3>
                 </label>
                 <input class="contato" type="text" name="contato" id="contato" placeholder="Digite o primeiro">
-                <input class="contato" type="text" name="contato" id="contato2" placeholder="Digite o segundo">
-
+                <input class="contato" type="text" name="contato2" id="contato2" placeholder="Digite o segundo">
+                
                 <label  class="Certificado" for="certificacoes"> 
                     <h3 class="pergunta-label">Possui certifições complementares? Quais? <em>(opcional)</em></h3>
                 </label>
@@ -395,6 +433,9 @@
 </footer>
 
 
-<script src="../servicos.js"></script>
+<script src="./servicos.js"></script>
+<script src="./form.js"></script>
+<script src="./dataNascimento.js"></script>
+<script src="./validacaoRadios.js"></script>
 </body>
 </html>
