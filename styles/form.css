@@ -27,7 +27,7 @@ h1 {
 
 
 /*-------INPUT----------*/
-input[type="text"], input[type="date"] {
+input[type="text"], input[type="date"], input[type="email"], input[type="tel"] {
     width: 40%;
     height: 43px;
     flex-shrink: 0;
@@ -48,7 +48,7 @@ input[type="date"] {
 }
 
 
-#nome-completo, #endereco {
+#nome-completo, #endereco, #e-mail {
     width: 90%;
 }
 
