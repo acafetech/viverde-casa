@@ -36,3 +36,12 @@ document.getElementById("rg").addEventListener("input", function(event) {
   var rgInput = document.getElementById("rg");
   rgInput.value = rgInput.value.replace(/\D/g, ''); 
 });
+
+// Confirmação de cadastro efetuado
+
+const botãoEnviar = document.getElementById("button");
+
+botãoEnviar.addEventListener("click", function() {
+  // Redireciona o usuário para a outra página
+  window.location.href = "form-confirmacao.html";
+});
