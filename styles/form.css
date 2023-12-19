@@ -53,11 +53,10 @@ input[type="date"] {
 }
 
 /*-------CHECKBOX-----------*/
-.horarios, .financeiro-servico input[type="checkbox"] {
+.horarios input[type="checkbox"], .financeiro-servico input[type="checkbox"], .port-deficiencia input[type="checkbox"] {
     display: none;
 }
 
-  
   .escolha-horario {
       display: inline-block;
       padding: 8px 16px;
