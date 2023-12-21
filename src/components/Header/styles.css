@@ -1,0 +1,61 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #D1D1D1;
+    width: 100vw;
+    height: 9.8vh;
+
+    .logo-container {
+        position: relative;
+        left: 54px;
+    }
+
+    .nav-options {
+        color: #008037;
+        font-size: 1.125rem;
+        font-weight: bold;
+        transition:  0.3s ease, color 0.3s ease;
+    }
+
+    .nav-options a {
+        padding: 10px 30px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+
+    .nav-options a:hover {
+        color: #ff914c;
+    }
+
+    .nav-buttons {
+        display: flex;
+        position: relative;
+        color: #EDE9E9;
+        right: 54px;
+
+
+        .find-pro, .offer-serv {
+            padding: 10px 30px;
+            font-size: 1.125rem;
+            font-weight: bold;
+            border-radius: 20px;
+            cursor: pointer;
+            color: #EDE9E9; 
+            text-align: center;
+            white-space: normal;
+        }
+
+        .find-pro {
+            background-color: #ff914c;
+            margin-right: 20px;
+        }
+
+        .offer-serv {
+            background-color: #008037;
+        }
+
+    }
+
+}
