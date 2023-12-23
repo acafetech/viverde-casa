@@ -3,7 +3,7 @@ header {
     align-items: center;
     justify-content: space-between;
     background-color: #D1D1D1;
-    width: 100vw;
+    width: 100%;
     height: 9.8vh;
 
     .logo-container {
