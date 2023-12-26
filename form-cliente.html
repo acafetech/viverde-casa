@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário do Cliente</title>
+    <link rel="stylesheet" href="styles/form-cliente.css">
+</head>
+<body>
+    <header>
+        <img class="logo" src="assets/logo.png" alt="logo da Viverde Casa">
+    </header>
+
+    <main>
+
+        <form id="form-container" action="post">
+            <section id="dados-pessoais">
+                <h1>Dados Pessoais</h1>
+                <div class="box-line"></div>
+                <div class="primeiros-dados">
+                    <label for="email">
+                            <h3>Informe o seu melhor e-mail </h3>
+                    </label>
+                    <input type="email" name="e-mail" id="e-mail" maxlength="40" required>
+
+                    <label for="nome-completo">
+                        <h3>Nome Completo</h3>
+                    </label>
+                    <input type="text" name="nome-completo" id="nome-completo" required>
+
+                    <label for="nome-social">
+                        Como podemos te chamar?
+                    </label>
+                    <input type="text" name="nome-completo" id="nome-completo">
+
+                    <label for="telefone">
+                        <h3>Telefones para contato</h3>
+                    </label>
+                    <p class="caracteres"> Apenas números </p>
+                    <input type="tel" name="telefone" id="telefone" placeholder="DDD + Número" required>
+                    <input type="tel" name="telefone" id="telefone" placeholder="DDD + Número" required>
+                </div>
+
+                <div class="dados-pcd">
+                    <h3>Você é uma pessoa com deficiência?</h3>
+                    <input type="radio" name="pcd" value="sim" id="sim-pcd"> 
+                    <label for="sim-pcd" class="sim-nao">Sim</label>
+                    <input type="radio" name="pcd" value="nao" id="nao-pcd">
+                    <label for="nao-pcd" class="sim-nao">Não</label>
+
+                    <h3>Se sim, qual tipo de deficiência?</h3>
+                    <input type="radio" name="pcd-tipo" value="fisica" id="pcd-tipo">
+                    <label for="pcd-tipo">Física</label>
+                    <input type="radio" name="pcd-tipo" value="intelectual" id="pcd-tipo">
+                    <label for="pcd-tipo">Intelectual</label>
+                    <input type="radio" name="pcd-tipo" value="motora" id="pcd-tipo">
+                    <label for="pcd-tipo">Motora</label>
+                    <input type="radio" name="pcd-tipo" value="visual" id="pcd-tipo">
+                    <label for="pcd-tipo">Visual</label>
+                    <input type="radio" name="pcd-tipo" value="auditiva" id="pcd-tipo">
+                    <label for="pcd-tipo">Auditiva</label>
+                    <input type="radio" name="pcd-tipo" value="outra" id="pcd-tipo">
+                    <label for="pcd-tipo">Outra</label>
+                </div>
+
+                <div class="endereco-pessoal">
+                    <h2>Seu endereço</h2>
+                    <div class="box-line"></div>
+                    <div>
+                        <label for="cep">
+                            <h3>CEP</h3>
+                        </label>
+                        <input type="text" name="cep" id="cep" placeholder="00000000" required>
+
+                        <label for="numero">
+                            <h3>Número</h3>
+                        </label>
+                        <input type="text" name="numero" id="numero" required>
+
+                        <label for="cidade">
+                            <h3>Cidade</h3>
+                        </label>
+                        <input type="text" name="cidade" id="cidade" required>
+                    </div>
+                    <div>
+                        <label for="rua">
+                            <h3>Rua</h3>
+                        </label>
+                        <input type="text" name="rua" id="rua" required>
+
+                        <label for="bairro">
+                            <h3>Bairro</h3>
+                        </label>
+                        <input type="text" name="bairro" id="bairro" required>
+
+                        <label for="estado">
+                            <h3>Estado</h3>
+                        </label>
+                        <input type="text" name="estado" id="estado" required>
+                    </div>
+                </div>
+
+                <div class="endereco-obra">
+                    <h2>Endereço da obra</h2>
+                    <div class="box-line"></div>
+                    <div>
+                        <label for="cep">
+                            <h3>CEP</h3>
+                        </label>
+                        <input type="text" name="cep" id="cep" placeholder="00000000" required>
+
+                        <label for="numero">
+                            <h3>Número</h3>
+                        </label>
+                        <input type="text" name="numero" id="numero" required>
+
+                        <label for="cidade">
+                            <h3>Cidade</h3>
+                        </label>
+                        <input type="text" name="cidade" id="cidade" required>
+                    </div>
+                    <div>
+                        <label for="rua">
+                            <h3>Rua</h3>
+                        </label>
+                        <input type="text" name="rua" id="rua" required>
+
+                        <label for="bairro">
+                            <h3>Bairro</h3>
+                        </label>
+                        <input type="text" name="bairro" id="bairro" required>
+
+                        <label for="estado">
+                            <h3>Estado</h3>
+                        </label>
+                        <input type="text" name="estado" id="estado" required>
+                    </div>
+                </div>
+            </section>
+
+            <section id="servico">
+                <h1>Serviço</h1>
+                <div class="box-line"></div>
+                <h3>Que tipo de serviço deseja realizar?</h3>
+
+                <div id="checklist-servicos" class="dropdown-check-list" tabindex="100">
+                    <span class="anchor">Marque quantas opções desejar</span>
+                    <ul class="items">
+                        <li>
+                            <label for="arquitetura">
+                                <input type="checkbox" name="servicos" value="arquitetura" id="arquitetura"> Arquitetura
+                            </label>
+                        </li>
+                        <li>
+                            <label for="assentamento">
+                                <input type="checkbox" name="servicos" value="assentamento" id="assentamento"> Assentamento de piso e revestimento
+                            </label>
+                        </li>
+                        <li>
+                            <label for="consertos">
+                                <input type="checkbox" name="servicos" value="consertos" id="consertos"> Consertos de portas e janelas
+                            </label>
+                        </li>
+                        <li>
+                            <label for="construcao">
+                                <input type="checkbox" name="servicos" value="construcao" id="construcao"> Construção
+                            </label>
+                        </li>
+                        <li>
+                            <label for="design">
+                                <input type="checkbox" name="servicos" value="design" id="design"> Design de Interiores
+                            </label>
+                        </li>
+                        <li>
+                            <label for="engenharia">
+                                <input type="checkbox" name="servicos" value="engenharia" id="engenharia"> Engenharia
+                            </label>
+                        </li>
+                        <li>
+                            <label for="instalacaoBancadas">
+                                <input type="checkbox" name="servicos" value="instalacaoBancadas" id="instalacaoBancadas"> Instalação de bancadas em Mármore, Quartzo e Granito
+                            </label>
+                        </li>
+                        <li>
+                            <label for="instalacaoSeguranca">
+                                <input type="checkbox" name="servicos" value="instalacaoSeguranca" id="instalacaoSeguranca"> Instalação de câmeras e sensores de monitoramento e segurança
+                            </label>
+                        </li>
+                        <li>
+                            <label for="instalacaoEsquadrias">
+                                <input type="checkbox" name="servicos" value="instalacaoEsquadrias" id="instalacaoEsquadrias"> Instalação de esquadrias
+                            </label>
+                        </li>
+                        <li>
+                            <label for="instalacaoGesso">
+                                <input type="checkbox" name="servicos" value="instalacaoGesso" id="instalacaoGesso"> Instalação de gesso
+                            </label>
+                        </li>
+                        <li>
+                            <label for="instalacaoDG">
+                                <input type="checkbox" name="servicos" value="instalacaoDG" id="instalacaoDG"> Instalação em drywall e gesso acartonado
+                            </label>
+                        </li>
+                        <li>
+                            <label for="instalacaoPapel">
+                                <input type="checkbox" name="servicos" value="instalacaoPapel" id="instalacaoPapel"> Instalação de papel de parede
+                            </label>
+                        </li>
+                        <li>
+                            <label for="limpeza">
+                                <input type="checkbox" name="servicos" value="limpeza" id="limpeza"> Limpeza pós obra
+                            </label>
+                        </li>
+                        <li>
+                            <label for="marcenaria">
+                                <input type="checkbox" name="servicos" value="marcenaria" id="marcenaria"> Marcenaria
+                            </label>
+                        </li>
+                        <li>
+                            <label for="pedreiro">
+                                <input type="checkbox" name="servicos" value="pedreiro" id="pedreiro"> Pedreiro de alvenaria
+                            </label>
+                        </li>
+                        <li>
+                            <label for="pequenosReparos">
+                                <input type="checkbox" name="servicos" value="pequenosReparos" id="pequenosReparos"> Pequenos reparos
+                            </label>
+                        </li>
+                        <li>
+                            <label for="pinturaFerragens">
+                                <input type="checkbox" name="servicos" value="pinturaFerragens" id="pinturaFerragens"> Pintura de ferragens
+                            </label>
+                        </li>
+                        <li>
+                            <label for="pinturaGeral">
+                                <input type="checkbox" name="servicos" value="pinturaGeral" id="pinturaGeral"> Pintura geral
+                            </label>
+                        </li>
+                        <li>
+                            <label for="reformaCompleta">
+                                <input type="checkbox" name="servicos" value="reformaCompleta" id="reformaCompleta"> Reforma completa
+                            </label>
+                        </li>
+                        <li>
+                            <label for="servicosAcabamento">
+                                <input type="checkbox" name="servicos" value="servicosAcabamento" id="servicosAcabamento"> Serviços de acabamento geral
+                            </label>
+                        </li>
+                        <li>
+                            <label for="servicosJardinagem">
+                                <input type="checkbox" name="servicos" value="servicosJardinagem" id="servicosJardinagem"> Serviços de jardinagem
+                            </label>
+                        </li>
+                        <li>
+                            <label for="servicosEletricos">
+                                <input type="checkbox" name="servicos" value="servicosEletricos" id="servicosEletricos"> Serviços elétricos
+                            </label>
+                        </li>
+                        <li>
+                            <label for="servicosHidraulicos">
+                                <input type="checkbox" name="servicos" value="servicosHidraulicos" id="servicosHidraulicos"> Serviços hidráulicos
+                        </li>
+                        <li>
+                            <label for="vidracaria">
+                                <input type="checkbox" name="servicos" value="vidracaria" id="vidracaria"> Vidraçaria
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <label for="outros-servicos">
+                        <h3>Outros:</h3>
+                    </label>
+                    <input type="text" name="outros-servicos" id="outros-servicos" placeholder="Descreva qual serviço você deseja">
+                </div>
+            </section>
+            <section id="detalhes">
+                <div>
+                    <p>Queremos entender exatamente qual é sua necessidade.</p>
+                    <p>Informe nesse espaço os detalhes do serviço que deseja contratar.
+                        (Ex: Aplicação de revestimento cerâmico em parede de banheiro que mede 2m x 3m).
+                    </p>
+                    <input type="text" placeholder="Digite aqui...">
+                    <p>Precisa de ajuda para medir os espaços? Assista nosso tutorial</p>
+                </div>
+            </section>
+            <section id="agendamento">
+                <h1>Agendamento</h1>
+                <div class="box-line"></div>
+                <div>
+                    <h3>Melhor horário para você ser atendido</h3>
+                    <input type="radio" name="agendamento" value="manha" id="horario-manha"> 
+                    <label for="horario-manha" class="horario">Manhã</label>
+                    <input type="radio" name="agendamento" value="tarde" id="horario-tarde">
+                    <label for="horario-tarde" class="horario">Tarde</label>
+                    <input type="radio" name="agendamento" value="noite" id="horario-noite">
+                    <label for="horario-noite" class="horario">Noite</label>
+                </div>
+                <div>
+                    <h3>Aceita que o serviço seja realizado durante o final de semana?</h3>
+                    <input type="radio" name="agendamento" value="sim" id="sim-servico"> 
+                    <label for="sim-servico" class="sim-agendar">Sim</label>
+                    <input type="radio" name="agendamento" value="nao" id="nao-servico">
+                    <label for="nao-servico" class="nao-agendar">Não</label>
+                </div>
+                <div>
+                    <h3>Pra quando precisa do serviço?</h3>
+                    <input type="radio" name="data-servico" value="urgente" id="servico-urgente"> 
+                    <label for="servico-urgente" class="data-servico">Urgente</label>
+                    <input type="radio" name="data-servico" value="um-mes" id="servico-um-mes"> 
+                    <label for="servico-um-mes" class="data-servico">Daqui a um mês</label>
+                    <input type="radio" name="data-servico" value="uma-semana" id="servico-prox-semana"> 
+                    <label for="servico-prox-semana" class="data-servico">Na próxima semana</label>
+                    <input type="radio" name="data-servico" value="seis-meses" id="servico-seis-meses"> 
+                    <label for="servico-seis-meses" class="data-servico">6 meses ou mais</label>
+                </div>
+                <div>
+                    <p>Há alguma observação sobre o ambiente (norma, restrição ou necessidade especial)?</p>
+                    <input type="text" name="observacao" >
+                </div>
+                <div>
+                    <h3>Qual é a sua prioridade para contratar este serviço?</h3>
+                    <div id="checklist-prioridade" class="dropdown-check-list" tabindex="100">
+                        <span class="anchor">Marque quantas opções desejar</span>
+                        <ul class="items">
+                            <li>
+                                <label for="pagamento-facilitado">
+                                    <input type="checkbox" name="prioridade" value="pagamento-facilitado" id="pagamento"> Pagamento facilitado
+                                </label>
+                            </li>
+                            <li>
+                                <label for="maoDeObraEspecializada">
+                                    <input type="checkbox" name="prioridade" value="maoDeObraEspecializada" id="maoDeObraEspecializada"> Mão de obra especializada
+                                </label>
+                            </li>
+                            <li>
+                                <label for="maoDeObraFeminina">
+                                    <input type="checkbox" name="prioridade" value="maoDeObraFeminina" id="maoDeObraFeminina"> Mão de obra feminina
+                                </label>
+                            </li>
+                            <li>
+                                <label for="qualidadeAcabamento">
+                                    <input type="checkbox" name="prioridade" value="qualidadeAcabamento" id="qualidadeAcabamento"> Qualidade no acabamento
+                                </label>
+                            </li>
+                            <li>
+                                <label for="melhorPreco">
+                                    <input type="checkbox" name="prioridade" value="melhorPreco" id="melhorPreco"> Melhor preço
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section id="pesquisa">
+                <h1>Pesquisa</h1>
+                <div class="box-line"></div>
+                <div class="indicacao">
+                    <h3>Quem indicou a Viverde Casa?</h3>
+                    <input type="radio" name="indicacao" value="amigos" id="indicacaoAmigos"> 
+                    <label for="indicacaoAmigos" class="indicacao">Amigos</label>
+                    <input type="radio" name="indicacao" value="projetoSocial" id="indicacaoProjeto"> 
+                    <label for="indicacaoProjeto" class="indicacao">Projeto Social parceiro</label>
+                    <input type="radio" name="indicacao" value="profissionalParceiro" id="indicacaoProfissional"> 
+                    <label for="indicacaoProfissional" class="indicacao">Profissional Parceiro</label>
+                    <input type="radio" name="indicacao" value="estabelecimento" id="indicacaoEstabelecimento"> 
+                    <label for="indicacaoEstabelecimento" class="indicacao">Estabelecimento conveniado</label>
+                    <input type="radio" name="indicacao" value="instagram" id="indicacaoInstagram"> 
+                    <label for="indicacaoInstagram" class="indicacao">Instagram</label>
+                    <input type="radio" name="indicacao" value="facebook" id="indicacaoFacebook"> 
+                    <label for="indicacaoFacebook" class="indicacao">Facebook</label>
+                    <input type="radio" name="indicacao" value="outro" id="indicacaoOutro"> 
+                    <label for="indicacaoOutro" class="indicacao">Outro</label>
+                </div>
+                <div>
+                    <label for="codigoIndicacao" class="codigo-indicacao">Código de indicação:</label>
+                    <input type="text" name="codigo" id="codigoIndicacao">
+                </div>
+            </section>
+            <div id="button">
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+
+        <div>
+            <img class="vetor-cliente" src="assets/form-cliente.png" alt="imagem representando uma mão segurando um celular">
+        </div>
+        <!--<img class="return" src="assets/img/seta-voltar.png" alt="seta para voltar">-->
+    </main>
+    
+    <footer>  
+        <p class="text-footer">© 2023 | Viverde Casa - Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="form-cliente.js"></script>
+</body>
+</html>
