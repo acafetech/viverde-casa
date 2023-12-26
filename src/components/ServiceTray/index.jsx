@@ -1,11 +1,10 @@
 // esteira de serviços
 import "./styles.css";
 
-
 function ServiceTray() {
 
   return (
-  <section className="services" id="services">
+  <div className="services" id="services">
     <div className="services-row">
 
       <div className="services-row-card">
@@ -74,7 +73,7 @@ function ServiceTray() {
         </a>
       </div>
     </div>
-  </section>
+  </div>
 
   )
 }

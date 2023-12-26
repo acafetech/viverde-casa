@@ -8,8 +8,9 @@ function Home() {
   return (
     <>
       <Header />
-      <ContrateOpcoes />    
-      <ServiceTray />
+      <ContrateOpcoes />
+      <ServiceTray />  
+      
     </>
   );
 

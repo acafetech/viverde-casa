@@ -1,61 +1,147 @@
-header {
+header { 
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     background-color: #D1D1D1;
     width: 100%;
     height: 9.8vh;
+    align-items: center;
+}
 
+.logo-container {
+    width: 10%;
+    height: 100%;
+    position: relative;
+    left: 54px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.nav-options {
+    width: 90%;
+    color: #008037;
+    font-size: 1.125rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    margin-left: 10%
+    }
+
+.nav-options a {
+    padding: 10px 30px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+.nav-text {
+    color:#008037;
+}
+
+.hover:hover {
+    color: #ff914c;
+}
+
+.nav-button {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.find-pro, .offer-serv {
+    padding: 10px 30px;
+    font-size: 1.125rem;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    color: #EDE9E9; 
+    text-align: center;
+    white-space: normal;
+
+}
+
+.find-pro {
+    background-color: #ff914c;
+    margin-right: 20px;
+}
+
+.offer-serv {
+    background-color: #008037;
+    margin-right: 20px;
+}
+
+
+
+/* menu sandwich */
+@media (max-width: 768px) {
     .logo-container {
-        position: relative;
-        left: 54px;
+        width: 100%;
+        left: 0;
     }
-
-    .nav-options {
-        color: #008037;
-        font-size: 1.125rem;
-        font-weight: bold;
-        transition:  0.3s ease, color 0.3s ease;
-    }
-
-    .nav-options a {
-        padding: 10px 30px;
+    .menuButton {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 20px;
         cursor: pointer;
-        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
     }
-
-
-    .nav-options a:hover {
-        color: #ff914c;
+    
+    .linha {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: #008037;
+        }
+    
+    .nav-options {
+        display: none;
+        align-items: start;
     }
 
     .nav-buttons {
+        flex-direction: column;
+    }
+
+    .nav-options a {
+        padding: 5px 0px;
+        margin: 0;
+        text-align: start;
+        text-decoration: none;
+        color: #008037;
+    }
+
+    .nav-text {
         display: flex;
-        position: relative;
-        color: #EDE9E9;
-        right: 54px;
+        flex-direction: column;
+    }
 
+    .find-pro, .offer-serv {
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+    }
 
-        .find-pro, .offer-serv {
-            padding: 10px 30px;
-            font-size: 1.125rem;
-            font-weight: bold;
-            border-radius: 20px;
-            cursor: pointer;
-            color: #EDE9E9; 
-            text-align: center;
-            white-space: normal;
-        }
-
-        .find-pro {
-            background-color: #ff914c;
-            margin-right: 20px;
-        }
-
-        .offer-serv {
-            background-color: #008037;
-        }
-
+    .show {
+        width: 50%;
+        height: auto;
+        position: absolute;
+        top: 9.8vh;
+        right: 0;
+        background-color: #D1D1D1;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
     }
 
 }
+
+@media (max-width: 480px) {
+    .show {
+        width: 100%;
+    }
+} 
