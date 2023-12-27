@@ -1,20 +1,18 @@
-.services {
-    min-height: 30%;
-  }
-  
-  /*deixando os serviços um ao lado do outro*/
-  .services-row {
-    display: flex;
-    flex-wrap: wrap;
+:root {
+    background-color: #f28e50;
+}
+
+.services-row {
+    margin-left: 100px;
     justify-content: center;
     text-align: center;
-    width: 100%;
+    width: 90%;
     height: 100%;
     background-color: #f28e50;
     flex-shrink: 0;
   }
   
-  /*estilizando o card de serviços*/
+  /*estilizando o card de serviços */
   .services-row-card {
     /*cursor: pointer;*/
     display: flex;
@@ -56,3 +54,22 @@
     width: 100%;
     text-decoration: none;
   }
+
+
+  @media (max-width: 1024px) { 
+    .services-row {
+        margin-left: 40px;
+        width: 90%;
+   }
+  }
+
+  @media (max-width: 600px) {
+    .services-row {
+        margin-left: 40px;
+        width: 80%;
+   }
+   }
+
+  @media (max-width: 480px) {
+
+}
