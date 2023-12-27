@@ -48,8 +48,7 @@ function ServiceTray() {
             breakpoint: 600,
             settings: {
               slidesToShow: 2,
-              slidesToScroll: 1,
-              initialSlide: 2
+              slidesToScroll: 2,
             }
           },
           {
