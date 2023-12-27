@@ -1,0 +1,108 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #54BC49;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /*overflow-y: hidden; (remove o scroll vertical da página) */
+}
+
+/* ---------------------------------------------------------------- */
+
+/* INÍCIO DA ESTILIZAÇÃO DO HEADER */
+
+
+header {
+    position: relative;
+    background-color: #d1d1d1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 42px;
+}
+
+.voltar {
+   width: 22px;
+   height: 42px;
+   margin-right: 42px;
+}
+
+.logo {
+    margin: 0 auto;
+    width: 76px;
+    height: 76px;
+}
+
+
+/* FIM DA ESTILIZAÇÃO DO HEADER */
+
+/* ---------------------------------------------------------------- */
+
+/* INÍCIO DA ESTILIZAÇÃO DO MAIN */
+
+/* .box-line{
+    width: 95%;
+    border: 1.5px solid #7FBC54;
+    stroke-width: 4px;
+  } (código da linha separadora entre seções do formulário)*/
+
+
+
+
+
+.vetor-cliente {
+    width: 663px;
+    height: 810x;
+    display: flex;
+    position: relative;
+    justify-items: end;
+    float: right;
+}
+
+
+
+
+
+
+
+
+
+/* .return {
+    position: relative;
+    display: flex;
+    width: 35px;
+    height: 33px;
+    display: flex;
+    left: 25px;
+    top: 400px;
+} (código da seta de retorno do formulário) */
+
+/* FIM DA ESTILIZAÇÃO DO MAIN */
+
+/* ---------------------------------------------------------------- */
+
+/* INÍCIO DA ESTILIZAÇÃO DO FOOTER */
+
+footer {
+    position: static;
+    bottom: 0;
+    background-color: #FF5B00;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-footer {
+    box-sizing: border-box;
+    padding: 5px;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    color: #fcfcfc;
+    line-height: normal;
+    letter-spacing: 0;
+}
+
+/* FIM DA ESTILIZAÇÃO DO FOOTER */
