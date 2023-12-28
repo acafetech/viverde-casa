@@ -1,3 +1,4 @@
+
 .footer{
     background-color: #008037;
     display: flex;
@@ -11,7 +12,6 @@
     text-decoration: none;
     font-size: calc(0.6rem + 0.6vw);
     font-weight: bold;
-    
 }
 .footer a:hover{
     background-color: #7FBC54;
@@ -26,4 +26,11 @@
     background-color: #7FBC54;
     color: #FDFDFD;
     text-align: center;
+}
+@media (max-width: 600px) {
+    .footer, .rodape{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+}
 }
