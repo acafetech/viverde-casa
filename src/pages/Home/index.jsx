@@ -1,14 +1,20 @@
 // onde vão ser chamados os componentes que constituem a home
 
 import Button from "../../components/Button";
+import Footer from "../../components/Footer/index"
+import QuemSomos from "../../components/AboutContainer/index";
 
-function Home() {
+function App() {
+
+  
+
   return (
-    <>
-      <h1>Home</h1>
-      <Button link="/form" title="Form" type="client" />
+    <>    
+        <QuemSomos/>
+
+        <Footer/>
     </>
   );
 }
 
-export default Home;
+export default App;
