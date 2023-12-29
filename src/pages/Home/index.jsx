@@ -1,14 +1,19 @@
 // onde vão ser chamados os componentes que constituem a home
+import Header from "../../components/Header";
+import ContrateOpcoes from "../../components/HeroSection";
+import ServiceTray from "../../components/ServiceTray";
 
-import Button from "../../components/Button";
+
 
 function Home() {
   return (
     <>
-      <h1>Home</h1>
-      <Button link="/form" title="Form" type="client" />
+      <Header />
+      <ContrateOpcoes />
+      <ServiceTray />
     </>
   );
+
 }
 
 export default Home;
