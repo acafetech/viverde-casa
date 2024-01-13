@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Button from "../Button"
 import "./styles.css";
+import { Link } from 'react-router-dom';
 
 function ContrateOpcoes() {
   const [opt, setOpt] = useState(0);
@@ -28,7 +29,9 @@ function ContrateOpcoes() {
             <h2>Ofereça seus serviços</h2>
             <p className='contrate-text'>Trazemos clientes para você!</p>
 
-            <Button link="/form" title="Ofereça seus serviços" type="offer-servh"/>
+            
+            <Link to="/src/pages/Forms/WorkerForm"> <Button link="src/pages/Forms/WorkerForm/index.jsx" title="Ofereça seus serviços" type="offer-servh" /> 
+ </Link>
           </div>
         );
       default:
