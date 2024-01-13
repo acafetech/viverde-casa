@@ -1,5 +1,5 @@
 //Carrossel
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Button from "../Button"
 import "./styles.css";
 import { Link } from 'react-router-dom';
