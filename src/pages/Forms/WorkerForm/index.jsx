@@ -16,10 +16,10 @@ function WorkerForm () {
 
                 <section className="box-form">
 
-                    <div>  <label for="por_hora"> <input type="checkbox" name="hora" value="por_hora" /> Por Hora </label> </div>
-                    <div> <label for="por_diaria"><input type="checkbox" name="diaria" value="por_diaria" /> Por Diária </label> </div>
-                    <div>   <label for="por_metro"><input type="checkbox" name="metro" value="por_metro" /> Por Metro </label></div>
-                    <div> <label for="por_empreitada"><input type="checkbox" name="empreitada" value="por_empreitada" /> Por Empreitada </label></div>
+                    <div>  <label htmlFor="por_hora"> <input type="checkbox" name="hora" value="por_hora" /> Por Hora </label> </div>
+                    <div> <label htmlFor="por_diaria"><input type="checkbox" name="diaria" value="por_diaria" /> Por Diária </label> </div>
+                    <div>   <label htmlFor="por_metro"><input type="checkbox" name="metro" value="por_metro" /> Por Metro </label></div>
+                    <div> <label htmlFor="por_empreitada"><input type="checkbox" name="empreitada" value="por_empreitada" /> Por Empreitada </label></div>
                 </section>
 
                 <p className="text-inter">
