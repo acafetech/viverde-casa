@@ -40,7 +40,7 @@
     font-size: 1rem;
   }
 
-  .contrate-opcoes .contrate, .contrate-opcoes .trabalhe { 
+  .contrate-opcoes .contrate, .contrate-opcoes .trabalhe, .contrate-opcoes .parceria { 
     margin: 15px 0px;
     color: #008037;
     padding-left: 15px;
@@ -97,7 +97,7 @@
   
   /* Estilização dos botões */
   
-  .find-proh, .offer-servh {
+  .find-proh, .offer-servh, .offer-parth {
     padding: 12px 30px;
     font-size: 1.125rem !important;
     font-weight: 700;
@@ -110,13 +110,11 @@
     height: 49px;
 }
 
-.find-proh {
-    background-color: #ff914c;
-}
+.find-proh { background-color: #ff914c;}
 
-.offer-servh {
-    background-color: #008037;
-}
+.offer-servh { background-color: #008037;}
+
+.offer-parth { background-color: #80BD54;}
 
 @media (max-width: 1024px) { 
   #contrate-secao {
@@ -136,16 +134,16 @@
         left: 50%;
         transform: translate(-50%, -50%);
         max-height: 50%;
-        max-width: 300px;
+        max-width: 370px;
         min-width: 23rem;
     }
 
     #contrate-barra {
-    left: 17%;
+    left: 14%;
   }
 
   .contrate-opcoes {
-    padding-right: 20px;
+    padding-right: 44px;
   }
   
 }
@@ -161,7 +159,7 @@
     font-size: 1.125rem;
   }
 
-  .find-proh, .offer-servh {
+  .find-proh, .offer-servh, .offer-parth {
     font-size: 1rem;
     width: auto;
     height: auto;

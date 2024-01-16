@@ -15,7 +15,7 @@ function ContrateOpcoes() {
     switch (opt) {
       case 0:
         return (
-          <div>
+          <div style={{background: `url($../../assets/carousel1.svg})`}}>
             <h2>Encontre o profissional ideal</h2>
             <p className="contrate-text">
               Mão de obra qualificada e acessível, perto de você.
@@ -26,11 +26,12 @@ function ContrateOpcoes() {
               title="Encontre um profissional"
               type="find-proh"
             />
+            
           </div>
         );
       case 1:
         return (
-          <div>
+          <div style={{background: `url($../../assets/carousel2.svg})`}}>
             <h2>Ofereça seus serviços</h2>
             <p className="contrate-text">Trazemos clientes para você!</p>
 
@@ -44,6 +45,22 @@ function ContrateOpcoes() {
             </Link>
           </div>
         );
+        case 2:
+          return (
+            <div>
+              <h2>Seja uma empresa parceira</h2>
+              <p className="contrate-text">O que vamos construir juntes hoje?</p>
+  
+              <Link to="/parceria">
+                {" "}
+                <Button
+                  link="src/pages/Forms/WorkerForm/index.jsx"
+                  title="Seja uma parceira(o)"
+                  type="offer-parth"
+                />
+              </Link>
+            </div>
+          );
       default:
         return null;
     }
@@ -68,6 +85,14 @@ function ContrateOpcoes() {
             >
               <img src="src\assets\icon-trabalhe.png" alt="Icone Trabalhe" />
               <p className="trabalhe">Trabalhe</p>
+            </div>
+
+            <div
+              className="contrate-opcoes"
+              onClick={() => handleOptionChange(2)}
+            >
+              <img src="src\assets\icon-parceria.png" alt="Icone Parceria" className="icon-part" />
+              <p className="parceria">Parceria</p>
             </div>
 
             <hr
