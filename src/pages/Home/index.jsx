@@ -2,18 +2,22 @@
 import Header from "../../components/Header";
 import ContrateOpcoes from "../../components/HeroSection";
 import ServiceTray from "../../components/ServiceTray";
+import Button from "../../components/Button";
+import Footer from "../../components/Footer/index"
+import QuemSomos from "../../components/AboutContainer/index";
 
+function App() {
 
-
-function Home() {
   return (
     <>
       <Header />
       <ContrateOpcoes />
-      <ServiceTray />
+      <ServiceTray />  
+        <QuemSomos/>
+        <Footer/>
     </>
   );
 
 }
 
-export default Home;
+export default App;

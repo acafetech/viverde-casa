@@ -1,0 +1,116 @@
+:root {
+    --cor1: #008037;
+    --cor2: #3f841a;
+    --cor3: #79d351;
+    --cor4: #ff914c;
+    --cor5: #ffbe48;
+    --cor6: #c4c4c4;
+    --cor7: #ede9e9;
+  }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+main{
+    background-image: linear-gradient(#d9d9d9 3.5px, transparent 3.5px), linear-gradient(to right, #d9d9d9 3.5px, transparent 3.5px);
+    background-size: 40px 40px;
+    background-color: #ede9e9;
+}
+.warpper{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 5%;
+}
+
+.video-viverde{
+    padding: 5%;
+    padding-bottom: 37%;
+    position: relative;
+}
+    .video-viverde > iframe{
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    width: 43vw;
+    height: 23vw;
+}
+.Column-video p{
+    color: var(--cor1);
+    font-size: calc(0.9rem + 0.9vw);
+    font-weight: bold;
+    text-align: center;
+    margin-right: 4%;
+    margin-top: 5%;
+}
+.Column-img{
+    background-image: url('../../assets/FormaEsquerda.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 100px 0px 0px -50px;
+}
+picture img{
+    margin-bottom: 10%;
+    margin-left: 25%;
+    width: 30vw;
+}
+.Column-video{
+    background-image: url('../../assets/FormaDireita.png');
+    background-repeat: no-repeat;
+    background-position: bottom right -250px;
+}
+
+@media (max-width: 1000px) {
+
+    .warpper{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .Column-img{
+        display: none;
+    }
+    .Column-video{
+        flex-direction: column;
+        display: flex;
+        background-image: none;
+        padding-bottom: 37%;
+        position: relative;
+    }
+    div.video-viverde{
+        background-color: #4d9438;
+        margin: 0px 10px 30px 10px;
+        padding: 10px;
+        padding-bottom: 59%;
+        position: relative;
+        border-radius: 50px;
+    }
+    div.video-viverde > iframe {
+       position: absolute;
+       top: 5%;
+       left: 5%;
+       width: 90%;
+       height: 90%;   
+       border-radius: 40px; 
+    }
+    .Column-video p{
+        color: var(--cor1);
+        font-size: calc(0.9rem + 0.9vw);
+        font-weight: bold;
+        text-align: center;
+        margin-right: 5%;
+        margin-left: 5%;
+        margin-top: 5%;
+        margin-bottom: 10%;
+    }
+   
+}
+
+
+
+
+
+
+
+
