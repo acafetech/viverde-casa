@@ -1,16 +1,8 @@
 import "./styles.css";
 
-const FormInput = (props) => {
-    const {label, errorMessage, onChange, id, ...inputProps} = props; 
-    return (
-
-        <form>
-            <label> {label} </label>
-            <input  {...inputProps} onChange={onChange} />
-            <span>{errorMessage}</span>
-        </form>
-
+function Label ({id, label}) {
+    return(
+        <label htmlFor={id} >{label}</label>
     );
 };
-
-export default FormInput
+export default Label
