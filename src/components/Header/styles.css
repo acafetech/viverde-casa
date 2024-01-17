@@ -47,7 +47,7 @@ header {
 
 .nav-button {
     display: flex;
-    flex-wrap: wrap;
+    /*flex-wrap: wrap;*/
 }
 
 .find-pro, .offer-serv, .offer-part {
