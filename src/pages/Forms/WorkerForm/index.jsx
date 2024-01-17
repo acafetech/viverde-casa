@@ -1,149 +1,64 @@
-import "./styles.css"
-import { userState } from "react";
-import FormInput from "../../../components/FormInput";
+import Label from '../../../components/Label';
+import { useForm } from 'react-hook-form';
 
-const WorkerForm  = () => {
-    const [values, setValues] = userState ({
-        username:"",
-        endereco:"",
-        rg:"",
-        aniversario:"",
-        cpf:"",
-        email:"",
-    });
 
-    const inputs = [
-        {
-            id:1,
-            name:"Nome-Completo",
-            type:"text",
-            errorMessage:"",
-            placeholder:"",
-            label:"Nome do Usuário"
-            //pattern: "", < validação de nome 
-            // required: true, < = validação
-        },
 
-        {
-            id:2,
-            name:"Endereco",
-            type:"text",
-            errorMessage:"",
-            placeholder:"Siga o Exemplo na descrição",
-            label:"Endereço Completo"
-            // required: true,
-        },
+export default function App() {
 
-        {
-            id:3,
-            name:"rg",
-            type:"number",
-            errorMessage:"RG invalido",
-            placeholder:"000.000-00",
-            label:"RG"
-            // required: true,
-        },
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = data => console.log(data);
+  console.log(errors);
+  
+  return (
+    <form id="form-container" onSubmit={handleSubmit(onSubmit) }>
+        <section class="Dadospessoas">
+            <h1>Dados Pessoais</h1>
+            <div class="box-line"></div>
+            <section class="left-right">
+                <div class="left">
+                    <Label id="nome-completo" label="Nome Completo"/> 
+                    <p className='caracteres'>Conforme consta nos seus documentos</p>
+                    <input type="text" id="nome-completo" {...register("Nome completo", {required: true, min: 10, maxLength: 50})} />
 
-        {
-            id:4,
-            name:"cpf",
-            type:"number",
-            errorMessage:"CPF invalido",
-            placeholder:"000.000.000-00",
-            label:"CPF"
-            // required: true,
-            
-        },
+                    <Label id="endereco" label="Endereço"/>
+                    <p className='caracteres'>Conforme consta nos seus documentos</p>
+                    <input type="text" id="endereco" {...register("endereco", {required: true, maxLength: 100})} />
 
-        {
-            id:5,
-            name:"birthday",
-            type:"data",
-            placeholder:"birthday",
-            label:"Data de Nascimento"
-            // required: true,
-        },
+                    <Label id="data-nascimento" label="Data de Nascimento"/>
+                    <p className='caracteres'>Ex.: 06/09/1975</p>
+                    <input type="datetime" id="data-nascimento" {...register("Data de Nascimento", {required: true, pattern: /^\S+@\S+$/i})} />
 
-        {
-            id:6,
-            name:"email",
-            type:"text",
-            errorMessage:"",
-            placeholder:"",
-            label:"Email"
-            // required: true,
-        },
+                    <Label id="e-mail" label="E-mail"/>
+                    <input type="email" id="e-mail" {...register("e-mail", {required: true, maxLength: 40})} />
+                </div>
 
-        {
-            id:7,
-            name:"telefone",
-            type:"tel",
-            errorMessage:"",
-            placeholder:"(DDD) + Número",
-            label:"Telefone"
-            // required: true,
-            
-        },
+                <div class="right">
+                    <Label id="RG" label="RG"/> 
+                    <p className='caracteres'>Apenas números</p>
+                    <input type="text" id="RG" {...register("RG", {required: true, maxLength: 14})} />
 
-        {
-            id:8,
-            name:"cnpf",
-            type:"number",
-            errorMessage:"CNPJ invalido",
-            placeholder:"000.000.000-00",
-            label:"CNPJ"
-            // required: true,
-            
-        },
+                    <Label id="CPF" label="CPF"/> 
+                    <p className='caracteres'>Apenas números</p>
+                    <input type="text" id="CPF" {...register("CPF", {required: true, maxLength: 11})} />
 
-        {
-            id:9,
-            name:"telefone",
-            type:"tel",
-            errorMessage:"",
-            placeholder:"(DDD) + Número",
-            label:"Telefone"
-            // required: true,
-            
-        },
+                    <Label id="telefone" label="Telefone"/> 
+                    <p className='caracteres'>Apenas números</p>
+                    <input type="tel" id="telefone" {...register("telefone", {required: true, maxLength: 11, pattern: /[0-9]{11}/i })} />
+                </div>
 
-        {
-            id:10,
-            name:"telefone",
-            type:"tel",
-            errorMessage:"",
-            placeholder:"(DDD) + Número",
-            label:"Telefone"
-            // required: true,
-            
-        }
-    ]
-   
+                <div class="port-deficiencia">
+                    <h3 className="pergunta-label">Você é uma pessoa com deficiência?</h3>
+                    <Label id="sim-deficiencia" label="Sim" />
+                    <input type="radio" id="sim-deficiencia" value="Sim" {...register("port-deficiencia", { required: true })}   />
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        
-    };
+                    <Label id="nao-deficiencia" label="Não" />
+                    <input type="radio" id="nao-deficiencia"  value="Nao"{...register("port-deficiencia", { required: true })}   />
 
-    const onChange = (e)=> {
-        setValues({...values, [e.target.name]: e.target.value })
-    };
+                </div>
 
-    console.log(values);
-
-    return (
-      <div className="WorkerForm">
-        <form onSubmit={handleSubmit}>
-            {inputs.map((inputs) => (
-                <FormInput key={input.id} {...inputs} value={values [input.name]}
-                onChange={onChange}
-                />
-            ))}
-            
-            <button>Enviar</button>
-        </form>
-      </div>
-    );
-};
-
-export default WorkerForm;
+                </section>
+        </section>
+        <input type="submit" />
+    </form>
+  );
+}
