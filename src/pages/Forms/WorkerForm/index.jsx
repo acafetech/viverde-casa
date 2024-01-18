@@ -193,6 +193,28 @@ export default function WorkerForm() {
 
                         </div>
                     </section>
+                    </div>
+                </section>
+                <section id="servicos">
+                    <h1>Serviços</h1>
+                    <div class="box-line"></div>
+                    <h3 className="pergunta-label">Quais serviços você se sente mais seguro(a) em fazer?</h3>
+
+                    <div id="checklistServicos" className="dropdown-check-list" tabIndex={100}>
+                        <span className="anchor">Marque quantas opções desejar</span>
+                        <ul className="items">
+                            <li>
+                                <label htmlFor="arquitetura">
+                                    <input type="checkbox" name="servicos" value={arquitetura} id="arquitetura" />
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+        </body>
+    )
+}
 
                     </section>
             </section>
