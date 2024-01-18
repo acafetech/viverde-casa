@@ -1,81 +1,201 @@
-.container{
-    display: flex;
-}
 
-.geral-box{
+html {
+    overflow-x: hidden;
+    font-size: 62.5%;
+  }
+  
+  h1 {
+      font-size: 2.5rem;
+      padding: 25px 0px;
+  }
+  
+  
+  .caracteres {
+      font-size: 1.4rem;
+      font-style: italic;
+  }
+  .pergunta-label {
+      font-size: 2.0rem !important;
+      padding: 12px 0px 8px 0px ;
+  }
+  
+  .left-right {
+      width: 100%;
+      display: flex;
+  }
+  .left-right div {
+      width: 100%;
+  }
+  
+  
+  /*-------INPUT----------*/
+  input[type="text"], input[type="date"], input[type="email"], input[type="tel"] {
+      width: 40%;
+      height: 43px;
+      flex-shrink: 0;
+      border-radius: 24.5px;
+      background: #D9D9D9;
+      border-style: none;
+      font-size: 1.8rem;
+      padding-left: 14px;
+      margin-top: 5px;
+  }
+  
+  input[type="date"] {
     width: 50%;
-    height: 800px;
-    background-color: #ede9e9;
-    border-radius: 50px;
-    margin-top: 5%;
-    margin-left: 9%;
-    box-shadow: 0px 0px 2px 1px #c4c4c4;
-}
-
-.text-box{
-    width: 75%;
-    margin-left: 9%;
-    padding-top: 10%;
-}
-
-h1{
-    font-size: 2.3rem;
-}
-
-.box-line{
-    width: 95%;
-    border: 1.5px solid #7FBC54;
-}
-
-.box-form {
-    line-height: 25px;
-    font-size: 1.2rem;
-}
-
-.fina-line{
-    margin-bottom: 10%;
-}
-
-.img-pessoas{
-    min-width: 250px;
-    margin-left: 18%;
-}
-
-.text-box{
-    color: #008037;
-}
-
-.text-inter{
-    color: #008037;
-    font-size: 1.875rem;
-    font-weight: medium;
-}
-
-.text-italic {
-    font-size: 1.438rem;
-    color: #AFAFAF;
-    font-style: italic;
-}
-
-.valor{
-    border-radius: 50px;
-    padding: 20px;
-    width: 90%;
-    background-color: #D9D9D9;
-    border-style: none;
-}
-
-@media screen and (max-width: 768px) {
-    .geral-box {
-    width: 80%; /* 80% da largura do aparelho /
-    height: auto; / altura automatica para se ajustar ao conteúdo */
-    margin: 5% auto;
+  }
+  
+  ::-webkit-calendar-picker-indicator {
+      margin-right: 20px;
+  }
+  
+  
+  #nome-completo, #endereco, #e-mail {
+      width: 90%;
+  }
+  
+  /*-------CHECKBOX-----------*/
+  .horarios input[type="checkbox"], .financeiro-servico input[type="checkbox"], .port-deficiencia input[type="checkbox"] {
+      display: none;
+  }
+  
+    .escolha-horario {
+        display: inline-block;
+        padding: 8px 16px;
+        font-size: 1.4rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 10px;
     }
-}
- 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-    .geral-box  {
-    width: 60%; 
-    margin: 3% auto; 
+   
+    input[type="checkbox"]:checked + label {
+      background-color: #008037;
+      color: #fff;
+      border-color: #008037;
     }
-}
+  
+  
+  /* ------------RÁDIO---------- */
+  input[type="radio"] {
+      display: none;
+    }
+    
+    /* Estilo para simular o botão */
+    .sim-nao {
+      display: inline-block;
+      padding: 8px 16px;
+      font-size: 1.4rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    
+    /* Estilo para quando o input de rádio está marcado */
+    input[type="radio"]:checked + label {
+      background-color: #008037;
+      color: #fff;
+      border-color: #008037;
+    }
+  
+  
+  /*----------------------SERVIÇOS------------------*/
+  .dropdown-check-list {
+      display: inline-block;
+      margin-bottom: 30px;
+    }
+  
+    .dropdown-check-list .anchor {
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+      padding: 5px 50px 5px 10px;
+      border: 1px solid #008037;
+    }
+    
+    span { font-size: 1.8rem;}
+  
+    .dropdown-check-list .anchor:after {
+      position: absolute;
+      content: "";
+      border-left: 2px solid #008037;
+      border-top: 2px solid #008037;
+      padding: 5px;
+      right: 10px;
+      top: 20%;
+      -moz-transform: rotate(-135deg);
+      -ms-transform: rotate(-135deg);
+      -o-transform: rotate(-135deg);
+      -webkit-transform: rotate(-135deg);
+      transform: rotate(-135deg);
+    }
+    
+    .dropdown-check-list .anchor:active:after {
+      right: 8px;
+      top: 21%;
+    }
+    
+    .dropdown-check-list ul.items {
+      padding: 2px;
+      display: none;
+      margin: 0;
+      border: 1px solid #008037;
+      border-top: none;
+      font-size: 1.8rem;
+      max-height: 200px;
+      overflow-y: scroll;
+      max-width: 329px;
+    }
+    
+    .dropdown-check-list ul.items li {
+      list-style: none;
+    }
+    
+    .dropdown-check-list.visible .anchor {
+      color: #AFAFAF;
+    }
+    
+    .dropdown-check-list.visible .items {
+      display: block;
+      border-radius: 0px 0px 17px 17px;
+    }
+  
+  
+  button {
+      width: 100px;
+      height: 43px;
+      cursor: pointer;
+      font-size: 20px;
+      border-radius: 24.5px;
+      background: #FF914C;
+      color: white;
+      border-style: none;
+      margin-top: 20px;
+  }
+  
+  #button {
+      display: flex;
+      justify-content: right;
+  }
+  
+  @media screen and (max-width: 768px) {
+      .left-right {
+          display: flex;
+          flex-direction: column;
+      }
+      input[type="text"], input[type="date"] {
+          width: 90%;
+      }
+  
+      .financeiro-servico label {
+          margin-bottom: 10px;
+      }
+      
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+      #servicos-agenda {
+        width: 60%; 
+        margin: 3% auto; 
+      }
+    }
+  }
