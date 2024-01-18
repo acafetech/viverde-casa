@@ -15,19 +15,19 @@ export default function WorkerForm() {
             <h1>Dados Profissionais</h1>
 
                 <h3 className="pergunta-label">Possui CNPJ</h3>
-                 <Label id="sim-cnpj" />
-                    <label> Sim <input {...register("sim-cnpj", { required: true })} type="radio" value="Sim" /></label>
-                 <Label id="nao-cnpj" />
-                    <label> Não <input {...register("nao-cnpj", { required: true })} type="radio" value="Não" /></label>
+                 <Label id="sim-cnpj" label="Sim"/>
+                    <input {...register("cnpj-sim-nao", { required: true })} type="radio" value="Sim" />
+                 <Label id="nao-cnpj" label="Não"/>
+                    <input {...register("cnpj-sim-nao", { required: true })} type="radio" value="Não" />
 
-                <h3 className="pergunta-label">CNPJ (opcional)</h3>
-                  <p>Caso possua, informe apenas números</p>
+                <h3 className="pergunta-label">CNPJ <em>(opcional)</em></h3>
+                  <p class="caracteres">Caso possua, informe apenas números</p>
                   <Label id="cnpj" />
                     <input type="text" {...register("cpnj", {})} />
 
                 <h3 className="pergunta-label">Qual sua área de atuação?</h3>
-                <Label id="sim-cnpj" />
-                    <input type="text" {...register("", {})} />
+                <Label id="area-atuacao" />
+                    <input type="text" {...register("area-atuacao", {})} />
 
         </section>
 
@@ -36,24 +36,24 @@ export default function WorkerForm() {
                 <h1>Agenda</h1>
 
                <h3 className="pergunta-label">Qual sua disponibilidade de horário?</h3>
-                 <Label id="sim-cnpj" />
-                    <label> Manhã <input {...register("Qual sua disponibilidade de horário?", { required: true })} type="radio" value="Manhã" /> </label>
-                 <Label id="sim-cnpj" />
-                    <label> Tarde <input {...register("Qual sua disponibilidade de horário?", { required: true })} type="radio" value=" Tarde" /> </label>
-                 <Label id="sim-cnpj" />
-                    <label> Noite <input {...register("Qual sua disponibilidade de horário?", { required: true })} type="radio" value=" Noite" /> </label>
+                 <Label id="escolha-horario" label="Manhã"/>
+                    <input {...register("horarios", { required: true })} type="radio" value="Manhã" />
+                 <Label id="escolha-horario" label="Tarde"/>
+                    <input {...register("horarios", { required: true })} type="radio" value=" Tarde" /> 
+                 <Label id="escolha-horario" label="Noite"/>
+                    <input {...register("horarios", { required: true })} type="radio" value=" Noite" /> 
 
                <h3 className="pergunta-label">Aceita prestar serviços nos finais de semana?</h3>
-                 <Label id="sim-cnpj" />
-                    <label> Sim <input {...register("Aceita prestar serviços nos finais de semana?", { required: true })} type="radio" value="Sim" /> </label>
-                 <Label id="sim-cnpj" />   
-                    <label> Não <input {...register("Aceita prestar serviços nos finais de semana?", { required: true })} type="radio" value=" Não" /> </label>
+                 <Label id="sim-nao" label="Sim"/>
+                    <input {...register("fim-semana", { required: true })} type="radio" value="Sim" /> 
+                 <Label id="sim-nao" label="Não"/>   
+                    <input {...register("fim-semana", { required: true })} type="radio" value=" Não" /> 
 
                <h3 className="pergunta-label">Você está trabalhando de carteira assinada?</h3>
-                 <Label id="sim-cnpj" />
-                    <label> Sim <input {...register("Você está trabalhando de carteira assinada?", { required: true })} type="radio" value="Sim" /> </label>
-                 <Label id="sim-cnpj" />
-                    <label> Não  <input {...register("Você está trabalhando de carteira assinada?", { required: true })} type="radio" value=" Não" /> </label>
+                 <Label id="sim-nao" label="Sim"/>
+                    <input {...register("cart-assinada", { required: true })} type="radio" value="Sim" />
+                 <Label id="sim-nao" label="Não"/>
+                    <input {...register("cart-assinada", { required: true })} type="radio" value=" Não" /> 
 
         </section>
 
@@ -63,39 +63,40 @@ export default function WorkerForm() {
 
                 <h3 className="pergunta-label">Como você costuma cobrar pelo serviço?</h3>
 
-               <Label id="sim-cnpj" />
-                  <label>Por Hora</label><input {...register("Como você costuma cobrar pelo serviço?", { required: true })} type="radio" value="Por Hora" />
-               <Label id="sim-cnpj" />
-                  <label>Por Diária</label><input {...register("Como você costuma cobrar pelo serviço?", { required: true })} type="radio" value=" Por Diária" />
-               <Label id="sim-cnpj" />
-                  <label>Por Metro</label><input {...register("Como você costuma cobrar pelo serviço?", { required: true })} type="radio" value=" Por Metro" />
-               <Label id="sim-cnpj" />
-                  <label>Por Empreitada</label><input {...register("Como você costuma cobrar pelo serviço?", { required: true })} type="radio" value=" Por Empreitada" />
+               <Label id="escolha-horario" label="Por Hora"/>
+                  <input {...register("cobrar-servico", { required: true })} type="radio" value="Por Hora" />
+               <Label id="escolha-horario" label="Por Diária"/>
+                  <input {...register("cobrar-servico", { required: true })} type="radio" value=" Por Diária" />
+               <Label id="escolha-horario" label="Por Metro"/>
+                  <input {...register("cobrar-servico", { required: true })} type="radio" value=" Por Metro" />
+               <Label id="escolha-horario" label="Por Empreitada"/>
+                  <input {...register("cobrar-servico", { required: true })} type="radio" value=" Por Empreitada" />
 
                     <h3 className="pergunta-label">Campo a ser alterado para inputs de dados</h3>
 
-                    <Label id="sim-cnpj" />
-                <input type="text" {...register("Quanto você costuma cobrar em média pelo seu serviço ? ", {required: true})} />
+               <Label id="preco-medio" />
+                  <p className="caracteres">  Ex.: Se cobrar por diária, quanto custa sua diária? </p>
+                    <input type="text" {...register("preco-medio", {required: true})} />
 
         </section>
 
         <section id="experiencia-profissional">
             <h1>Experiência Profissional</h1>
 
-           <Label id="sim-cnpj" />
+           <Label id="contato" />
             <input type="tel" placeholder="(DDD) + número" 
-            {...register("Informe pelo menos dois contatos de referência profissional: (opcional)", 
+            {...register("contato1", 
             {required: true, max: 11, min: 11, maxLength: 11, pattern: /[0-9]{11}/i})} />
 
-           <Label id="sim-cnpj" />
+           <Label id="contato" />
             <input type="tel" placeholder="(DDD) + número" 
-            {...register("Informe pelo menos dois contatos de referência profissional: (opcional)", 
+            {...register("contato2", 
             {max: 11, min: 11, maxLength: 11, pattern: /[0-9]{11}/i})} />
 
-           <Label id="sim-cnpj" />
+           <Label id="Certificado" />
             <h3>Possui certifições complementares? Quais? (opcional)</h3>
-            <input type="text" placeholder="Possui certificações complementares? Quais? (opcional)" 
-            {...register("Possui certificações complementares? Quais? (opcional)", {})} />
+            <input type="text"  
+            {...register("certificacoes", {})} />
 
         </section>
       <input type="submit" />
