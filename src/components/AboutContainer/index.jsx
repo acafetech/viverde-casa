@@ -3,7 +3,7 @@ import "./styles.css";
 function QuemSomos() {
 
     return (
-        <main>    
+        <section id="about-container">    
             <div className="warpper">
                     <section className="Column-img">
                         <picture>
@@ -23,7 +23,7 @@ function QuemSomos() {
                         
                     </div>
             </div>       
-        </main>
+        </section>
         )
 }
 

@@ -1,20 +1,6 @@
-:root {
-    --cor1: #008037;
-    --cor2: #3f841a;
-    --cor3: #79d351;
-    --cor4: #ff914c;
-    --cor5: #ffbe48;
-    --cor6: #c4c4c4;
-    --cor7: #ede9e9;
-  }
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Inter", sans-serif;
-}
 
-main{
+
+#about-container {
     background-image: linear-gradient(#d9d9d9 3.5px, transparent 3.5px), linear-gradient(to right, #d9d9d9 3.5px, transparent 3.5px);
     background-size: 40px 40px;
     background-color: #ede9e9;
