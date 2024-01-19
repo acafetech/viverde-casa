@@ -33,12 +33,204 @@ console.log(errors);
             <section className='dadosEmpresa'>
                 <h1>Dados da Empresa</h1>
                 <div className="box-line"></div>
-                <Label id="razao-social" label="Razão Social" />
-                <input type="text" id="razao-social" {...register("razaoSocial", {required: true, minLength: 10, maxLength: 50})} />
+                <section className="left-right">
+                    <div className="left">
+                        <Label id="razao-social" label="Razão Social" />
+                        <input type="text" id="razao-social" {...register("razaoSocial", {required: true, minLength: 10, maxLength: 50})} />
 
-                <Label id="nome-fantasia" label="Nome Fantasia" />
-                <input type="text" id="nome-fantasia" {...register("nomeFantasia", {required: true, minLength: 10, maxLength: 50})} />
+                        <Label id="cnpj" label="CNPJ" />
+                        <p className="caracteres">Apenas números</p>
+                        <input id="cnpj" type="text" {...register("cpnj", { required: true, minLength: 14, maxLength: 14 })} />
 
+                        <Label id="telefone-empresa" label="Telefone"/>
+                        <p className='caracteres'>Apenas números</p>
+                        <input type="tel" id="telefone-empresa" {...register("telefoneEmpresa", {required: true, maxLength: 11, pattern: /[0-9]{11}/i })} />
+                        
+                    </div>
+                    <div className='right'>
+                        <Label id="nome-fantasia" label="Nome Fantasia" />
+                        <input type="text" id="nome-fantasia" {...register("nomeFantasia", {required: true, minLength: 10, maxLength: 50})} />
+
+                        <h3 className='pergunta-label'> Quantos colaboradores?</h3>
+                        <p className='caracteres'>Escolha uma opção</p>
+
+                        <div id="checklistServicos" className={`dropdown-check-list ${isCheckListVisible ? 'visible' : ''}`} tabIndex="100">
+                        <span className="anchor" onClick={toggleCheckList}>Selecione</span>
+                        <ul className="items">
+                            <li>
+                                <input type="radio" id="1a5" value="Entre 1 e 5" {...register("qtdColaboradores", {required: true})} />
+                                <LabelServ id="1a5" label="1-5" />
+                            </li>
+                            <li>
+                                <input type="radio" id="5a20" value="Entre 5 e 20" {...register("qtdColaboradores", {required: true})} />
+                                <LabelServ id="5a20" label="5-20" />
+                            </li>
+                            <li>
+                                <input type="radio" id="20a50" value="Entre 20 e 50" {...register("qtdColaboradores", {required: true})} />
+                                <LabelServ id="20a50" label="20-50" />
+                            </li>
+                            <li>
+                                <input type="radio" id="acima50" value="mais de 50" {...register("qtdColaboradores", {required: true})} />
+                                <LabelServ id="acima50" label="Mais de 50" />
+                            </li>
+                        </ul>
+                        </div>
+
+                        <Label id="endereco-eletronico" label="Endereço Eletrônico" />
+                        <p className='caracteres'>E-mail ou link de rede social</p>
+                        <input type="text" id="endereco-eletronico" {...register("enderecoEletronico", {required: true, minLength: 10, maxLength: 50})} />
+                    </div>
+                    </section>
+                    <div className="endereco-pessoal">
+                        <h1>Endereço</h1>
+                        <div class="box-line"></div>
+                            <div className="left-right">
+                                <div className="left">
+                                <Label id="endereco" label="Logadouro"/>
+                                <input type="text" id="endereco" {...register("endereco", {required: true, maxLength: 100})} />
+                                {errors.endereco && errors.endereco.type === "required" && (
+                                    <p className="error-message">O logradouro é obrigatório.</p>
+                                )}
+                                {errors.endereco && errors.endereco.type === "maxLength" && (
+                                    <p className="error-message">O logradouro não pode ter mais de 100 caracteres.</p>
+                                )}
+
+                                <Label id="bairro" label="Bairro"/>
+                                <input type="text" id="bairro" {...register("bairro", {required: true, maxLength: 100})} />
+                                {errors.bairro && errors.bairro.type === "required" && (
+                                    <p className="error-message">O bairro é obrigatório.</p>
+                                )}
+                                {errors.bairro && errors.bairro.type === "maxLength" && (
+                                    <p className="error-message">O bairro não pode ter mais de 100 caracteres.</p>
+                                )}
+                                
+                                <Label id="cidade" label="Cidade"/>
+                                <input type="text" id="cidade" {...register("cidade", {required: true, maxLength: 100})} />
+                                {errors.cidade && errors.cidade.type === "required" && (
+                                    <p className="error-message">O campo cidade é obrigatório.</p>
+                                )}
+                                {errors.cidade && errors.cidade.type === "maxLength" && (
+                                    <p className="error-message">O campo cidade não pode ter mais de 100 caracteres.</p>
+                                )}
+                            </div>
+                                
+                            <div className="right">
+                            <Label id="cep" label="CEP"/>
+                                <input type="number" id="cep" {...register("cep", {required: true, maxLength: 8})} />  
+                                {errors.cep && errors.cep.type === "required" && (
+                                    <p className="error-message">O CEP é obrigatório.</p>
+                                )}
+                                {errors.cidade && errors.cidade.type === "maxLength" && (
+                                    <p className="error-message">O CEP não pode ter mais de 8 caracteres.</p>
+                                )}     
+
+                                <Label id="numero" label="Número"/>
+                                <input type="number" id="numero" {...register("numero", {required: true, maxLength: 5})} />
+                                {errors.cep && errors.cep.type === "required" && (
+                                    <p className="error-message">O número é obrigatório.</p>
+                                )}
+                                {errors.cidade && errors.cidade.type === "maxLength" && (
+                                    <p className="error-message">O número não pode ter mais de 5 caracteres.</p>
+                                )}  
+                                
+                                <Label id="estado" label="Estado"/>
+                                <input type="text" id="estado" {...register("estado", {required: true, maxLength: 20})} />
+                                {errors.estado && errors.estado.type === "required" && (
+                                    <p className="error-message">O estado é obrigatório.</p>
+                                )}
+                                {errors.estado && errors.estado.type === "maxLength" && (
+                                    <p className="error-message">O estado não pode ter mais de 20 caracteres.</p>
+                                )}  
+                            </div>
+                        
+                        </div>
+                       </div>
+            </section>
+            <section className='dadosRepresentante'>
+                <h1>Dados da(o) Representante</h1>
+                <div className="box-line"></div>
+                <section className="left-right">
+                    <div className="left">
+                        <Label id="nome-completo" label="Nome Completo"/>
+                        <input type="text" id="nome-completo" {...register("nomeCompleto", {required: true, minLength: 10, maxLength: 100})} />
+                    </div> 
+                    <div className="right">              
+                    <Label id="telefone-representante" label="Telefone"/>
+                        <input type="tel" id="telefone-representante" {...register("telefoneRepresentante", {required: true, maxLength: 11, pattern: /[0-9]{11}/i })} />
+                    </div>
+                </section>
+
+                <Label id="cargo-empresa" label="Cargo que ocupa na empresa" />
+                <input type="text" id="cargo-empresa" {...register("cargoEmpresa", {required: true, minLength: 10, maxLength: 50})} />
+                <Label id="email-representante" label="Informe seu melhor e-mail" />
+                <input type="email" id="email-representante" {...register("emailRepresentante", {required: true, minLength: 10, maxLength: 50})} />
+
+                <section className="left-right">
+                    <div className="left">
+                        <Label id="indicacao" label="Quem lhe indicou à Viverde Casa?" />
+                        <input type="text" id="indicacao" {...register("indicacao", {required: true, minLength: 10, maxLength: 50})} />
+                    </div>
+                    <div className='right'>
+                        <Label id="indicacao" label="Cód. de Indicação" />
+                        <input type="text" id="codigo-indicacao" {...register("codigo-indicacao", {required: true, minLength: 10, maxLength: 50})} />
+                    </div>
+                </section>                   
+            </section>
+            <section className='informacaoSolicitacao'>
+                <h1>Informações da Solicitação  </h1>
+                 <p className="caracteres">Queremos entender um pouco mais da necessidade de sua empresa</p>
+
+                <p>Que tipo de serviço está buscando?</p>
+                <div id="checklistServicos" className={`dropdown-check-list ${isCheckListVisible ? 'visible' : ''}`} tabIndex="100">
+                    <span className="anchor" onClick={toggleCheckList}>
+                                Selecione uma opção</span> 
+                    <ul className="items">
+                        <li>
+                            <input type="radio" id="parceria-comercial" value="Parceria comercial" {...register("servicoInfo", {required: true})} />
+                            <LabelServ id="parceria-comercial" label="Parceria comercial (Quero fazer parte do programa de descontos e conquistar novos clientes)" />
+                        </li>
+                        <li>
+                            <input type="radio" id="intermediacao" value="Intermediação" {...register("servicoInfo", {required: true})} />
+                            <LabelServ id="intermediacao" label="Intermediação de mão de obra (Busco contratação de mão de obra qualificada para reforma e construção)" />
+                        </li>
+                        <li>
+                            <input type="radio" id="qualificacao-profissional" value="Qualificação profissional" {...register("servicooInfo", {required: true})} />
+                            <LabelServ id="qualificacao-profissional" label="Qualificação profissional (Quero contratar um pacote de qualificação de mão de obra para minha equipe) " />
+                        </li>
+                        <li>
+                            <input type="radio" id="apoio-acoes" value="Apoio a ações ESG" {...register("servicoInfo", {required: true})} />
+                            <LabelServ id="apoio-acoes" label="Apoio a ações ESG (Quero investir em ações de impacto social e ambiental com a Viverde Casa) " />
+                        </li>
+                    </ul>
+                    </div>
+
+                    <Label id="servicoOutro" label="Outro" />
+                    <input id="servicoOutro" type="text" {...register("servicoOutro", { required: true, minLength: 14, maxLength: 14 })} />
+                    
+                    
+                    <p>Que iniciativa de impacto gostaria de apoiar?</p>
+                    <div id="checklistServicos" className={`dropdown-check-list ${isCheckListVisible ? 'visible' : ''}`} tabIndex="100">
+                    <span className="anchor" onClick={toggleCheckList}>
+                                Selecione uma opção</span> 
+                    <ul className="items">
+                        <li>
+                            <input type="radio" id="viverde-capacita" value="viverdeCapacita" {...register("iniciativaInfo", {required: true})} />
+                            <LabelServ id="viverde-capacita" label="Viverde Capacita (Programa de qualificação profissional)" />
+                        </li>
+                        <li>
+                            <input type="radio" id="viverde-athis" value="viverdeATHIS" {...register("iniciativaInfo", {required: true})} />
+                            <LabelServ id="viverde-athis" label="Viverde ATHIS (Programa de melhorias habitacionais de interesse social) " />
+                        </li>
+                        <li>
+                            <input type="radio" id="viverde-hub" value="viverdeHub" {...register("iniciativaInfo", {required: true})} />
+                            <LabelServ id="viverde-hub" label="Viverde HUB (Programa de incentivo a pesquisa, desenvolvimento e inovação) " />
+                        </li>
+
+                    </ul>
+                    <Label id="comentarioSolicitacao" label="Comentário" />
+                    <textarea id="comentarioSolicitacao" {...register("comentarioSolicitacao", {required: true, minLength: 10, maxLength: 50})} />
+
+                </div>
             </section>
         </form>
     </main>
