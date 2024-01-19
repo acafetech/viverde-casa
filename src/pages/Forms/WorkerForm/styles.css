@@ -3,13 +3,10 @@
     color: #008037;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
 }
 
 html {
     background-color: #008037 !important;
-    font-size: 62.5%;
-    overflow-x: hidden;
 }
 
 
@@ -21,7 +18,7 @@ html {
   background-attachment: fixed;
 }
 
-svg {
+#worker-form svg {
   position: absolute;
   top: 0;
   left: 0;
@@ -56,18 +53,18 @@ svg {
 
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 1.6rem;
     padding: 25px 0px;
 }
   
   
 .caracteres {
-    font-size: 1.4rem;
+    font-size: 0.9rem;
     font-style: italic;
   }
   
 .pergunta-label {
-    font-size: 2.0rem !important;
+    font-size: 1.25 !important;
     padding: 12px 0px 8px 0px ;
 }
   
@@ -81,20 +78,26 @@ h1 {
   
   
   /*-------INPUT----------*/
- input[type="text"], input[type="date"], input[type="email"], input[type="tel"] {
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="number"],
+input[type="tel"] {
       width: 40%;
       height: 43px;
       flex-shrink: 0;
       border-radius: 24.5px;
       background: #D9D9D9;
       border-style: none;
-      font-size: 1.8rem;
+      font-size: 1.125rem;
       padding-left: 14px;
       margin-top: 5px;
 }
   
-input[type="datetime"] {
-    width: 50%;
+input[type="date"] { width: 50%;}
+input[type="number"],
+#estado { 
+  width: 50%;
 }
   
 ::-webkit-calendar-picker-indicator {
@@ -102,26 +105,35 @@ input[type="datetime"] {
 }
   
   
-#nome-completo, #endereco, #e-mail {
+#nome-completo,
+#e-mail,
+#endereco,
+#cidade,
+#bairro {
     width: 90%;
 }
-  
+
+
   /*-------CHECKBOX-----------*/
-.horarios input[type="checkbox"], .financeiro-servico input[type="checkbox"], .port-deficiencia input[type="checkbox"] {
+.horarios input[type="checkbox"],
+.financeiro-servico input[type="checkbox"],
+.port-deficiencia input[type="checkbox"] {
     display: none;
 }
   
-.escolha-horario {
+.escolha-horario, 
+.sim-nao  {
     display: inline-block;
     padding: 8px 16px;
-    font-size: 1.4rem;
+    font-size: 0.9rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;
     margin-right: 10px;
 }
-   
-input[type="checkbox"]:checked + label {
+
+input[type="checkbox"]:checked + label, 
+input[type="radio"]:checked + label  {
     background-color: #008037;
     color: #fff;
     border-color: #008037;
@@ -132,25 +144,14 @@ input[type="checkbox"]:checked + label {
 input[type="radio"] {
     display: none;
 }
-    
-/* Estilo para simular o botão */
-.sim-nao {
-    display: inline-block;
-    padding: 8px 16px;
-    font-size: 1.4rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 10px;
-}
-    
+
 /* Estilo para quando o input de rádio está marcado */
 input[type="radio"]:checked + label {
     background-color: #008037;
     color: #fff;
     border-color: #008037;
 }
-  
+*/
   
   /*----------------------SERVIÇOS------------------*/
 .dropdown-check-list {
@@ -166,70 +167,75 @@ input[type="radio"]:checked + label {
     border: 1px solid #008037;
     }
     
-    span { font-size: 1.8rem;}
+span { font-size: 1.125rem;}
   
-    .dropdown-check-list .anchor:after {
-      position: absolute;
-      content: "";
-      border-left: 2px solid #008037;
-      border-top: 2px solid #008037;
-      padding: 5px;
-      right: 10px;
-      top: 20%;
-      -moz-transform: rotate(-135deg);
-      -ms-transform: rotate(-135deg);
-      -o-transform: rotate(-135deg);
-      -webkit-transform: rotate(-135deg);
-      transform: rotate(-135deg);
-    }
+.dropdown-check-list .anchor:after {
+  position: absolute;
+  content: "";
+  border-left: 2px solid #008037;
+  border-top: 2px solid #008037;
+  padding: 5px;
+  right: 10px;
+  top: 20%;
+  -moz-transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
     
-    .dropdown-check-list .anchor:active:after {
-      right: 8px;
-      top: 21%;
-    }
+.dropdown-check-list .anchor:active:after {
+  right: 8px;
+  top: 21%;
+}
     
-    .dropdown-check-list ul.items {
-      padding: 2px;
-      display: none;
-      margin: 0;
-      border: 1px solid #008037;
-      border-top: none;
-      font-size: 1.8rem;
-      max-height: 200px;
-      overflow-y: scroll;
-      max-width: 329px;
-    }
+.dropdown-check-list ul.items {
+  padding: 2px;
+  display: none;
+  margin: 0;
+  border: 1px solid #008037;
+  border-top: none;
+  font-size: 1.125rem;
+  max-height: 200px;
+  overflow-y: scroll;
+  max-width: 329px;
+}
+.dropdown-check-list ul.items li {
+  list-style: none;
+
+}
+
+.error-message {
+  color: red;
+}
     
-    .dropdown-check-list ul.items li {
-      list-style: none;
-    }
+  .dropdown-check-list.visible .anchor {
+  color: #AFAFAF;
+}
     
-    .dropdown-check-list.visible .anchor {
-      color: #AFAFAF;
-    }
-    
-    .dropdown-check-list.visible .items {
-      display: block;
-      border-radius: 0px 0px 17px 17px;
-    }
+  .dropdown-check-list.visible .items {
+  display: block;
+  border-radius: 0px 0px 17px 17px;
+}
+
   
+button {
+  width: 100px;
+  height: 43px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 24.5px;
+  background: #FF914C;
+  color: white;
+  border-style: none;
+  margin-top: 20px;
+}
   
-  button {
-      width: 100px;
-      height: 43px;
-      cursor: pointer;
-      font-size: 20px;
-      border-radius: 24.5px;
-      background: #FF914C;
-      color: white;
-      border-style: none;
-      margin-top: 20px;
-  }
-  
-  #button {
-      display: flex;
-      justify-content: right;
-  }
+#button {
+  display: flex;
+  justify-content: right;
+}
+
   
   @media screen and (max-width: 768px) {
       .left-right {
@@ -273,7 +279,7 @@ input[type="radio"]:checked + label {
       margin: 5% auto;
   }
     footer p {
-      font-size: 1.4rem;
+      font-size: 0.9rem;
       text-align: center;
       width: 100vw;
     }
