@@ -1,217 +1,107 @@
-import './styles.css'
-import Label from '../../../components/Label';
+
+import "./styles.css"
+import React from 'react';
 import { useForm } from 'react-hook-form';
-
-
+import Label from "../../../components/FormInput";
 
 export default function WorkerForm() {
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const { 
-    register, 
-    handleSubmit, 
-    formState: { errors }
- } = useForm({
-    defaultValues: {
-        
-    }
- });
   const onSubmit = data => console.log(data);
   console.log(errors);
   
   return (
-    
-        <form id="form-container" onSubmit={handleSubmit(onSubmit) }>
-            <section class="Dadospessoas">
-                <h1>Dados Pessoais</h1>
-                <div class="box-line"></div>
-                <section class="left-right">
-                    <div class="left">
-                        <Label id="nome-completo" label="Nome Completo"/> 
-                        <p className='caracteres'>Conforme consta nos seus documentos</p>
-                        <input type="text" id="nome-completo" {...register("Nome completo", {required: true, min: 10, maxLength: 50})} />
+    <form onSubmit={handleSubmit(onSubmit)}>
+        <section class="dadosProfissionais">
 
-                        <Label id="endereco" label="Endereço"/>
-                        <p className='caracteres'>Conforme consta nos seus documentos</p>
-                        <input type="text" id="endereco" {...register("endereco", {required: true, maxLength: 100})} />
+            <h1>Dados Profissionais</h1>
 
-                        <Label id="data-nascimento" label="Data de Nascimento"/>
-                        <p className='caracteres'>Ex.: 06/09/1975</p>
-                        <input type="datetime" id="data-nascimento" {...register("Data de Nascimento", {required: true, pattern: /^\S+@\S+$/i})} />
+                <h3 className="pergunta-label">Possui CNPJ</h3>
+                 <Label id="sim-cnpj" label="Sim"/>
+                    <input {...register("cnpj-sim-nao", { required: true })} type="radio" value="Sim" />
+                 <Label id="nao-cnpj" label="Não"/>
+                    <input {...register("cnpj-sim-nao", { required: true })} type="radio" value="Não" />
 
-                        <Label id="e-mail" label="E-mail"/>
-                        <input type="email" id="e-mail" {...register("e-mail", {required: true, maxLength: 40})} />
-                    </div>
+                <h3 className="pergunta-label">CNPJ <em>(opcional)</em></h3>
+                  <p class="caracteres">Caso possua, informe apenas números</p>
+                  <Label id="cnpj" />
+                    <input type="text" {...register("cpnj", {})} />
 
-                    <div class="right">
-                        <Label id="RG" label="RG"/> 
-                        <p className='caracteres'>Apenas números</p>
-                        <input type="text" id="RG" {...register("RG", {required: true, maxLength: 14})} />
+                <h3 className="pergunta-label">Qual sua área de atuação?</h3>
+                <Label id="area-atuacao" />
+                    <input type="text" {...register("area-atuacao", {})} />
 
-                        <Label id="CPF" label="CPF"/> 
-                        <p className='caracteres'>Apenas números</p>
-                        <input type="text" id="CPF" {...register("CPF", {required: true, maxLength: 11})} />
+        </section>
 
-                        <Label id="telefone" label="Telefone"/> 
-                        <p className='caracteres'>Apenas números</p>
-                        <input type="tel" id="telefone" {...register("telefone", {required: true, maxLength: 11, pattern: /[0-9]{11}/i })} />
-                    </div>
+        <section id="agenda">
 
-                    <div class="port-deficiencia">
-                        <h3 className="pergunta-label">Você é uma pessoa com deficiência?</h3>
-                        <Label id="sim-deficiencia" label="Sim" />
-                        <input type="radio" id="sim-deficiencia" value="Sim" {...register("port-deficiencia", { required: true })}   />
+                <h1>Agenda</h1>
 
-                        <Label id="nao-deficiencia" label="Não" />
-                        <input type="radio" id="nao-deficiencia" value="Nao"{...register("port-deficiencia", { required: true })}   />
-                        
-                        
-                        <input type="checkbox" id="defic-fisica" {...register("tipo-deficiencia", {required: true})} />
-                        <Label id="defic-fisica" label="Deficiência Física" />
+               <h3 className="pergunta-label">Qual sua disponibilidade de horário?</h3>
+                 <Label id="escolha-horario" label="Manhã"/>
+                    <input {...register("horarios", { required: true })} type="radio" value="Manhã" />
+                 <Label id="escolha-horario" label="Tarde"/>
+                    <input {...register("horarios", { required: true })} type="radio" value=" Tarde" /> 
+                 <Label id="escolha-horario" label="Noite"/>
+                    <input {...register("horarios", { required: true })} type="radio" value=" Noite" /> 
 
-                        <input type="checkbox" id="defic-intelectual" {...register("tipo-deficiencia", {required: true})} />
-                        <Label id="defic-intelectual" label="Deficiência Intelectual" />
+               <h3 className="pergunta-label">Aceita prestar serviços nos finais de semana?</h3>
+                 <Label id="sim-nao" label="Sim"/>
+                    <input {...register("fim-semana", { required: true })} type="radio" value="Sim" /> 
+                 <Label id="sim-nao" label="Não"/>   
+                    <input {...register("fim-semana", { required: true })} type="radio" value=" Não" /> 
 
-                        <input type="checkbox" id="defic-motora" {...register("tipo-deficiencia", {required: true})} />
-                        <Label id="defic-motora" label="Deficiência Motora" />
+               <h3 className="pergunta-label">Você está trabalhando de carteira assinada?</h3>
+                 <Label id="sim-nao" label="Sim"/>
+                    <input {...register("cart-assinada", { required: true })} type="radio" value="Sim" />
+                 <Label id="sim-nao" label="Não"/>
+                    <input {...register("cart-assinada", { required: true })} type="radio" value=" Não" /> 
 
-                        <input type="checkbox" id="defic-visual" {...register("tipo-deficiencia", {required: true})} />
-                        <Label id="defic-visual" label="Deficiência Visual" />
+        </section>
 
-                        <input type="checkbox" id="defic-auditiva" {...register("tipo-deficiencia", {required: true})} />
-                        <Label id="defic-auditiva" label="Deficiência Auditiva" />
+        <section id="financeiro">
 
-                        <input type="checkbox" id="defic-outras" {...register("tipo-deficiencia", {required: true})} />
-                        <Label id="defic-outras" label="Outras" />
-                    </div>
-                    
-                    <section id="servicos">
-                        <h1>Serviços</h1>
-                        <div className="box-line"></div>
+            <h1>Financeiro</h1>
 
-                        <h3 className="pergunta-label">Quais serviços você se sente mais seguro(a) em fazer?</h3>
+                <h3 className="pergunta-label">Como você costuma cobrar pelo serviço?</h3>
 
-                        <div id="checklistServicos" className="dropdown-check-list" tabindex="100">
-                            <span class="anchor">Marque quantas opções desejar</span> 
-                            <ul className="items">
-                            <li>
-                                <input type="checkbox" id="arquitetura" value="arquitetura" {...register("servicos", {required: true})} />
-                                <Label id="defic-outras" label="Arquitetura" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="assentamento" value="assentamento" {...register("servicos", {required: true})} />
-                                <Label id="assentamento" label="Assentamento de piso e revestimento" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="consertos" value="consertos" {...register("servicos", {required: true})} />
-                                <Label id="consertos" label="Consertos de portas e janelas" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="construcao" value="construcao" {...register("servicos", {required: true})} />
-                                <Label id="construcao" label="Construção" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="design" value="design" {...register("servicos", {required: true})} />
-                                <Label id="design" label="Design de interiores" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="engenharia" value="engenharia" {...register("servicos", {required: true})} />
-                                <Label id="engenharia" label="Engenharia" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="instalacaoBancadas" value="instalacaoBancadas" {...register("servicos", {required: true})} />
-                                <Label id="instalacaoBancadas" label="Instalação de bancadas em Mármore, Quartzo e Granito" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="instalacaoGesso" value="instalacaoGesso" {...register("servicos", {required: true})} />
-                                <Label id="instalacaoGesso" label="Instalação de gesso" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="instalacaoGesso" value="instalacaoGesso" {...register("servicos", {required: true})} />
-                                <Label id="instalacaoGesso" label="Instalação de gesso" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="instalacaoDrywallGesso" value="instalacaoDrywallGesso" {...register("servicos", {required: true})} />
-                                <Label id="instalacaoDrywallGesso" label="Instalação em drywall e gesso acartonado" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="instalacaoPapel" value="instalacaoPapel" {...register("servicos", {required: true})} />
-                                <Label id="instalacaoPapel" label="Instalação de papel de parede" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="limpeza" value="limpeza" {...register("servicos", {required: true})} />
-                                <Label id="limpeza" label="Limpeza pós obra" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="pedreiro" value="pedreiro" {...register("servicos", {required: true})} />
-                                <Label id="pedreiro" label="Pedreiro de alvenaria" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="marcenaria" value="marcenaria" {...register("servicos", {required: true})} />
-                                <Label id="marcenaria" label="Marcenaria" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="pequenosReparos" value="pequenosReparos" {...register("servicos", {required: true})} />
-                                <Label id="pequenosReparos" label="Pequenos Reparos" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="pinturaFerragens" value="pinturaFerragens" {...register("servicos", {required: true})} />
-                                <Label id="pinturaFerragens" label="Pintura de ferragens" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="pinturaGeral" value="pinturaGeral" {...register("servicos", {required: true})} />
-                                <Label id="pinturaGeral" label="Pintura Geral" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="reformaCompleta" value="reformaCompleta" {...register("servicos", {required: true})} />
-                                <Label id="reformaCompleta" label="Reforma completa" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="servicosAcabamento" value="servicosAcabamento" {...register("servicos", {required: true})} />
-                                <Label id="servicosAcabamento" label="Serviços de acabamento geral" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="servicosJardinagem" value="servicosJardinagem" {...register("servicos", {required: true})} />
-                                <Label id="servicosJardinagem" label="Serviços de Jardinagem" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="servicosEletricos" value="servicosEletricos" {...register("servicos", {required: true})} />
-                                <Label id="servicosEletricos" label="Serviços elétricos" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="servicosHidraulicos" value="servicosHidraulicos" {...register("servicos", {required: true})} />
-                                <Label id="servicosHidraulicos" label="Serviços hidráulicos" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="vidracarias" value="vidracarias" {...register("servicos", {required: true})} />
-                                <Label id="vidracarias" label="Vidraçarias" />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="outros" value="outros" {...register("servicos", {required: true})} />
-                                <Label id="outros" label="Outros" />
-                            </li>
-                            </ul>
+               <Label id="escolha-horario" label="Por Hora"/>
+                  <input {...register("cobrar-servico", { required: true })} type="radio" value="Por Hora" />
+               <Label id="escolha-horario" label="Por Diária"/>
+                  <input {...register("cobrar-servico", { required: true })} type="radio" value=" Por Diária" />
+               <Label id="escolha-horario" label="Por Metro"/>
+                  <input {...register("cobrar-servico", { required: true })} type="radio" value=" Por Metro" />
+               <Label id="escolha-horario" label="Por Empreitada"/>
+                  <input {...register("cobrar-servico", { required: true })} type="radio" value=" Por Empreitada" />
 
-                        </div>
-                    </section>
-                </section>
-                <section id="servicos">
-                    <h1>Serviços</h1>
-                    <div class="box-line"></div>
-                    <h3 className="pergunta-label">Quais serviços você se sente mais seguro(a) em fazer?</h3>
+                    <h3 className="pergunta-label">Campo a ser alterado para inputs de dados</h3>
 
-                    <div id="checklistServicos" className="dropdown-check-list" tabIndex={100}>
-                        <span className="anchor">Marque quantas opções desejar</span>
-                        <ul className="items">
-                            <li>
-                                <label htmlFor="arquitetura">
-                                    <input type="checkbox" name="servicos" value={arquitetura} id="arquitetura" />
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-            </section>
-            <input type="submit" />
-        </form>
+               <Label id="preco-medio" />
+                  <p className="caracteres">  Ex.: Se cobrar por diária, quanto custa sua diária? </p>
+                    <input type="text" {...register("preco-medio", {required: true})} />
+
+        </section>
+
+        <section id="experiencia-profissional">
+            <h1>Experiência Profissional</h1>
+
+           <Label id="contato" />
+            <input type="tel" placeholder="(DDD) + número" 
+            {...register("contato1", 
+            {required: true, max: 11, min: 11, maxLength: 11, pattern: /[0-9]{11}/i})} />
+
+           <Label id="contato" />
+            <input type="tel" placeholder="(DDD) + número" 
+            {...register("contato2", 
+            {max: 11, min: 11, maxLength: 11, pattern: /[0-9]{11}/i})} />
+
+           <Label id="Certificado" />
+            <h3>Possui certifições complementares? Quais? (opcional)</h3>
+            <input type="text"  
+            {...register("certificacoes", {})} />
+
+        </section>
+      <input type="submit" />
+    </form>
   );
 }
