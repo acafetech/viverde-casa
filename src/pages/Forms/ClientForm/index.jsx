@@ -62,6 +62,7 @@ export default function ClientForm() {
            {...register("data-servico", {required: true})} />
             <Label id="servico-um-mes" label="Daqui a um mês"/>
 
+
            
             <input type="checkbox" placeholder="data-servico" 
            {...register("data-serv", {required: true})} />

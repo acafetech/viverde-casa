@@ -1,3 +1,4 @@
+
 import "./styles.css"
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -5,6 +6,7 @@ import Label from "../../../components/FormInput";
 
 export default function WorkerForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
+
   const onSubmit = data => console.log(data);
   console.log(errors);
   
