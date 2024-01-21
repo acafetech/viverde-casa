@@ -106,7 +106,9 @@ function ClientForm() {
 
         <section>
           <h1>Serviço</h1>
+          <div className="box-line"></div>
           <p>Que tipo de serviço deseja realizar?</p>
+          
 
           <h3 className="pergunta-label">Outros: </h3>
           <Label id="outros-servicos"/>
@@ -116,10 +118,12 @@ function ClientForm() {
           <p>Informe nesse espaço os detalhes do serviço que deseja contratar. (Ex: Aplicação de revestimento cerâmico em parede de banheiro que mede 2m x 3m).</p>
           <Label id="detalhes"/>
           <input type="text" placeholder="Digite aqui...." {...register("detalhes", {required: true})} />
+          <h3>Precisa de ajuda para medir os espaços? Assista nosso tutorial</h3>
         </section>
 
         <section id="agendamento">
           <h1>Agendamento</h1>
+          <div className="box-line"></div>
           <h3 className="pergunta-label">Melhor horário para você ser atendido</h3>
 
           <Label id="horario-manha" label="Manhã"/>
@@ -140,14 +144,46 @@ function ClientForm() {
           <Label id="servico-urgente" label="Urgente"/>
           <input type="checkbox" placeholder="data-servico" {...register("data-servic", {required: true})} />
           <Label id="servico-prox-semana" label="Na próxima semana"/>
-          <input type="checkbox" placeholder="data-servi" {...register("data-servico", {required: true})} />
+          <input type="checkbox" placeholder="data-servico" {...register("data-servico", {required: true})} />
           <Label id="servico-um-mes" label="Daqui a um mês"/>
-          <input type="checkbox" placeholder="data-servico" {...register("data-serv", {required: true})} />
+          <input type="checkbox" placeholder="data-servico" {...register("data-servico", {required: true})} />
           <Label id="servico-seis-meses" label="6 meses ou mais"/>
 
           <h3 className="pergunta-label">Há alguma observação sobre o ambiente (norma, restrição ou necessidade especial)?</h3>
           <Label id="observacao" />
           <input type="text" placeholder="observacao" {...register("observacao", {})} />
+
+          <h3 className="pergunta-label">Qual é a sua prioridade para contratar este serviço?</h3>
+        </section>
+
+        <section>
+          <h1>Pesquisa</h1>
+          <div className="box-line"></div>
+          <h3 className="pergunta-label">Quem indicou a Viverde Casa</h3>
+
+          <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
+          <Label id="indicacao" label="Amigos"/>
+
+          <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
+          <Label id="indicacao" label="Projeto Social Parceiro"/>
+
+          <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
+          <Label id="indicacao" label="Profissional Parceiro"/>
+
+          <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
+          <Label id="indicacao" label="Estabelecimento conveniado"/>
+
+          <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
+          <Label id="indicacao" label="Instagram"/>
+
+          <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
+          <Label id="indicacao" label="Facebook"/>
+
+          <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
+          <Label id="indicacao" label="Outro"/>
+
+          <Label id="codigo-indicacao" label="Código de indicação:"/>
+          <input type="text" id="codigo-indicacao" {...register("codigo-indicacao", {required: false, min: 10, maxLength: 50})} />
         </section>
 
         <input type="submit" />

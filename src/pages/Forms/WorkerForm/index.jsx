@@ -103,7 +103,7 @@ console.log(errors);
 
                 <div className="endereco-pessoal">
                     <h1>Endereço</h1>
-                    <div class="box-line"></div>
+                    <div className="box-line"></div>
                         <div className="left-right">
                             <div className="left">
                             <Label id="endereco" label="Logadouro"/>
