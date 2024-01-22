@@ -1,10 +1,17 @@
 import Label from '../../../components/Label';
+import LabelServ from '../../../components/LabelServices';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 function ClientForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const [isCheckListVisible, setCheckListVisible] = useState(false);
   const onSubmit = data => console.log(data);
   console.log(errors);
+
+  const toggleCheckList = () => {
+    setCheckListVisible(!isCheckListVisible);
+  };
 
   return (
     <main id="client-form">
@@ -56,10 +63,8 @@ function ClientForm() {
               <div>
                 <Label id="cep" label="CEP"/>
                 <input type="number" id="cep" {...register("cep", {required: true, maxLength: 8})} />       
-
                 <Label id="numero" label="Número"/>
                 <input type="number" id="numero" {...register("numero", {required: true, maxLength: 20})} />
-
                 <Label id="cidade" label="Cidade"/>
                 <input type="text" id="cidade" {...register("cidade", {required: true, maxLength: 100})} />
             </div>
@@ -67,10 +72,8 @@ function ClientForm() {
             <div>
               <Label id="endereco" label="Rua"/>
               <input type="text" id="endereco" {...register("endereco", {required: true, maxLength: 100})} />
-
               <Label id="bairro" label="Bairro"/>
               <input type="text" id="bairro" {...register("bairro", {required: true, maxLength: 100})} />
-
               <Label id="estado" label="Estado"/>
               <input type="text" id="estado" {...register("estado", {required: true, maxLength: 100})} />
             </div>
@@ -83,10 +86,8 @@ function ClientForm() {
             <div>
               <Label id="cep" label="CEP"/>
               <input type="number" id="cep" {...register("cep", {required: true, maxLength: 8})} />
-
               <Label id="numero" label="Número"/>
               <input type="number" id="numero" {...register("numero", {required: true, maxLength: 20})} />
-
               <Label id="cidade" label="Cidade"/>
               <input type="text" id="cidade" {...register("cidade", {required: true, maxLength: 100})} />
             </div>
@@ -94,10 +95,8 @@ function ClientForm() {
             <div>
               <Label id="endereco" label="Rua"/>
               <input type="text" id="endereco" {...register("endereco", {required: true, maxLength: 100})} />
-
               <Label id="bairro" label="Bairro"/>
               <input type="text" id="bairro" {...register("bairro", {required: true, maxLength: 100})} />
-
               <Label id="estado" label="Estado"/>
               <input type="text" id="estado" {...register("estado", {required: true, maxLength: 100})} />
             </div>
@@ -108,7 +107,112 @@ function ClientForm() {
           <h1>Serviço</h1>
           <div className="box-line"></div>
           <p>Que tipo de serviço deseja realizar?</p>
-          
+
+          <div id="checklistServicos" className={`dropdown-check-list ${isCheckListVisible ? 'visible' : ''}`} tabIndex="100">
+            <span className="anchor" onClick={toggleCheckList}>Marque quantas opções desejar</span>
+            <ul className="items">
+              <li>
+                <input type="checkbox" id="arquitetura" value="arquitetura" {...register("servicos", {required: true})} />
+                <LabelServ id="arquitetura" label="Arquitetura" />
+              </li>
+              <li>
+                <input type="checkbox" id="assentamento" value="assentamento" {...register("servicos", {required: true})} />
+                <LabelServ  id="assentamento" label="Assentamento de piso e revestimento" />
+              </li>
+              <li>
+                <input type="checkbox" id="consertos" value="consertos" {...register("servicos", {required: true})} />
+                <LabelServ  id="consertos" label="Consertos de portas e janelas" />
+              </li>
+              <li>
+                <input type="checkbox" id="construcao" value="construcao" {...register("servicos", {required: true})} />
+                <LabelServ  id="construcao" label="Construção" />
+              </li>
+              <li>
+                <input type="checkbox" id="design" value="design" {...register("servicos", {required: true})} />
+                <LabelServ  id="design" label="Design de interiores" />
+              </li>
+              <li>
+                <input type="checkbox" id="engenharia" value="engenharia" {...register("servicos", {required: true})} />
+                <LabelServ  id="engenharia" label="Engenharia" />
+              </li>
+              <li>
+                <input type="checkbox" id="instalacaoBancadas" value="instalacaoBancadas" {...register("servicos", {required: true})} />
+                <LabelServ  id="instalacaoBancadas" label="Instalação de bancadas em Mármore, Quartzo e Granito" />
+              </li>
+              <li>
+                <input type="checkbox" id="instalacaoCameras" value="instalacaoCameras" {...register("servicos", {required: true})} />
+                <LabelServ  id="instalacaoCameras" label="Instalação de câmeras e sensores de monitoramento e segurança" />
+              </li>
+              <li>
+                <input type="checkbox" id="instalacaoEsquadrias" value="instalacaoEsquadrias" {...register("servicos", {required: true})} />
+                <LabelServ  id="instalacaoEsquadrias" label="Instalação de esquadrias" />
+              </li>
+              <li>
+                <input type="checkbox" id="instalacaoGesso" value="instalacaoGesso" {...register("servicos", {required: true})} />
+                <LabelServ  id="instalacaoGesso" label="Instalação de gesso" />
+              </li>
+              <li>
+                <input type="checkbox" id="instalacaoDrywallGesso" value="instalacaoDrywallGesso" {...register("servicos", {required: true})} />
+                <LabelServ  id="instalacaoDrywallGesso" label="Instalação em drywall e gesso acartonado" />
+              </li>
+              <li>
+                <input type="checkbox" id="instalacaoPapel" value="instalacaoPapel" {...register("servicos", {required: true})} />
+                <LabelServ  id="instalacaoPapel" label="Instalação de papel de parede" />
+              </li>
+              <li>
+                <input type="checkbox" id="limpeza" value="limpeza" {...register("servicos", {required: true})} />
+                <LabelServ  id="limpeza" label="Limpeza pós obra" />
+              </li>
+              <li>
+                <input type="checkbox" id="marcenaria" value="marcenaria" {...register("servicos", {required: true})} />
+                <LabelServ  id="marcenaria" label="Marcenaria" />
+              </li>
+              <li>
+                <input type="checkbox" id="pedreiro" value="pedreiro" {...register("servicos", {required: true})} />
+                <LabelServ  id="pedreiro" label="Pedreiro de alvenaria" />
+              </li>
+              <li>
+                <input type="checkbox" id="pequenosReparos" value="pequenosReparos" {...register("servicos", {required: true})} />
+                <LabelServ  id="pequenosReparos" label="Pequenos Reparos" />
+              </li>
+              <li>
+                <input type="checkbox" id="pinturaFerragens" value="pinturaFerragens" {...register("servicos", {required: true})} />
+                <LabelServ  id="pinturaFerragens" label="Pintura de ferragens" />
+              </li>
+              <li>
+                <input type="checkbox" id="pinturaGeral" value="pinturaGeral" {...register("servicos", {required: true})} />
+                <LabelServ  id="pinturaGeral" label="Pintura Geral" />
+              </li>
+              <li>
+                <input type="checkbox" id="reformaCompleta" value="reformaCompleta" {...register("servicos", {required: true})} />
+                <LabelServ  id="reformaCompleta" label="Reforma completa" />
+              </li>
+              <li>
+                <input type="checkbox" id="servicosAcabamento" value="servicosAcabamento" {...register("servicos", {required: true})} />
+                <LabelServ  id="servicosAcabamento" label="Serviços de acabamento geral" />
+              </li>
+              <li>
+                <input type="checkbox" id="servicosJardinagem" value="servicosJardinagem" {...register("servicos", {required: true})} />
+                <LabelServ  id="servicosJardinagem" label="Serviços de Jardinagem" />
+              </li>
+              <li>
+                <input type="checkbox" id="servicosEletricos" value="servicosEletricos" {...register("servicos", {required: true})} />
+                <LabelServ  id="servicosEletricos" label="Serviços elétricos" />
+              </li>
+              <li>
+                <input type="checkbox" id="servicosHidraulicos" value="servicosHidraulicos" {...register("servicos", {required: true})} />
+                <LabelServ  id="servicosHidraulicos" label="Serviços hidráulicos" />
+              </li>
+              <li>
+                <input type="checkbox" id="vidracarias" value="vidracarias" {...register("servicos", {required: true})} />
+                <LabelServ  id="vidracarias" label="Vidraçarias" />
+              </li>
+              <li>
+                <input type="checkbox" id="outros" value="outros" {...register("servicos", {required: true})} />
+                <LabelServ  id="outros" label="Outros" />
+              </li>
+            </ul>
+          </div>
 
           <h3 className="pergunta-label">Outros: </h3>
           <Label id="outros-servicos"/>
@@ -154,6 +258,33 @@ function ClientForm() {
           <input type="text" placeholder="observacao" {...register("observacao", {})} />
 
           <h3 className="pergunta-label">Qual é a sua prioridade para contratar este serviço?</h3>
+
+          <div id="checklistServicos" className={`dropdown-check-list ${isCheckListVisible ? 'visible' : ''}`} tabIndex="100">
+            <span className="anchor" onClick={toggleCheckList}>Marque quantas opções desejar</span>
+
+            <ul className="items">
+              <li>
+                <input type="checkbox" id="pagamentoFacilitado" value="pagamentoFacilitado" {...register("servicos", {required: true})} />
+                <LabelServ  id="pagamentoFacilitado" label="Pagamento facilitado" />
+              </li>
+              <li>
+                <input type="checkbox" id="obraEspecializada" value="obraEspecializada" {...register("servicos", {required: true})} />
+                <LabelServ  id="obraEspecializada" label="Mão de obra especializada" />
+              </li>
+              <li>
+                <input type="checkbox" id="obraFeminina" value="obraFeminina" {...register("servicos", {required: true})} />
+                <LabelServ  id="obraFeminina" label="Mão de obra feminina" />
+              </li>
+              <li>
+                <input type="checkbox" id="qualidadeAcabamento" value="qualidadeAcabamento" {...register("servicos", {required: true})} />
+                <LabelServ  id="qualidadeAcabamento" label="Qualidade no acabamento" />
+              </li>
+              <li>
+                <input type="checkbox" id="melhorPreco" value="melhorPreco" {...register("servicos", {required: true})} />
+                <LabelServ  id="melhorPreco" label="Melhor preço" />
+              </li>
+            </ul>
+          </div>
         </section>
 
         <section>
@@ -163,25 +294,18 @@ function ClientForm() {
 
           <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
           <Label id="indicacao" label="Amigos"/>
-
           <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
           <Label id="indicacao" label="Projeto Social Parceiro"/>
-
           <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
           <Label id="indicacao" label="Profissional Parceiro"/>
-
           <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
           <Label id="indicacao" label="Estabelecimento conveniado"/>
-
           <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
           <Label id="indicacao" label="Instagram"/>
-
           <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
           <Label id="indicacao" label="Facebook"/>
-
           <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
           <Label id="indicacao" label="Outro"/>
-
           <Label id="codigo-indicacao" label="Código de indicação:"/>
           <input type="text" id="codigo-indicacao" {...register("codigo-indicacao", {required: false, min: 10, maxLength: 50})} />
         </section>

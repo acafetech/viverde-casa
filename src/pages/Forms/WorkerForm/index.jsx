@@ -269,6 +269,17 @@ console.log(errors);
                                 <input type="checkbox" id="instalacaoBancadas" value="instalacaoBancadas" {...register("servicos", {required: true})} />
                                 <LabelServ  id="instalacaoBancadas" label="Instalação de bancadas em Mármore, Quartzo e Granito" />
                             </li>
+
+                            <li>
+                                <input type="checkbox" id="instalacaoCameras" value="instalacaoCameras" {...register("servicos", {required: true})} />
+                                <LabelServ  id="instalacaoCameras" label="Instalação de câmeras e sensores de monitoramento e segurança" />
+                            </li>
+
+                            <li>
+                                <input type="checkbox" id="instalacaoEsquadrias" value="instalacaoEsquadrias" {...register("servicos", {required: true})} />
+                                <LabelServ  id="instalacaoEsquadrias" label="Instalação de esquadrias" />
+                            </li>
+
                             <li>
                                 <input type="checkbox" id="instalacaoGesso" value="instalacaoGesso" {...register("servicos", {required: true})} />
                                 <LabelServ  id="instalacaoGesso" label="Instalação de gesso" />
@@ -286,12 +297,12 @@ console.log(errors);
                                 <LabelServ  id="limpeza" label="Limpeza pós obra" />
                             </li>
                             <li>
-                                <input type="checkbox" id="pedreiro" value="pedreiro" {...register("servicos", {required: true})} />
-                                <LabelServ  id="pedreiro" label="Pedreiro de alvenaria" />
-                            </li>
-                            <li>
                                 <input type="checkbox" id="marcenaria" value="marcenaria" {...register("servicos", {required: true})} />
                                 <LabelServ  id="marcenaria" label="Marcenaria" />
+                            </li>
+                            <li>
+                                <input type="checkbox" id="pedreiro" value="pedreiro" {...register("servicos", {required: true})} />
+                                <LabelServ  id="pedreiro" label="Pedreiro de alvenaria" />
                             </li>
                             <li>
                                 <input type="checkbox" id="pequenosReparos" value="pequenosReparos" {...register("servicos", {required: true})} />
