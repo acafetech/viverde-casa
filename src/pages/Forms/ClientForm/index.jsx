@@ -1,3 +1,4 @@
+import '../ClientForm/styles.css';
 import Label from '../../../components/Label';
 import LabelServ from '../../../components/LabelServices';
 import { useState } from 'react';
@@ -255,7 +256,7 @@ function ClientForm() {
 
           <h3 className="pergunta-label">Há alguma observação sobre o ambiente (norma, restrição ou necessidade especial)?</h3>
           <Label id="observacao" />
-          <input type="text" placeholder="observacao" {...register("observacao", {})} />
+          <input type="text" placeholder="Escreva aqui..." {...register("observacao", {})} />
 
           <h3 className="pergunta-label">Qual é a sua prioridade para contratar este serviço?</h3>
 

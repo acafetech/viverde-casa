@@ -15,8 +15,6 @@ export default function WorkerForm() {
       setCheckListVisible(!isCheckListVisible);
     };
 
-    
-
 
   const { 
     register, 
