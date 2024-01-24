@@ -1,0 +1,55 @@
+#company-form {
+    background-image: url('src/assets/background-formcompany.svg');
+    background-size: auto 100%;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #D55707;
+}
+
+.dadosEmpresa .dropdown-check-list ul.items {
+    width: 133px;
+}
+
+.dadosEmpresa .dropdown-check-list .anchor {
+   width: 133px;
+}
+input,
+textarea {
+    color: #008037;
+}
+
+#company-form .caracteres {
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-style: italic;
+    color: #008037;
+}
+
+.questions {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 0px 8px 0px;
+}
+
+#company-form textarea {
+    width: 80%;
+    height: 165px;
+    border-radius: 24.5px;
+    background: #D9D9D9;
+    border-style: none;
+    font-size: 1.125rem;
+    padding-left: 14px;
+    padding-top: 10px;
+    margin-top: 5px;
+}
+
+.inputs-escolha {
+    margin-bottom: 14px;
+}
+
+@media screen and (max-width: 768px) {
+    #company-form textarea {
+        width: 90%;
+    }
+}

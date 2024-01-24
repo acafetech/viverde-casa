@@ -1,6 +1,5 @@
 * {
     font-family: Inter;
-    color: #008037;
     margin: 0;
     padding: 0;
 }
@@ -16,6 +15,7 @@ html {
   background-position: right;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  color: #008037; 
 }
 
 #worker-form svg {
@@ -45,7 +45,7 @@ html {
   padding: 50px;
 }
 
-.box-line{
+.box-line {
   width: 95%;
   border: 1.5px solid #7FBC54;
   stroke-width: 4px;
@@ -64,7 +64,7 @@ h1 {
   }
   
 .pergunta-label {
-    font-size: 1.25 !important;
+    font-size: 16px;
     padding: 12px 0px 8px 0px ;
 }
   
@@ -95,11 +95,13 @@ input[type="tel"] {
 }
   
 input[type="date"] { width: 50%;}
+
 input[type="number"],
 #estado { 
   width: 50%;
 }
-  
+
+#data-nascimento { color: #008037; }
 ::-webkit-calendar-picker-indicator {
     margin-right: 20px;
 }
@@ -198,11 +200,11 @@ span { font-size: 1.125rem;}
   font-size: 1.125rem;
   max-height: 200px;
   overflow-y: scroll;
-  max-width: 329px;
+  max-width: 80%;
 }
 .dropdown-check-list ul.items li {
   list-style: none;
-
+  padding-left: 10px;
 }
 
 .error-message {
@@ -225,7 +227,7 @@ button {
   cursor: pointer;
   font-size: 20px;
   border-radius: 24.5px;
-  background: #FF914C;
+  background: #D55707;
   color: white;
   border-style: none;
   margin-top: 20px;
@@ -237,27 +239,6 @@ button {
 }
 
   
-  @media screen and (max-width: 768px) {
-      .left-right {
-          display: flex;
-          flex-direction: column;
-      }
-      input[type="text"], input[type="date"] {
-          width: 90%;
-      }
-  
-      .financeiro-servico label {
-          margin-bottom: 10px;
-      }
-      
-  @media screen and (min-width: 769px) and (max-width: 1024px) {
-      #servicos-agenda {
-        width: 60%; 
-        margin: 3% auto; 
-      }
-    }
-  }
-
   @media screen and (max-width: 768px) {
     body {
       background-image: none;
@@ -284,10 +265,37 @@ button {
       width: 100vw;
     }
   
+      .left-right {
+          display: flex;
+          flex-direction: column;
+      }
+      input[type="text"], input[type="date"] {
+          width: 90%;
+      }
+  
+      .financeiro-servico label {
+          margin-bottom: 10px;
+      }
+
+      input[type="text"],
+      input[type="date"],
+      input[type="email"],
+      input[type="number"],
+      input[type="tel"] {
+      width: 90%;
+      }
+      
   @media screen and (min-width: 769px) and (max-width: 1024px) {
-    #servicos-agenda {
-      width: 60%; 
-      margin: 3% auto; 
+      #servicos-agenda {
+        width: 60%; 
+        margin: 3% auto; 
+      }
     }
+    input[type="number"],
+    #estado { 
+      width: 90%;
+    }
+
   }
-  }
+
+
