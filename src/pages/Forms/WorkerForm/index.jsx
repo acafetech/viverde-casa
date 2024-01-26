@@ -1,117 +1,107 @@
-import './styles.css';
 
-function WorkerForm () {
-    return (
-        <body>
-            <header></header>
-            <main>
-                <section className="Dadospessoas">
-                    <h1>Dados Pessoais</h1>
-                    <div className="box-line"></div>
+import "./styles.css"
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import Label from "../../../components/FormInput";
 
-                    <div className="left-right">
-                        <div className="left">
-                            <label htmlFor="nome-completo">
-                                <h3 className="pergunta-label">Nome completo</h3>
-                            </label>
-                            <p className="caracteres"> Conforme consta nos seus documentos</p>
-                            <input type="text" name="nome-completo" id="nome-completo" />
+export default function WorkerForm() {
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
-                            <label htmlFor="endereco">
-                                <h3 className="pergunta-label">Endereço Completo</h3>
-                            </label>
-                            <p className="caracteres"> Ex.: Nome da Rua, número - Bairro, Cidade </p>
-                            <input type="text" name="endereco" id="endereco" />
+  const onSubmit = data => console.log(data);
+  console.log(errors);
+  
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+        <section class="dadosProfissionais">
 
-                            <label htmlFor="data-nascimento">
-                                <h3 className="pergunta-label">Data de nascimento</h3>
-                            </label>
-                            <p className="caracteres">Ex.: 06/09/1975</p>
-                            <input type="date" name="data-nascimento" id="data-nascimento" />
+            <h1>Dados Profissionais</h1>
 
-                            <label htmlFor="e-mail">
-                                <h3 className="pergunta-label">E-mail</h3>
-                            </label>
-                            <input type="email" name="e-mail" id="e-mail" maxLength="40" required />
-                        </div>
-                        <div className="right">
-                            <label htmlFor="rg">
-                                <h3 className="pergunta-label">RG</h3>
-                            </label>
-                            <p className="caracteres">Apenas números</p>
-                            <input type="text" name="rg" id="rg" maxLength="14" required />
+                <h3 className="pergunta-label">Possui CNPJ</h3>
+                 <Label id="sim-cnpj" label="Sim"/>
+                    <input {...register("cnpj-sim-nao", { required: true })} type="radio" value="Sim" />
+                 <Label id="nao-cnpj" label="Não"/>
+                    <input {...register("cnpj-sim-nao", { required: true })} type="radio" value="Não" />
 
-                            <label htmlFor="cpf">
-                                <h3 className="pergunta-label">CPF</h3>
-                            </label>
-                            <p className="caracteres">Apenas números</p>
-                            <input type="text" name="cpf" id="cpf" maxLength="14" required />
+                <h3 className="pergunta-label">CNPJ <em>(opcional)</em></h3>
+                  <p class="caracteres">Caso possua, informe apenas números</p>
+                  <Label id="cnpj" />
+                    <input type="text" {...register("cpnj", {})} />
 
-                            <label htmlFor="telefone">
-                                <h3 className="pergunta-label">Telefone</h3>
-                            </label>
-                            <p className="caracteres">Apenas números</p>
-                            <input type="tel" name="telefone" id="telefone" pattern="[0-9]{11}" maxLength="11" required />
-                        </div>
-                    </div>
-                    <div className="port-deficiencia">
-                        <h3 className="pergunta-label">Você é uma pessoa com deficiência?</h3>
-                        <input type="radio" name="deficiencia" value="sim" id="sim-deficiencia" />
-                        <label htmlFor="sim-deficiencia" className="sim-nao">Sim</label>
-                        <input type="radio" name="deficiencia" value="nao" id="nao-deficiencia" />
-                        <label htmlFor="nao-deficiencia" className="sim-nao">Não</label>
+                <h3 className="pergunta-label">Qual sua área de atuação?</h3>
+                <Label id="area-atuacao" />
+                    <input type="text" {...register("area-atuacao", {})} />
 
-                        <h3 className="pergunta-label">Se sim, qual o tipo de deficiência?</h3>
+        </section>
 
-                        <input type="checkbox" name="tipo-deficiencia" value="defic-fisica" id="defic-fisica" />
-                        <label htmlFor="defic-fisica" className="escolha-horario">Física</label>
+        <section id="agenda">
 
-                        <input type="checkbox" name="tipo-deficiencia" value="defic-intelectual" id="defic-intelectual" />
-                        <label htmlFor="defic-intelectual" className="escolha-horario">Intelectual</label> 
+                <h1>Agenda</h1>
 
-                        <input type="checkbox" name="tipo-deficiencia" value="defic-motora" id="defic-motora" />
-                        <label htmlFor="defic-motora" className="escolha-horario">Motora</label>
+               <h3 className="pergunta-label">Qual sua disponibilidade de horário?</h3>
+                 <Label id="escolha-horario" label="Manhã"/>
+                    <input {...register("horarios", { required: true })} type="radio" value="Manhã" />
+                 <Label id="escolha-horario" label="Tarde"/>
+                    <input {...register("horarios", { required: true })} type="radio" value=" Tarde" /> 
+                 <Label id="escolha-horario" label="Noite"/>
+                    <input {...register("horarios", { required: true })} type="radio" value=" Noite" /> 
 
-                        <input type="checkbox" name="tipo-deficiencia" value="defic-visual" id="defic-visual" />
-                        <label htmlFor="defic-visual" className="escolha-horario">Visual</label>
+               <h3 className="pergunta-label">Aceita prestar serviços nos finais de semana?</h3>
+                 <Label id="sim-nao" label="Sim"/>
+                    <input {...register("fim-semana", { required: true })} type="radio" value="Sim" /> 
+                 <Label id="sim-nao" label="Não"/>   
+                    <input {...register("fim-semana", { required: true })} type="radio" value=" Não" /> 
 
-                        <input type="checkbox" name="tipo-deficiencia" value="defic-auditiva" id="defic-auditiva" />
-                        <label htmlFor="defic-auditiva" className="escolha-horario">Auditiva</label>
+               <h3 className="pergunta-label">Você está trabalhando de carteira assinada?</h3>
+                 <Label id="sim-nao" label="Sim"/>
+                    <input {...register("cart-assinada", { required: true })} type="radio" value="Sim" />
+                 <Label id="sim-nao" label="Não"/>
+                    <input {...register("cart-assinada", { required: true })} type="radio" value=" Não" /> 
 
-                        <input type="checkbox" name="tipo-deficiencia" value="defic-outras" id="defic-outras" />
-                        <label htmlFor="defic-outras" className="escolha-horario">Outras</label>
-                    </div>
-                </section>
-                <section className="dadosProfissionais">
-                    <h1>Dados Profissionais</h1>
-                    <div className="box-line"></div>
+        </section>
 
-                    <div className="cnpj">
-                        <h3 className="pergunta-label"> Possui CNPJ</h3>
+        <section id="financeiro">
 
-                        <input type="radio" name="cnpj-sim-nao" value="sim" id="sim-cnpj" />
-                        <label htmlFor="sim-cnpj" className="sim-nao">Sim</label>
-                        <input type="radio" name="cnpj-sim-nao" value="nao" id="nao-cnpj" />
-                        <label htmlFor="nao-cnpj" className="sim-nao">Não</label>
+            <h1>Financeiro</h1>
 
-                        <div>
-                            <label htmlFor="cnpj">
-                                <h3 className="pergunta-label"> CNPJ<em>(opcional)</em> </h3>
-                            </label>
-                            <p className="caracteres">Caso possua, informe apenas números</p>
-                            <input type="text" name="cnpj" id="cnpj" maxLength="14" />
-                        </div>
-                        <div>
-                            <label htmlFor="area-atuacao">
-                                <h3 className="pergunta-label"> Qual sua área de atuação? </h3>
-                            </label>
-                            <input type="text" name="area-atuacao" id="area-atuacao" />
-                        </div>
-                    </div>
-                </section>
-            </main>
-        </body>
-    )
+                <h3 className="pergunta-label">Como você costuma cobrar pelo serviço?</h3>
+
+               <Label id="escolha-horario" label="Por Hora"/>
+                  <input {...register("cobrar-servico", { required: true })} type="radio" value="Por Hora" />
+               <Label id="escolha-horario" label="Por Diária"/>
+                  <input {...register("cobrar-servico", { required: true })} type="radio" value=" Por Diária" />
+               <Label id="escolha-horario" label="Por Metro"/>
+                  <input {...register("cobrar-servico", { required: true })} type="radio" value=" Por Metro" />
+               <Label id="escolha-horario" label="Por Empreitada"/>
+                  <input {...register("cobrar-servico", { required: true })} type="radio" value=" Por Empreitada" />
+
+                    <h3 className="pergunta-label">Campo a ser alterado para inputs de dados</h3>
+
+               <Label id="preco-medio" />
+                  <p className="caracteres">  Ex.: Se cobrar por diária, quanto custa sua diária? </p>
+                    <input type="text" {...register("preco-medio", {required: true})} />
+
+        </section>
+
+        <section id="experiencia-profissional">
+            <h1>Experiência Profissional</h1>
+
+           <Label id="contato" />
+            <input type="tel" placeholder="(DDD) + número" 
+            {...register("contato1", 
+            {required: true, max: 11, min: 11, maxLength: 11, pattern: /[0-9]{11}/i})} />
+
+           <Label id="contato" />
+            <input type="tel" placeholder="(DDD) + número" 
+            {...register("contato2", 
+            {max: 11, min: 11, maxLength: 11, pattern: /[0-9]{11}/i})} />
+
+           <Label id="Certificado" />
+            <h3>Possui certifições complementares? Quais? (opcional)</h3>
+            <input type="text"  
+            {...register("certificacoes", {})} />
+
+        </section>
+      <input type="submit" />
+    </form>
+  );
 }
-
-export default WorkerForm 
