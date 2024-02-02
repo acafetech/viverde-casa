@@ -4,8 +4,144 @@ import LabelCheck from '../../../components/LabelCheck';
 import LabelServ from '../../../components/LabelServices';
 import HeaderForm from '../../../components/HeaderForm';
 
+//React hook form import
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+
+// Yup import
+import { string, number, object,} from 'yup';
+
+const schema = object({
+//Dados da Empresa
+
+razaoSocial: string()
+    .required("Razão Social obrigatório.")
+    .max(40, "Quantidade de caracteres excedida."),
+
+cnpj: string() // bugado 
+    .required("O CNPJ é obrigatório.")
+    .matches(/^[0-9]+$/, "O campo CNPJ pode conter apenas digitos.")
+    .max(14, "Número de caracteres inválido."),
+
+telefoneEmpresa: string()
+    .required("Número Obrigatório")
+    .matches(/[0-9]{11}/, "Formato de telefone invalido.")
+    .min(11, "O telefone deve ter no mínimo 11 caracteres.")
+    .max(11,"O telefone deve ter no máximo 11 caracteres."),
+
+nomeFantasia: string()
+    .required("Nome Fantasia obrigatório.")
+    .max(40, "Quantidade de caracteres excedida."),
+
+
+qtdColaboradores: string()
+    .required("Quantidade de colaboradores obrigatório."),
+
+enderecoEletronico: string()
+    .required("O endereço eletronico é obrigatório.")
+    .email('Endereço Eletrônico Inválido.'),
+
+//Endereço
+
+endereco: string()
+    .required("O logradouro é obrigatório.")
+    .max(60, "quantidade máxima de caracteres atingida para o Endereço."),
+
+bairro: string()
+    .required("O bairro é obrigatório.")
+    .max(60, "quantidade máxima de caracteres atingida para o Bairro."),
+
+cidade: string()
+    .required("A cicade é obrigatória.")
+    .max(60, "quantidade máxima de caracteres atingida para a Cidade."),
+
+cep: number("O campo CEP pode conter apenas dígitos.") // mensagem com bugue 
+    .integer("O campo CEP pode conter apenas dígitos.")
+    .required("O CEP é obrigatório."),
+
+numero: string()
+    .required("O Número é obrigatório.")
+    .max(5, "Número não pode conter mais de 5 dígitos."),
+
+estado: string()
+    .required("O estado é obrigatória.")
+    .max(16, "quantidade máxima de caracteres atingida para o Estado."),
+
+//Dados da(o) representante 
+
+nomeCompleto: string()
+    .required("Nome completo obrigatório")
+    .min(10, "Nome precisa ter no mínimo 10 caracteres")
+    .max(50, "quantidade máxima de caracteres atingida"),
+
+telefoneRepresentante: string()
+    .required("O número do telefone é obrigatório")
+    .matches(/[0-9]{11}/, "Formato de telefone invalido.")
+    .min(11, "O telefone deve ter no mínimo 11 caracteres.")
+    .max(11,"O telefone deve ter no máximo 11 caracteres."),
+
+cargoEmpresa: string()
+    .required("Nome do cargo Obrigatório")
+    .max(20, "quantidade máxima de caracteres atingida"),
+
+emailRepresentante: string()
+    .required("O endereço eletronico é obrigatório.")
+    .email('Endereço Eletrônico Inválido.'),
+
+indicacao: string()
+    .required("Nome do cargo Obrigatório")
+    .max(40, "quantidade máxima de caracteres atingida"),
+
+codigoIndicaco: string()
+    .required("Código de incação obrigatório")
+    .min(10, "Código invalido")
+    .max(40, "Código invalido"),
+
+ // Informações da Solicitação
+
+servicoInfo: string(),
+
+servicoOutro: string()
+	.max(14, "Máximo de caracters excedido")
+	.min(14, "Mínimo de caracters 14"),
+
+iniciativaInfo: string() // mensagem de erro do bugada/ esse campo não pode ser string
+    ,
+
+comentarioSolicitacao: string()
+    .min(10, "Nó mínimo 10 caracteres")
+    .max(50, "Máximo de caracteres escedido"),
+
+ // Vínculos, questôes éticas e morais 
+
+ CampanhasPoliticas: string()
+    .required("Campo obrigatório"),
+
+ CargoPublic: string()
+    .required("Campo obrigatório"),
+
+ VinculoPolitico: string(),
+
+ escandalo: string()
+    .required("Campo obrigatório"),
+
+ escandaloAssedio: string()
+    .required("Campo obrigatório"),
+
+ PlanoImpacto: string()
+    .required("Campo obrigatório"),
+
+ ImpactoPositivo: string()
+    .required("Campo obrigatório"),
+
+ ImpactoSocial: string()
+    .required("Campo obrigatório"),
+
+ PoliticaDiversidade: string()
+    .required("Campo obrigatório"),
+
+}) //TODOS OS DADOS DO PORTIFOLIO SERAM ASDICIONADOS AQUI DENTRO
 
 export default function CompanyForm() {
     const [isCheckListVisible, setCheckListVisible] = useState(false);
@@ -16,9 +152,8 @@ export default function CompanyForm() {
   const { 
     register, 
     handleSubmit, 
-    formState: { errors }
- } = useForm({
- });
+    formState: { errors } } = useForm({resolver: yupResolver(schema)});
+
 const onSubmit = data => console.log(data);
 console.log(errors);
 
@@ -31,20 +166,25 @@ console.log(errors);
                 <section className="left-right">
                     <div className="left">
                         <Label id="razao-social" label="Razão Social" />
-                        <input type="text" id="razao-social" {...register("razaoSocial", {required: true, minLength: 10, maxLength: 50})} />
+                        <input type="text" id="razao-social" {...register("razaoSocial",)} />
+                        <p className="error-message">{errors?.razaoSocial?.message}</p>
+                       
 
                         <Label id="cnpj" label="CNPJ" />
                         <p className="caracteres">Apenas números</p>
-                        <input id="cnpj" type="text" {...register("cpnj", { required: true, minLength: 14, maxLength: 14 })} />
+                        <input id="cnpj" type="text" {...register("cpnj",)} />
+                        <p className="error-message">{errors?.cnpj?.message}</p>
 
                         <Label id="telefone-empresa" label="Telefone"/>
                         <p className='caracteres'>Apenas números</p>
-                        <input type="tel" id="telefone-empresa" {...register("telefoneEmpresa", {required: true, maxLength: 11, pattern: /[0-9]{11}/i })} />
+                        <input type="tel" id="telefone-empresa" {...register("telefoneEmpresa",)} />
+                        <p className="error-message">{errors?.telefoneEmpresa?.message}</p>
                         
                     </div>
                     <div className='right'>
                         <Label id="nome-fantasia" label="Nome Fantasia" />
-                        <input type="text" id="nome-fantasia" {...register("nomeFantasia", {required: true, minLength: 10, maxLength: 50})} />
+                        <input type="text" id="nome-fantasia" {...register("nomeFantasia",)} />
+                        <p className="error-message">{errors?.nomeFantasia?.message}</p>
 
                         <h3 className='pergunta-label'> Quantos colaboradores?</h3>
                         <p className='caracteres'>Escolha uma opção</p>
@@ -69,11 +209,14 @@ console.log(errors);
                                 <LabelServ id="acima50" label="Mais de 50" />
                             </li>
                         </ul>
+                        <p className="error-message">{errors?.qtdColaboradores?.message}</p>
                         </div>
 
                         <Label id="endereco-eletronico" label="Endereço Eletrônico" />
                         <p className='caracteres'>E-mail ou link de rede social</p>
-                        <input type="text" id="endereco-eletronico" {...register("enderecoEletronico", {required: true, minLength: 10, maxLength: 50})} />
+                        <input type="text" id="endereco-eletronico" {...register("enderecoEletronico",)} />
+                        <p className="error-message">{errors?.enderecoEletronico?.message}</p>
+
                     </div>
                     </section>
                     <div className="endereco-pessoal">
@@ -82,60 +225,36 @@ console.log(errors);
                             <div className="left-right">
                                 <div className="left">
                                 <Label id="endereco" label="Logadouro"/>
-                                <input type="text" id="endereco" {...register("endereco", {required: true, maxLength: 100})} />
-                                {errors.endereco && errors.endereco.type === "required" && (
-                                    <p className="error-message">O logradouro é obrigatório.</p>
-                                )}
-                                {errors.endereco && errors.endereco.type === "maxLength" && (
-                                    <p className="error-message">O logradouro não pode ter mais de 100 caracteres.</p>
-                                )}
+                                <input type="text" id="endereco" {...register("endereco")} />
+                                <p className="error-message">{errors?.endereco?.message}</p>
 
                                 <Label id="bairro" label="Bairro"/>
-                                <input type="text" id="bairro" {...register("bairro", {required: true, maxLength: 100})} />
-                                {errors.bairro && errors.bairro.type === "required" && (
-                                    <p className="error-message">O bairro é obrigatório.</p>
-                                )}
-                                {errors.bairro && errors.bairro.type === "maxLength" && (
-                                    <p className="error-message">O bairro não pode ter mais de 100 caracteres.</p>
-                                )}
+                                <input type="text" id="bairro" {...register("bairro")} />
+                                <p className="error-message">{errors?.bairro?.message}</p>
+                              
                                 
                                 <Label id="cidade" label="Cidade"/>
-                                <input type="text" id="cidade" {...register("cidade", {required: true, maxLength: 100})} />
-                                {errors.cidade && errors.cidade.type === "required" && (
-                                    <p className="error-message">O campo cidade é obrigatório.</p>
-                                )}
-                                {errors.cidade && errors.cidade.type === "maxLength" && (
-                                    <p className="error-message">O campo cidade não pode ter mais de 100 caracteres.</p>
-                                )}
+                                <input type="text" id="cidade" {...register("cidade")} />
+                                <p className="error-message">{errors?.cidade?.message}</p>
+                            
                             </div>
                                 
                             <div className="right">
                             <Label id="cep" label="CEP"/>
-                                <input type="number" id="cep" {...register("cep", {required: true, maxLength: 8})} />  
-                                {errors.cep && errors.cep.type === "required" && (
-                                    <p className="error-message">O CEP é obrigatório.</p>
-                                )}
-                                {errors.cidade && errors.cidade.type === "maxLength" && (
-                                    <p className="error-message">O CEP não pode ter mais de 8 caracteres.</p>
-                                )}     
+                                <input type="number" id="cep" {...register("cep", { minLength: 8, maxLength: 8})} />  
+                                <p className="error-message">{errors?.cep?.message}</p>
+                                   
 
                                 <Label id="numero" label="Número"/>
-                                <input type="number" id="numero" {...register("numero", {required: true, maxLength: 5})} />
-                                {errors.cep && errors.cep.type === "required" && (
-                                    <p className="error-message">O número é obrigatório.</p>
-                                )}
-                                {errors.cidade && errors.cidade.type === "maxLength" && (
-                                    <p className="error-message">O número não pode ter mais de 5 caracteres.</p>
-                                )}  
+                                <input type="number" id="numero" {...register("numero")} />
+                                <p className="error-message">{errors?.numero?.message}</p>
+                           
                                 
                                 <Label id="estado" label="Estado"/>
-                                <input type="text" id="estado" {...register("estado", {required: true, maxLength: 20})} />
-                                {errors.estado && errors.estado.type === "required" && (
-                                    <p className="error-message">O estado é obrigatório.</p>
-                                )}
-                                {errors.estado && errors.estado.type === "maxLength" && (
-                                    <p className="error-message">O estado não pode ter mais de 20 caracteres.</p>
-                                )}  
+                                <input type="text" id="estado" {...register("estado")} />
+                                <p className="error-message">{errors?.estado?.message}</p>
+
+                                
                             </div>
                         
                         </div>
@@ -147,28 +266,41 @@ console.log(errors);
                 <section className="left-right">
                     <div className="left">
                         <Label id="nome-completo" label="Nome Completo"/>
-                        <input type="text" id="nome-completo" {...register("nomeCompleto", {required: true, minLength: 10, maxLength: 100})} />
+                        <input type="text" id="nome-completo" {...register("nomeCompleto")} />
+                        <p className="error-message">{errors?.nomeCompleto?.message}</p>
+                    
                     </div> 
                     <div className="right">              
                     <Label id="telefone-representante" label="Telefone"/>
-                        <input type="tel" id="telefone-representante" {...register("telefoneRepresentante", {required: true, maxLength: 11, pattern: /[0-9]{11}/i })} />
+                        <input type="tel" id="telefone-representante" {...register("telefoneRepresentante")} />
+                        <p className="error-message">{errors?.telefoneRepresentante?.message}</p>
+                     
                     </div>
                 </section>
 
                 <Label id="cargo-empresa" label="Cargo que ocupa na empresa" />
-                <input type="text" id="cargo-empresa" {...register("cargoEmpresa", {required: true, minLength: 10, maxLength: 50})} />
+                <input type="text" id="cargo-empresa" {...register("cargoEmpresa")} />
+                <p className="error-message">{errors?.cargoEmpresa?.message}</p>
+             
+                
                 <Label id="email-representante" label="Informe seu melhor e-mail" />
-                <input type="email" id="email-representante" {...register("emailRepresentante", {required: true, minLength: 10, maxLength: 50})} />
+                <input type="email" id="email-representante" {...register("emailRepresentante")} />
+                <p className="error-message">{errors?.emailRepresentante?.message}</p>
+             
 
                 <section className="left-right">
                     <div className="left">
                         <Label id="indicacao" label="Quem lhe indicou à Viverde Casa?" />
-                        <input type="text" id="indicacao" {...register("indicacao", {required: true, minLength: 10, maxLength: 50})} />
+                        <input type="text" id="indicacao" {...register("indicacao")} />
+                        <p className="error-message">{errors?.indicacao?.message}</p>
+                        
                     </div>
                     <div className='right'>
                         <Label id="indicacao" label="Cód. de Indicação" />
-                        <input type="text" id="codigo-indicacao" {...register("codigo-indicacao", {required: true, minLength: 10, maxLength: 50})} />
+                        <input type="text" id="codigo-indicacao" {...register("codigoIndicacao")} />
+                        <p className="error-message">{errors?.codigoIndicaco?.message}</p>
                     </div>
+
                 </section>                   
             </section>
             <section className='informacaoSolicitacao'>
@@ -181,26 +313,26 @@ console.log(errors);
                                 Selecione uma opção</span> 
                     <ul className="items">
                         <li>
-                            <input type="radio" id="parceria-comercial" value="Parceria comercial" {...register("servicoInfo", {required: true})} />
+                            <input type="radio" id="parceria-comercial" value="Parceria comercial" {...register("servicoInfo")} />
                             <LabelServ id="parceria-comercial" label="Parceria comercial (Quero fazer parte do programa de descontos e conquistar novos clientes)" />
                         </li>
                         <li>
-                            <input type="radio" id="intermediacao" value="Intermediação" {...register("servicoInfo", {required: true})} />
+                            <input type="radio" id="intermediacao" value="Intermediação" {...register("servicoInfo")} />
                             <LabelServ id="intermediacao" label="Intermediação de mão de obra (Busco contratação de mão de obra qualificada para reforma e construção)" />
                         </li>
                         <li>
-                            <input type="radio" id="qualificacao-profissional" value="Qualificação profissional" {...register("servicoInfo", {required: true})} />
+                            <input type="radio" id="qualificacao-profissional" value="Qualificação profissional" {...register("servicoInfo")} />
                             <LabelServ id="qualificacao-profissional" label="Qualificação profissional (Quero contratar um pacote de qualificação de mão de obra para minha equipe) " />
                         </li>
                         <li>
-                            <input type="radio" id="apoio-acoes" value="Apoio a ações ESG" {...register("servicoInfo", {required: true})} />
+                            <input type="radio" id="apoio-acoes" value="Apoio a ações ESG" {...register("servicoInfo")} />
                             <LabelServ id="apoio-acoes" label="Apoio a ações ESG (Quero investir em ações de impacto social e ambiental com a Viverde Casa) " />
                         </li>
                     </ul>
                     </div>
 
                     <Label id="servicoOutro" label="Outro" />
-                    <input id="servicoOutro" type="text" {...register("servicoOutro", { required: true, minLength: 14, maxLength: 14 })} />
+                    <input id="servicoOutro" type="text" {...register("servicoOutro")} />
                     
                     
                     <p className='questions'>Que iniciativa de impacto gostaria de apoiar?</p>
@@ -209,23 +341,25 @@ console.log(errors);
                                 Selecione uma opção</span> 
                     <ul className="items">
                         <li>
-                            <input type="checkbox" id="viverde-capacita" value="viverdeCapacita" {...register("iniciativaInfo", {required: true})} />
+                            <input type="checkbox" id="viverde-capacita" value="viverdeCapacita" {...register("iniciativaInfo")} />
                             <LabelServ id="viverde-capacita" label="Viverde Capacita (Programa de qualificação profissional)" />
                         </li>
                         <li>
-                            <input type="checkbox" id="viverde-athis" value="viverdeATHIS" {...register("iniciativaInfo", {required: true})} />
+                            <input type="checkbox" id="viverde-athis" value="viverdeATHIS" {...register("iniciativaInfo")} />
                             <LabelServ id="viverde-athis" label="Viverde ATHIS (Programa de melhorias habitacionais de interesse social) " />
                         </li>
                         <li>
-                            <input type="checkbox" id="viverde-hub" value="viverdeHub" {...register("iniciativaInfo", {required: true})} />
+                            <input type="checkbox" id="viverde-hub" value="viverdeHub" {...register("iniciativaInfo")} />
                             <LabelServ id="viverde-hub" label="Viverde HUB (Programa de incentivo a pesquisa, desenvolvimento e inovação) " />
-                        </li>
-
+                        </li>          
                     </ul>
-                    <Label id="comentarioSolicitacao" label="Comentário" />
-                    <textarea id="comentarioSolicitacao" {...register("comentarioSolicitacao", {required: true, minLength: 10, maxLength: 50})} />
-                    
+                  
                 </div>
+
+                <Label id="comentarioSolicitacao" label="Comentário" />
+                    <textarea id="comentarioSolicitacao" {...register("comentarioSolicitacao")} />
+                    
+                    <p className="error-message">{errors?.comentarioSolicitacao?.message}</p>
             </section>
 
             <section className="Veiculos-Que">
@@ -238,84 +372,98 @@ console.log(errors);
                 com campanhas políticas ou partidárias nos últimos 20 anos?</p>
 
                 <div className="inputs-escolha">
-                    <input id="CampanhasSim" {...register("CampanhasPoliticas", { required: true })} 
+                    <input id="CampanhasSim" {...register("CampanhasPoliticas")} 
                     type="radio" value="Sim" />
                     <LabelCheck id="CampanhasSim" label="Sim"/>
 
-                    <input id="CampanhasNao" {...register("CampanhasPoliticas", { required: true })} 
+                    <input id="CampanhasNao" {...register("CampanhasPoliticas")} 
                     type="radio" value=" Não" />
                     <LabelCheck id="CampanhasNao" label="Não"/>
+
+                    <p className="error-message">{errors?.CampanhasPoliticas?.message}</p>
                  </div>
                  <p className='questions'>Você ou algum outro dirigente da empresa tem ou teve algum parente de 
                   até 2º ocupando cargo publico nos últimos 20 anos?</p>
 
                   <div className="inputs-escolha">
-                    <input id="CargoSim" {...register("CargoPublic", { required: true })} 
+                    <input id="CargoSim" {...register("CargoPublic")} 
                     type="radio" value="Sim" />
                     <LabelCheck id="CargoSim" label="Sim"/>
 
-                    <input id="CargoNao" {...register("CargoPublic", { required: true })} 
+                    <input id="CargoNao" {...register("CargoPublic")} 
                     type="radio" value=" Não" />
                     <LabelCheck id="CargoNao" label="Não"/>
+
+                    <p className="error-message">{errors?.CargoPublic?.message}</p>
                   </div>
 
                   <Label id="VinculoPolitico" label="Se a sua resposta para as perguntas anteriores for sim; 
                   por gentileza, especifique aqui o vinculo político partidário,
                    e o período a que se refere:"/>
-                   <input id="VinculoPolitico" type="text" {...register("VinculoPolitico", {required: true})} />
+                   <input id="VinculoPolitico" type="text" {...register("VinculoPolitico")} />
 
                    <p className='questions'>Sua empresa ou algum de seus representantes tem ou teve envolvimento em algum 
                     escândalo envolvendo questões de trabalho escravo desde a sua fundação?</p>
                     <div className="inputs-escolha">
-                        <input id="EscandaloSim" {...register("escandalo", { required: true })} type="radio" value="Sim" />
+                        <input id="EscandaloSim" {...register("escandalo")} type="radio" value="Sim" />
                         <LabelCheck id="EscandaloSim" label="Sim"/>
 
-                        <input id="EscandaloNao" {...register("escandalo", { required: true })} type="radio" value=" Não" />
+                        <input id="EscandaloNao" {...register("escandalo")} type="radio" value=" Não" />
                         <LabelCheck id="EscandaloNao" label="Não"/>
+
+                        <p className="error-message">{errors?.escandalo?.message}</p>
                     </div>
 
                     <p className='questions'>Sua empresa ou algum de seus representantes tem ou teve envolvimento em algum escândalo
                        envolvendo questões de assédio físico ou moral desde a sua fundação?</p>
                     <div className="inputs-escolha">
-                       <input id="AssedioSim" {...register("escandaloAssedio", { required: true })} 
+                       <input id="AssedioSim" {...register("escandaloAssedio")} 
                        type="radio" value="Sim" />
                        <LabelCheck id="AssedioSim" label="Sim"/>
 
-                       <input id="AssedioNao" {...register("escandaloAssedio", { required: true })} 
+                       <input id="AssedioNao" {...register("escandaloAssedio")} 
                        type="radio" value=" Não" />
                        <LabelCheck id="AssedioNao" label="Não"/>
+
+                       <p className="error-message">{errors?.escandaloAssedio?.message}</p>
                     </div>
 
                     <p className='questions'>Sua empresa ou organização já possui um plano de impacto positivo, 
                       com parâmetros claros e definidos,que esteja em prática? </p>
                       <div className="inputs-escolha">
-                        <input id="PlanoSim" {...register("PlanoImpacto", { required: true })} 
+                        <input id="PlanoSim" {...register("PlanoImpacto")} 
                         type="radio" value="Sim" />
                             <LabelCheck id="PlanoSim" label="Sim"/>
 
-                        <input id="PlanoNão" {...register("PlanoImpacto", { required: true })}
+                        <input id="PlanoNão" {...register("PlanoImpacto")}
                         type="radio" value=" Não" />
                             <LabelCheck id="PlanoNão" label="Não"/>
+
+                        <p className="error-message">{errors?.PlanoImpacto?.message}</p>
                     </div>
 
                     <Label id="ImpactoPositivo" label="O que você enxerga de possível melhoria para ampliar 
                       o impacto positivo gerando por sua empresa ou organização?"/>
-                      <input type="text" id="ImpactoPositivo" {...register("ImpactoPositivo", {required: true})} />
+                      <input type="text" id="ImpactoPositivo" {...register("ImpactoPositivo")} />
+                      <p className="error-message">{errors?.ImpactoPositivo?.message}</p>
 
                       <Label id="ImpactoSocial" label="Quais os setores da sua organização que investem em 
                       impacto social ou ambiental positivo?"/>
-                      <input type="text" id="ImpactoSocial" {...register("ImpactoSocial", {required: true})} />
+                      <input type="text" id="ImpactoSocial" {...register("ImpactoSocial")} />
+                      <p className="error-message">{errors?.ImpactoSocial?.message}</p>
 
                       <p className='questions'>Sua organização já possui uma política de diversidade implantada em algum 
                       setor?</p>
                       <div className="inputs-escolha">
-                        <input id="DiversidadeSim" {...register("PoliticaDiversidade", { required: true })}
+                        <input id="DiversidadeSim" {...register("PoliticaDiversidade")}
                         type="radio" value="Sim" />
                         <LabelCheck id="DiversidadeSim" label="Sim"/>
 
-                        <input id="DiversidadeNão" {...register("PoliticaDiversidade", { required: true })} 
+                        <input id="DiversidadeNão" {...register("PoliticaDiversidade")} 
                         type="radio" value=" Não" />
                         <LabelCheck id="DiversidadeNão" label="Não"/>
+
+                        <p className="error-message">{errors?.PoliticaDiversidade?.message}</p>
                     </div>
             </section>
 
