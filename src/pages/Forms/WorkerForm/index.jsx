@@ -2,25 +2,132 @@ import './styles.css'
 import Label from '../../../components/Label';
 import LabelCheck from '../../../components/LabelCheck';
 import LabelServ from '../../../components/LabelServices';
-
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { object, string, number, array } from 'yup';
+
+const workerSchema = object().shape({
+    //dados pessoais
+    nomeCompleto: string()
+                .required("O nome completo é obrigatório")
+                .min(10, "Você precisa inserir pelo menos 10 caracteres."),
+    dataNascimento: string()
+                    .required('Data de nascimento é obrigatória')
+                    .test('is-adult', 'Deve ser maior de idade', function (value) {
+                    if (!value) return true; // Se a data de nascimento não foi fornecida, considere válida.
+                    // converte a string da data para um objeto Date
+                    const birthDate = new Date(value);
+                    // calcula a data de 18 anos atrás
+                    const eighteenYearsAgo = new Date();
+                    eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
+                    // verifica se a pessoa é maior de idade
+                    return birthDate <= eighteenYearsAgo;
+                }),
+    email: string()
+            .required("O e-mail é obrigatório") //falta validar
+            .email("E-mail inválido."),
+    rg: string()
+        .required("O RG é obrigatório")
+        .matches(/^[0-9]+$/, "O campo RG pode conter apenas dígitos.")
+        .max(18, "Número de caracteres inválido."),
+    cpf: string()
+        .required("O CPF é obrigatório.")
+        .matches(/^[0-9]+$/, "O campo CPF pode conter apenas dígitos.")
+        .min(11, "O CPF deve conter 11 dígitos.")
+        .max(11, "O CPF deve conter 11 dígitos."),
+    telefone:string()
+            .min(11, 'O telefone deve ter no mínimo 11 caracteres')
+            .max(11, 'O telefone deve ter no máximo 11 caracteres')
+            .matches(/[0-9]{11}/, 'Formato de telefone inválido'),
+///endereço
+    endereco: string()
+            .required("O logadouro é obrigatório."),
+    bairro:  string()
+            .required("O bairro é obrigatório."),
+    cidade:  string()
+            .required("A cidade é obrigatória."),
+    cep: number("O campo CEP pode conter apenas dígitos.") 
+        .typeError('CEP deve ser um número')
+        .positive('CEP deve ser um número positivo')
+        .integer('CEP deve ser um número inteiro')
+        .required('CEP é obrigatório'),
+    numero: string()
+            .required("O número é obrigatório.")
+            .max(10, "Número máximo de 10 dígitos."),
+    estado: string()
+            .required("O estado é obrigatório.")
+            .min(2, "Número mínimo de 2 caracteres.")
+            .max(20, "Número máximo de 20 caracteres."),
+    portDeficiencia: string()
+                    .required("Selecione uma opção."),
+    tipoDeficiencia: array("Selecione, no mínimo, uma opção.")
+                    .required("Campo obrigatório.")
+                    .min(1, "Selecione, no mínimo, uma opção."),
+    cpnjEscolha: string()
+                .required("Selecione uma opção."),
+    cnpjProfissional: string()
+                    .matches(/^[0-9]+$/, "O CNPJ pode conter apenas dígitos.")
+                    .min(14, "Número de caracteres inválido.")
+                    .max(14, "Número de caracteres inválido."),
+    areaAtuacao:  string()
+                .required("Resposta obrigatória."),
+    servicos: array("Selecione, no mínimo, uma opção.")
+            .required("Campo obrigatório.")
+            .min(1, "Selecione, no mínimo, uma opção."),
+    horarios: array()
+            .required("Campo obrigatório.")
+            .min(1, "Selecione, no mínimo, uma opção."),
+    fimSemana: string()
+            .required("Selecione uma opção."),
+    cartAssinada: string()
+                .required("Selecione uma opção."),
+    cobraServico: string()
+                .required("Selecione uma opção."),
+    precoMedio:  string()
+                .required("Informe o preço médio do serviço."),
+    contato1: string()
+            .required("Telefone é obrigatório")
+            .min(11, 'O telefone deve ter no mínimo 11 caracteres')
+            .max(11, 'O telefone deve ter no máximo 11 caracteres')
+            .matches(/[0-9]{11}/, 'Formato de telefone inválido'),
+    contato2: string()
+            .min(11, 'O telefone deve ter no mínimo 11 caracteres')
+            .max(11, 'O telefone deve ter no máximo 11 caracteres')
+            .matches(/[0-9]{11}/, 'Formato de telefone inválido'),
+    });
 
 export default function WorkerForm() {
     const [isCheckListVisible, setCheckListVisible] = useState(false);
-    const [mostrarTipoDeficiencia, setMostrarTipoDeficiencia] = useState(false);
-
-
+    //deixar visível a esteira de serviços
     const toggleCheckList = () => {
       setCheckListVisible(!isCheckListVisible);
     };
 
 
+    const [checkedValues, setValues] = useState([])
+    function handleChange(e) {
+        const { value, checked } = e.target;
+        if (checked) {
+            setValues(horario => [...horario, value]);
+        } else {
+            setValues(horario => horario.filter(disp => disp !== value));
+        }
+    }
+    console.log(checkedValues)
+
+
+
   const { 
+
     register, 
     handleSubmit, 
     formState: { errors }
  } = useForm({
+    defaultValues: {
+        horarios: [],
+    },
+    resolver: yupResolver(workerSchema)
  });
 const onSubmit = data => console.log(data);
 console.log(errors);
@@ -36,68 +143,35 @@ console.log(errors);
                         <h3 className="pergunta-label"><Label id="nome-completo" label="Nome Completo"/> </h3>
                         <p className='caracteres'>Conforme consta nos seus documentos</p>
                         <input type="text" id="nome-completo" {...register("nomeCompleto", {required: true, minLength: 10, maxLength: 100})} />
-                        {errors.nomeCompleto && errors.nomeCompleto.type === "required" && (
-                            <p className="error-message">O nome completo é obrigatório.</p>
-                        )}
-                        {errors.nomeCompleto && errors.nomeCompleto.type === "minLength" && (
-                            <p className="error-message">O nome completo deve ter pelo menos 10 caracteres.</p>
-                        )}
-                        {errors.nomeCompleto && errors.nomeCompleto.type === "maxLength" && (
-                            <p className="error-message">O nome completo não pode ter mais de 50 caracteres.</p>
-                        )}
+                        <p className="error-message">{errors?.nomeCompleto?.message}</p>
 
                         <Label id="data-nascimento" label="Data de Nascimento"/>
                         <p className='caracteres'>Ex.: 06/09/1975</p>
-                        <input type="date" id="data-nascimento" {...register("DataNascimento", {required: true, pattern: /^\S+@\S+$/i})} />
-                        {errors.DataNascimento && errors.DataNascimento.type === "required" && (
-                            <p className="error-message">A data de nascimento é obrigatória.</p>
-                        )}
+                        <input type="date" id="data-nascimento" {...register("dataNascimento", {required: true })} />
+                        <p className="error-message">{errors?.dataNascimento?.message}</p>
 
                         <Label id="e-mail" label="E-mail"/>
-                        <input type="email" id="e-mail" {...register("Email", {required: true, maxLength: 40})} />
-                        {errors.Email && errors.Email.type === "required" && (
-                            <p className="error-message">O e-mail é obrigatório.</p>
-                        )}
-                        {errors.Email && errors.Email.type === "maxLength" && (
-                            <p className="error-message">O e-mail não pode ter mais de 40 caracteres.</p>
-                        )}
+                        <input type="email" id="e-mail" {...register("email", {required: true, maxLength: 40})} />
+                        <p className="error-message">{errors?.email?.message}</p>
+
                     </div>
 
                     <div className="right">
                         <Label id="RG" label="RG"/> 
                         <p className='caracteres'>Apenas números</p>
-                        <input type="text" id="RG" {...register("RG", {required: true, maxLength: 18})} />
-                        {errors.RG && errors.RG.type === "required" && (
-                            <p className="error-message">O RG é obrigatório.</p>
-                        )}
-                            {errors.RG && errors.RG.type === "maxLength" && (
-                            <p className="error-message">O RG não pode ter mais de 18 caracteres.</p>
-                        )}
+                        <input type="text" id="RG" {...register("rg", {required: true, maxLength: 18})} />
+                        <p className="error-message">{errors?.rg?.message}</p>
 
                         <Label id="CPF" label="CPF"/>
                         <p className='caracteres'>Apenas números</p>
-                        <input type="text" id="CPF" {...register("CPF", {required: true, maxLength: 11})} />
-                        {errors.CPF && errors.CPF.type === "required" && (
-                            <p className="error-message">O CPF é obrigatório.</p>
-                        )}
-                        {errors.CPF && errors.CPF.type === "maxLength" && (
-                            <p className="error-message">O CPF não pode ter mais de 11 caracteres.</p>
-                        )}
-
+                        <input type="text" id="CPF" {...register("cpf", {required: true, maxLength: 11})} />
+                        <p className="error-message">{errors?.cpf?.message}</p>
                         <Label id="telefone" label="Telefone"/>
-                        <p className='caracteres'>Apenas números</p>
+                        <p className='caracteres'>Insira também o seu DDD. </p>
                         <input type="tel" id="telefone" {...register("telefone", {required: true, maxLength: 11, pattern: /[0-9]{11}/i })} />
-                        {errors.telefone && errors.telefone.type === "required" && (
-                            <p className="error-message">O telefone é obrigatório.</p>
-                        )}
-                        {errors.telefone && errors.telefone.type === "maxLength" && (
-                            <p className="error-message">O telefone não pode ter mais de 11 caracteres.</p>
-                        )}
-                        {errors.telefone && errors.telefone.type === "pattern" && (
-                            <p className="error-message">O telefone deve conter apenas números.</p>
-                        )}
+                        <p className="error-message">{errors?.telefone?.message}</p>
                     </div>
-                </section>
+                </section> 
 
                 <div className="endereco-pessoal">
                     <h1>Endereço</h1>
@@ -106,60 +180,25 @@ console.log(errors);
                             <div className="left">
                             <Label id="endereco" label="Logadouro"/>
                             <input type="text" id="endereco" {...register("endereco", {required: true, maxLength: 100})} />
-                            {errors.endereco && errors.endereco.type === "required" && (
-                                <p className="error-message">O logradouro é obrigatório.</p>
-                            )}
-                            {errors.endereco && errors.endereco.type === "maxLength" && (
-                                <p className="error-message">O logradouro não pode ter mais de 100 caracteres.</p>
-                            )}
-
+                            <p className="error-message">{errors?.endereco?.message}</p>
                             <Label id="bairro" label="Bairro"/>
                             <input type="text" id="bairro" {...register("bairro", {required: true, maxLength: 100})} />
-                            {errors.bairro && errors.bairro.type === "required" && (
-                                <p className="error-message">O bairro é obrigatório.</p>
-                            )}
-                            {errors.bairro && errors.bairro.type === "maxLength" && (
-                                <p className="error-message">O bairro não pode ter mais de 100 caracteres.</p>
-                            )}
-                            
+                            <p className="error-message">{errors?.bairro?.message}</p>
                             <Label id="cidade" label="Cidade"/>
                             <input type="text" id="cidade" {...register("cidade", {required: true, maxLength: 100})} />
-                            {errors.cidade && errors.cidade.type === "required" && (
-                                <p className="error-message">O campo cidade é obrigatório.</p>
-                            )}
-                            {errors.cidade && errors.cidade.type === "maxLength" && (
-                                <p className="error-message">O campo cidade não pode ter mais de 100 caracteres.</p>
-                            )}
+                            <p className="error-message">{errors?.cidade?.message}</p>
                         </div>
                             
                         <div className="right">
                         <Label id="cep" label="CEP"/>
                             <input type="number" id="cep" {...register("cep", {required: true, maxLength: 8})} />  
-                            {errors.cep && errors.cep.type === "required" && (
-                                <p className="error-message">O CEP é obrigatório.</p>
-                            )}
-                            {errors.cidade && errors.cidade.type === "maxLength" && (
-                                <p className="error-message">O CEP não pode ter mais de 8 caracteres.</p>
-                            )}     
-
+                            <p className="error-message">{errors?.cep?.message}</p>
                             <Label id="numero" label="Número"/>
                             <input type="number" id="numero" {...register("numero", {required: true, maxLength: 5})} />
-                            {errors.cep && errors.cep.type === "required" && (
-                                <p className="error-message">O número é obrigatório.</p>
-                            )}
-                            {errors.cidade && errors.cidade.type === "maxLength" && (
-                                <p className="error-message">O número não pode ter mais de 5 caracteres.</p>
-                            )}  
-                            
+                            <p className="error-message">{errors?.numero?.message}</p>
                             <Label id="estado" label="Estado"/>
                             <input type="text" id="estado" {...register("estado", {required: true, maxLength: 20})} />
-                            {errors.estado && errors.estado.type === "required" && (
-                                <p className="error-message">O estado é obrigatório.</p>
-                            )}
-                            {errors.estado && errors.estado.type === "maxLength" && (
-                                <p className="error-message">O estado não pode ter mais de 20 caracteres.</p>
-                            )}  
-                            
+                            <p className="error-message">{errors?.estado?.message}</p>
                         </div>
                         </div>
                     </div>
@@ -168,39 +207,37 @@ console.log(errors);
                         <h3 className="pergunta-label">Você é uma pessoa com deficiência?</h3>
 
                         
-                        <input type="radio" id="sim-deficiencia" value="Sim" {...register("port-deficiencia", { required: true  })} onChange={() => {
+                        <input type="radio" id="sim-deficiencia" value="Sim" {...register("portDeficiencia", { required: true  })} onChange={() => {
                         setMostrarTipoDeficiencia(true);
                         }} />
-                        <LabelCheck id="sim-deficiencia" label="Sim"/>
+                        <LabelCheck id="sim-deficiencia" label="Sim"/>  
                         
-                        <input type="radio" id="nao-deficiencia" value="Nao" {...register("port-deficiencia", { required: true })}  onChange={() => {
+                        <input type="radio" id="nao-deficiencia" value="Nao" {...register("portDeficiencia", { required: true })}  onChange={() => {
                         setMostrarTipoDeficiencia(false);
+                        <p className="error-message">{errors?.portDeficiencia?.message}</p>
                      }} />
                         <LabelCheck id="nao-deficiencia" label="Não" />
+                        
+                        <h3 className="pergunta-label">Se sim, qual o tipo de deficiência?</h3>
 
-                        {mostrarTipoDeficiencia && ( // mostrar a segunda parte apenas se "Sim" for selecionado
-                            <>
-                                <h3 className="pergunta-label">Se sim, qual o tipo de deficiência?</h3>
+                        <input type="checkbox" id="defic-fisica" {...register("tipoDeficiencia", {required: true})} />
+                        <LabelCheck id="defic-fisica" label="Deficiência Física"/>
 
-                                <input type="checkbox" id="defic-fisica" {...register("tipo-deficiencia", {required: true})} />
-                                <LabelCheck id="defic-fisica" label="Deficiência Física"/>
+                        <input type="checkbox" id="defic-intelectual" {...register("tipoDeficiencia", {required: true})} />
+                        <LabelCheck id="defic-intelectual" label="Deficiência Intelectual"/>
 
-                                <input type="checkbox" id="defic-intelectual" {...register("tipo-deficiencia", {required: true})} />
-                                <LabelCheck id="defic-intelectual" label="Deficiência Intelectual"/>
+                        <input type="checkbox" id="defic-motora" {...register("tipoDeficiencia", {required: true})} />
+                        <LabelCheck id="defic-motora" label="Deficiência Motora"/> 
 
-                                <input type="checkbox" id="defic-motora" {...register("tipo-deficiencia", {required: true})} />
-                                <LabelCheck id="defic-motora" label="Deficiência Motora"/> 
+                        <input type="checkbox" id="defic-visual" {...register("tipoDeficiencia", {required: true})} />
+                        <LabelCheck id="defic-visual" label="Deficiência Visual"/>
 
-                                <input type="checkbox" id="defic-visual" {...register("tipo-deficiencia", {required: true})} />
-                                <LabelCheck id="defic-visual" label="Deficiência Visual"/>
+                        <input type="checkbox" id="defic-auditiva" {...register("tipoDeficiencia", {required: true})} />
+                        <LabelCheck id="defic-auditiva" label="Deficiência Auditiva"/>
 
-                                <input type="checkbox" id="defic-auditiva" {...register("tipo-deficiencia", {required: true})} />
-                                <LabelCheck id="defic-auditiva" label="Deficiência Auditiva"/>
-
-                                <input type="checkbox" id="defic-outras" {...register("tipo-deficiencia", {required: true})} />
-                                <LabelCheck id="defic-outras" label="Outras"/>
-                            </>
-                            )}
+                        <input type="checkbox" id="defic-outras" {...register("tipoDeficiencia", {required: true})} />
+                        <LabelCheck id="defic-outras" label="Outras"/>
+                        <p className="error-message">{errors?.tipoDeficiencia?.message}</p>
                     </div>
                 </section>
         <section className="dadosProfissionais">
@@ -211,21 +248,22 @@ console.log(errors);
             <div className="cnpj">
                 <h3 className="pergunta-label">Possui CNPJ?</h3>
                 
-                <input id="sim-cnpj" {...register("cnpj-sim-nao", { required: true })} type="radio" value="Sim" />
+                <input id="sim-cnpj" {...register("cnpjEscolha", { required: true })} type="radio" value="Sim" />
                 <LabelCheck id="sim-cnpj" label="Sim" />
-
-                
-                <input id="nao-cnpj" {...register("cnpj-sim-nao", { required: true })} type="radio" value="Não" />
+                <input id="nao-cnpj" {...register("cnpjEscolha", { required: true })} type="radio" value="Não" />
                 <LabelCheck id="nao-cnpj" label="Não"/> 
+                <p className="error-message">{errors?.cpnjEscolha?.message}</p>
 
                 <h3 className="pergunta-label">CNPJ <em>(opcional)</em></h3>
                 <p className="caracteres">Caso possua, informe apenas números</p>
                 <Label id="cnpj" />
-                <input id="cnpj" type="text" {...register("cpnj", {})} />
+                <input id="cnpj" type="text" {...register("cpnjProfissional", {})} />
+                <p className="error-message">{errors?.cnpjProfissional?.message}</p>
 
                 <h3 className="pergunta-label">Qual sua área de atuação?</h3>
                 <Label id="area-atuacao" />
-                <input id="area-atuacao" type="text" {...register("area-atuacao", {})} />
+                <input id="area-atuacao" type="text" {...register("areaAtuacao", {})} />
+                <p className="error-message">{errors?.areaAtuacao?.message}</p>
             </div>
         </section>
 
@@ -341,9 +379,9 @@ console.log(errors);
                             <li>
                                 <input type="checkbox" id="outros" value="outros" {...register("servicos", {required: true})} />
                                 <LabelServ  id="outros" label="Outros" />
+                                <p className="error-message">{errors?.servicos?.message}</p>
                             </li>
                             </ul>
-
                         </div>
                     </section>
 
@@ -354,30 +392,34 @@ console.log(errors);
 
             <div className="horarios">
                <h3 className="pergunta-label">Qual sua disponibilidade de horário?</h3>
-                <input id="manha" {...register("horarios", { required: true })} type="radio" value="Manhã" />
+                <input id="manha" {...register("horarios")} type="checkbox" value="Manhã" onChange={handleChange} />
                 <LabelCheck id="manha" label="Manhã"/>
 
-                <input id="tarde" {...register("horarios", { required: true })} type="radio" value=" Tarde" /> 
+                <input id="tarde" {...register("horarios")} type="checkbox" value=" Tarde" onChange={handleChange}/> 
                 <LabelCheck id="tarde" label="Tarde"/>
 
-                <input id="noite" {...register("horarios", { required: true })} type="radio" value=" Noite" /> 
+                <input id="noite" {...register("horarios")} type="checkbox" value=" Noite" onChange={handleChange}/> 
                 <LabelCheck id="noite" label="Noite"/>
+                
+                <p className="error-message">{errors?.horarios?.message}</p>
 
                <h3 className="pergunta-label">Aceita prestar serviços nos finais de semana?</h3>
                 
-                <input id="sim-fimsemana" {...register("fim-semana", { required: true })} type="radio" value="Sim" /> 
+                <input id="sim-fimsemana" {...register("fimSemana", { required: true })} type="radio" value="Sim" /> 
                 <LabelCheck id="sim-fimsemana" label="Sim"/>
                 
-                <input id="nao-fimsemana" {...register("fim-semana", { required: true })} type="radio" value=" Não" /> 
+                <input id="nao-fimsemana" {...register("fimSemana", { required: true })} type="radio" value=" Não" /> 
                 <LabelCheck id="nao-fimsemana" label="Não"/>
+                <p className="error-message">{errors?.fimSemana?.message}</p>
 
                <h3 className="pergunta-label">Você está trabalhando de carteira assinada?</h3>
                 
-                <input id="sim-cart-assinada"{...register("cart-assinada", { required: true })} type="radio" value="Sim" />
+                <input id="sim-cart-assinada"{...register("cartAssinada", { required: true })} type="radio" value="Sim" />
                 <LabelCheck id="sim-cart-assinada" label="Sim"/>
 
-                <input id="nao-cart-assinada"{...register("cart-assinada", { required: true })} type="radio" value=" Não" /> 
+                <input id="nao-cart-assinada"{...register("cartAssinada", { required: true })} type="radio" value=" Não" /> 
                 <LabelCheck id="nao-cart-assinada" label="Não"/>
+                <p className="error-message">{errors?.cartAssinada?.message}</p>
             </div>
         </section>
 
@@ -390,24 +432,25 @@ console.log(errors);
                 <h3 className="pergunta-label">Como você costuma cobrar pelo serviço?</h3>
 
                 
-                <input id="por-hora" type="radio" value="Por Hora"  {...register("cobrar-servico", { required: true })} />
+                <input id="por-hora" type="radio" value="Por Hora"  {...register("cobraServico", { required: true })} />
                 <LabelCheck id="por-hora" label="Por Hora"/>
 
-                <input id="por-diaria" type="radio" value="Por Diária" {...register("cobrar-servico", { required: true })}  />
+                <input id="por-diaria" type="radio" value="Por Diária" {...register("cobraServico", { required: true })}  />
                 <LabelCheck  id="por-diaria" label="Por Diária"/>
                 
-                <input id="por-metro" type="radio" value="Por Metro" {...register("cobrar-servico", { required: true })} />
+                <input id="por-metro" type="radio" value="Por Metro" {...register("cobraServico", { required: true })} />
                 <LabelCheck id="por-metro" label="Por Metro"/>
-
                 
-                <input id="por-empreitada" {...register("cobrar-servico", { required: true })} type="radio" value="Por Empreitada" />
+                <input id="por-empreitada"  type="radio" value="Por Empreitada" {...register("cobraServico", { required: true })} />
                 <LabelCheck  id="por-empreitada" label="Por Empreitada"/>
+                <p className="error-message">{errors?.cobraServico?.message}</p>
 
                 <h3 className="pergunta-label">Quanto você costuma cobrar, em média, pelo serviço?</h3>
 
                <Label id="preco-medio" />
                 <p className="caracteres">  Ex.: Se cobrar por diária, quanto custa sua diária? </p>
-                <input type="text" id="preco-medio" {...register("preco-medio", {required: true})} />
+                <input type="text" id="preco-medio" {...register("precoMedio", {required: true})} />
+                <p className="error-message">{errors?.precoMedio?.message}</p>
             </div>
         </section>
 
@@ -421,9 +464,11 @@ console.log(errors);
                     <input type="tel" id="contato1" placeholder="(DDD) + número" 
                     {...register("contato1", 
                     {required: true, max: 11, min: 11, maxLength: 11, pattern: /[0-9]{11}/i})} />
+                    <p className="error-message">{errors?.contato1?.message}</p>
                     <input type="tel" id="contato2" placeholder="(DDD) + número" 
                     {...register("contato2", 
                     {max: 11, min: 11, maxLength: 11, pattern: /[0-9]{11}/i})} />
+                    <p className="error-message">{errors?.contato2?.message}</p>
 
                     <h3><Label id="certificado" label="Possui certifições complementares? Quais? (opcional)" /></h3>
                     <input id="certificado" type="text"  
