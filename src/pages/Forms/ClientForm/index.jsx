@@ -1,4 +1,4 @@
-import '../ClientForm/styles.css';
+import './styles.css';
 import Label from '../../../components/Label';
 import LabelServ from '../../../components/LabelServices';
 import { useState } from 'react';
@@ -15,8 +15,8 @@ function ClientForm() {
   };
 
   return (
-    <main id="client-form">
-      <form id="form-container" onSubmit={handleSubmit(onSubmit)}>
+    <main className="client-form">
+      <form id="client-form-container" onSubmit={handleSubmit(onSubmit)}>
         <section id="dados-pessoais">
           <h1>Dados Pessoais</h1>
           <div className="box-line"></div>
@@ -38,10 +38,10 @@ function ClientForm() {
 
           <div className="dados-pcd">
             <h3>Você é uma pessoa com deficiência?</h3>
-            <Label id="sim-deficiencia" label="Sim" />
-            <input type="radio" id="sim-deficiencia" value="Sim" {...register("dados-pcd", { required: true })}   />
-            <Label id="nao-deficiencia" label="Não" />
-            <input type="radio" id="nao-deficiencia"  value="Nao"{...register("dados-pcd", { required: true })}   />
+            <Label id="port-deficiencia" label="Sim" />
+            <input type="radio" id="port-deficiencia" value="Sim" {...register("dados-pcd", { required: true })}   />
+            <Label id="port-deficiencia" label="Não" />
+            <input type="radio" id="port-deficiencia"  value="Nao"{...register("dados-pcd", { required: true })}   />
 
             <h3>Se sim, qual tipo de deficiência?</h3>
             <input type="radio" id="pcd-tipo"  value="fisica"{...register("dados-pcd", { required: true })}   />
@@ -59,7 +59,7 @@ function ClientForm() {
           </div>
 
           <div className="endereco-pessoal">
-            <h2>Seu endereço</h2>
+            <h1>Seu endereço</h1>
             <div className="box-line"></div>
               <div>
                 <Label id="cep" label="CEP"/>
@@ -81,7 +81,7 @@ function ClientForm() {
           </div>
 
           <div className="endereco-obra">
-            <h2>Endereço da obra</h2>
+            <h1>Endereço da obra</h1>
             <div className="box-line"></div>
 
             <div>
@@ -288,7 +288,7 @@ function ClientForm() {
           </div>
         </section>
 
-        <section>
+        <section id="indicacao">
           <h1>Pesquisa</h1>
           <div className="box-line"></div>
           <h3 className="pergunta-label">Quem indicou a Viverde Casa</h3>
@@ -311,7 +311,7 @@ function ClientForm() {
           <input type="text" id="codigo-indicacao" {...register("codigo-indicacao", {required: false, min: 10, maxLength: 50})} />
         </section>
 
-        <input type="submit" />
+        <input className="button" type="submit" />
       </form>
     </main>
   )

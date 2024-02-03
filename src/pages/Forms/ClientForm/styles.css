@@ -1,6 +1,145 @@
-* {
+.client-form {
     font-family: Inter;
-    color: #FF5B00;
+    background-color: #7FBC54;
     margin: 0;
     padding: 0;
 }
+
+.client-form form {
+    width: 45%;
+    max-width: 1000px;
+    height: 50%;
+    min-height: 612px;
+    background-color: #EDE9E9;
+    border-radius: 50px;
+    margin: 5% 0% 5% 8%;
+    box-shadow: 0px 0px 2px 1px #c4c4c4;
+    padding: 50px;
+}
+
+.client-form .box-line {
+    width: 95%;
+    border: 1.5px solid #7FBC54;
+    stroke-width: 4px;   
+}
+
+.client-form {
+    background-image: url('src/assets/client-form.png') !important;
+    background-size: auto 100%;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#client-form-container h1 {
+    color: #D55707
+}
+
+
+/* DROPDOWN */
+
+#client-form-container .dropdown-check-list {
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+#client-form-container .dropdown-check-list .anchor {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 50px 5px 10px;
+    border: 1px solid #008037;
+}
+
+#client-form-container .dropdown-check-list .anchor:after {
+    position: absolute;
+    content: "";
+    border-left: 2px solid #008037;
+    border-top: 2px solid #008037;
+    padding: 5px;
+    right: 10px;
+    top: 20%;
+    -moz-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+}
+      
+#client-form-container .dropdown-check-list .anchor:active:after {
+    right: 8px;
+    top: 21%;
+}
+
+#client-form-container .dropdown-check-list ul.items {
+    padding: 2px;
+    display: none;
+    margin: 0;
+    border: 1px solid #008037;
+    border-top: none;
+    font-size: 1.125rem;
+    max-height: 200px;
+    overflow-y: scroll;
+    max-width: 329px;
+}
+
+#client-form-container .dropdown-check-list ul.items li {
+    list-style: none;
+}
+
+#client-form-container .dropdown-check-list.visible .anchor {
+    color: #AFAFAF;
+}
+      
+#client-form-container .dropdown-check-list.visible .items {
+    display: block;
+    border-radius: 0px 0px 17px 17px;
+}
+
+/* INPUTS */
+
+#client-form-container input[type="radio"] {
+    display: none;
+}
+
+#client-form-container input[type="radio"]:checked + label {
+    background-color: #008037;
+    color: #fff;
+    border-color: #008037;
+}
+
+
+
+/* BOTÃO DE ENVIO */
+
+#client-form-container .button {
+    width: 100px;
+    height: 43px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 24.5px;
+    background: #D55707;
+    color: white;
+    border-style: none;
+    margin-top: 20px;
+}
+
+#client-form-container input[type="radio"] {
+    display: none;
+}
+
+#client-form-container input[type="radio"]:checked + label {
+    background-color: #008037;
+    color: #fff;
+    border-color: #008037;
+}
+
+/*#client-form-container #port-deficiencia {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}*/
