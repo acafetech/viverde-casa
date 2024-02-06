@@ -31,7 +31,7 @@
     background-attachment: fixed;
 }
 
-#client-form-container h1 {
+#client-form-container h1, h3 {
     color: #D55707
 }
 
@@ -96,7 +96,7 @@
     border-radius: 0px 0px 17px 17px;
 }
 
-/* INPUTS */
+/* INPUTS - RADIO */
 
 #client-form-container input[type="radio"] {
     display: none;
@@ -124,17 +124,7 @@
     margin-top: 20px;
 }
 
-#client-form-container input[type="radio"] {
-    display: none;
-}
-
-#client-form-container input[type="radio"]:checked + label {
-    background-color: #008037;
-    color: #fff;
-    border-color: #008037;
-}
-
-/*#client-form-container #port-deficiencia {
+#client-form-container #pcd-tipo {
     display: inline-block;
     padding: 8px 16px;
     font-size: 0.9rem;
@@ -142,4 +132,4 @@
     border-radius: 4px;
     cursor: pointer;
     margin-right: 10px;
-}*/
+}

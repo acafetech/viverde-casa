@@ -44,17 +44,17 @@ function ClientForm() {
             <input type="radio" id="port-deficiencia"  value="Nao"{...register("dados-pcd", { required: true })}   />
 
             <h3>Se sim, qual tipo de deficiência?</h3>
-            <input type="radio" id="pcd-tipo"  value="fisica"{...register("dados-pcd", { required: true })}   />
+            <input type="checkbox" id="pcd-tipo"  value="fisica"{...register("dados-pcd", { required: true })}   />
             <Label id="pcd-tipo" label="Física" />
-            <input type="radio" id="pcd-tipo"  value="intelectual"{...register("dados-pcd", { required: true })}   />
+            <input type="checkbox" id="pcd-tipo"  value="intelectual"{...register("dados-pcd", { required: true })}   />
             <Label id="pcd-tipo" label="Intelectual" />
-            <input type="radio" id="pcd-tipo"  value="motora"{...register("dados-pcd", { required: true })}   />
+            <input type="checkbox" id="pcd-tipo"  value="motora"{...register("dados-pcd", { required: true })}   />
             <Label id="pcd-tipo" label="Motora" />
-            <input type="radio" id="pcd-tipo"  value="visual"{...register("dados-pcd", { required: true })}   />
+            <input type="checkbox" id="pcd-tipo"  value="visual"{...register("dados-pcd", { required: true })}   />
             <Label id="pcd-tipo" label="Visual" />
-            <input type="radio" id="pcd-tipo"  value="auditiva"{...register("dados-pcd", { required: true })}   />
+            <input type="checkbox" id="pcd-tipo"  value="auditiva"{...register("dados-pcd", { required: true })}   />
             <Label id="pcd-tipo" label="Auditiva" />
-            <input type="radio" id="pcd-tipo"  value="outra"{...register("dados-pcd", { required: true })}   />
+            <input type="checkbox" id="pcd-tipo"  value="outra"{...register("dados-pcd", { required: true })}   />
             <Label id="pcd-tipo" label="Outra" />
           </div>
 
@@ -311,7 +311,7 @@ function ClientForm() {
           <input type="text" id="codigo-indicacao" {...register("codigo-indicacao", {required: false, min: 10, maxLength: 50})} />
         </section>
 
-        <input className="button" type="submit" />
+        <button type="submit">Enviar</button>
       </form>
     </main>
   )
