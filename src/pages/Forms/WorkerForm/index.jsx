@@ -4,11 +4,9 @@ import LabelCheck from '../../../components/LabelCheck';
 import LabelServ from '../../../components/LabelServices';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import { yupResolver } from "@hookform/resolvers/yup";
+/*import { yupResolver } from "@hookform/resolvers/yup";*/
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
-
 
 
 export default function WorkerForm() {
