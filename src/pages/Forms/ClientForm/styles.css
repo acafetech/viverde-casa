@@ -35,6 +35,11 @@
     color: #D55707
 }
 
+#client-form-container p {
+    margin: 10px;
+    font-size: 15px;
+}
+
 
 /* DROPDOWN */
 
@@ -96,11 +101,12 @@
     border-radius: 0px 0px 17px 17px;
 }
 
+
 /* INPUTS - RADIO */
 
 #client-form-container input[type="radio"] {
     display: none;
-}
+} 
 
 #client-form-container input[type="radio"]:checked + label {
     background-color: #008037;
@@ -108,6 +114,38 @@
     border-color: #008037;
 }
 
+
+/* INDICAÇÃO VIVERDE CASA */
+
+#indicacao input[type="checkbox"] {
+    display: none;
+}
+
+#indicacao input[type="checkbox"] + label {
+    display: block;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+#indicacao input[type="checkbox"] + label:before {
+    content: "\2714";
+    font-size: 1.2em;
+    color: #008037;
+    display: inline-block;
+    width: 1.3em;
+    height: 1.3em;
+    line-height: 1.3em;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+    margin-right: 0.5em;
+}
+
+#indicacao input[type="checkbox"]:checked + label:before {
+    background-color: #007bff;
+    color: #fff;
+}
 
 
 /* BOTÃO DE ENVIO */
@@ -124,12 +162,4 @@
     margin-top: 20px;
 }
 
-#client-form-container #pcd-tipo {
-    display: inline-block;
-    padding: 8px 16px;
-    font-size: 0.9rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 10px;
-}
+
