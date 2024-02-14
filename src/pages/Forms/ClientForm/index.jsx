@@ -1,6 +1,7 @@
 import './styles.css';
 import Label from '../../../components/Label';
 import LabelServ from '../../../components/LabelServices';
+import LabelCheck from '../../../components/LabelCheck';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -29,7 +30,7 @@ function ClientForm() {
 
             <Label id="nome-social" label="Nome Social"/> 
             <p className='caracteres'>Como podemos te chamar?</p>
-            <input type="text" id="nome-social" {...register("Nome completo", {required: false, min: 10, maxLength: 50})} />
+            <input type="text" id="nome-completo" {...register("Nome completo", {required: false, min: 10, maxLength: 50})} />
 
             <Label id="telefone" label="Telefones para contato"/> 
             <input type="tel" id="telefone" {...register("telefone", {required: true, maxLength: 11, pattern: /[0-9]{11}/i })} />
@@ -37,25 +38,34 @@ function ClientForm() {
           </div>
 
           <div className="dados-pcd">
+            <br></br>
             <h3>Você é uma pessoa com deficiência?</h3>
-            <Label id="port-deficiencia" label="Sim" />
-            <input type="radio" id="port-deficiencia" value="Sim" {...register("dados-pcd", { required: true })}   />
-            <Label id="port-deficiencia" label="Não" />
-            <input type="radio" id="port-deficiencia"  value="Nao"{...register("dados-pcd", { required: true })}   />
+            <br></br>
+            <div className="pcdSimNao">
+              <LabelCheck id="pcd-sim" label="Sim"/>
+              <input type="radio" id="port-deficiencia" value="Sim" {...register("dados-pcd", { required: true })}   />
+              <LabelCheck id="pcd-nao" label="Não"/>
+              <input type="radio" id="port-deficiencia"  value="Nao"{...register("dados-pcd", { required: true })}   />
+            </div>
 
+            <br></br>
             <h3>Se sim, qual tipo de deficiência?</h3>
-            <input type="checkbox" id="pcd-tipo"  value="fisica"{...register("dados-pcd", { required: true })}   />
-            <Label id="pcd-tipo" label="Física" />
-            <input type="checkbox" id="pcd-tipo"  value="intelectual"{...register("dados-pcd", { required: true })}   />
-            <Label id="pcd-tipo" label="Intelectual" />
-            <input type="checkbox" id="pcd-tipo"  value="motora"{...register("dados-pcd", { required: true })}   />
-            <Label id="pcd-tipo" label="Motora" />
-            <input type="checkbox" id="pcd-tipo"  value="visual"{...register("dados-pcd", { required: true })}   />
-            <Label id="pcd-tipo" label="Visual" />
-            <input type="checkbox" id="pcd-tipo"  value="auditiva"{...register("dados-pcd", { required: true })}   />
-            <Label id="pcd-tipo" label="Auditiva" />
-            <input type="checkbox" id="pcd-tipo"  value="outra"{...register("dados-pcd", { required: true })}   />
-            <Label id="pcd-tipo" label="Outra" />
+            <br></br>
+            <div className="pcdTipo">
+              <input type="radio" id="pcd-tipo"  value="fisica"{...register("dados-pcd", { required: true })}   />
+              <LabelCheck id="pcd-tipo" label="Física" />
+              <input type="radio" id="pcd-tipo"  value="intelectual"{...register("dados-pcd", { required: true })}   />
+              <LabelCheck id="pcd-tipo" label="Intelectual" />
+              <input type="radio" id="pcd-tipo"  value="motora"{...register("dados-pcd", { required: true })}   />
+              <LabelCheck id="pcd-tipo" label="Motora" />
+              <input type="radio" id="pcd-tipo"  value="visual"{...register("dados-pcd", { required: true })}   />
+              <LabelCheck id="pcd-tipo" label="Visual" />
+              <input type="radio" id="pcd-tipo"  value="auditiva"{...register("dados-pcd", { required: true })}   />
+              <LabelCheck id="pcd-tipo" label="Auditiva" />
+              <input type="radio" id="pcd-tipo"  value="outra"{...register("dados-pcd", { required: true })}   />
+              <LabelCheck id="pcd-tipo" label="Outra" />
+            </div>
+            
           </div>
 
           <div className="endereco-pessoal">
@@ -107,6 +117,7 @@ function ClientForm() {
         <section>
           <h1>Serviço</h1>
           <div className="box-line"></div>
+          <br></br>
           <p>Que tipo de serviço deseja realizar?</p>
 
           <div id="checklistServicos" className={`dropdown-check-list ${isCheckListVisible ? 'visible' : ''}`} tabIndex="100">
@@ -215,50 +226,79 @@ function ClientForm() {
             </ul>
           </div>
 
-          <h3 className="pergunta-label">Outros: </h3>
-          <Label id="outros-servicos"/>
-          <input type="text" placeholder="Descreva qual serviço você deseja?" {...register("outros-servicos", {required: true})} />
+          
 
+          <div id="servicos-detalhes">
+            <h3 className="pergunta-label">Outros: </h3>
+            <Label id="outros-servicos"/>
+            <textarea placeholder="Descreva qual serviço você deseja?" id="textbox" cols="30" rows="10"></textarea>
+          </div>
+
+          <br></br>
           <h3>Queremos entender exatamente qual é sua necessidade.</h3>
           <p>Informe nesse espaço os detalhes do serviço que deseja contratar. (Ex: Aplicação de revestimento cerâmico em parede de banheiro que mede 2m x 3m).</p>
-          <Label id="detalhes"/>
-          <input type="text" placeholder="Digite aqui...." {...register("detalhes", {required: true})} />
-          <h3>Precisa de ajuda para medir os espaços? Assista nosso tutorial</h3>
+          <div id="servicos-detalhes">
+            <Label id="detalhes"/>
+            <textarea placeholder="Digite aqui...." id="textbox" cols="30" rows="10"></textarea>
+          </div>
+
+          <br></br>
+          <p>Precisa de ajuda para medir os espaços? Assista nosso tutorial!</p>
+          
         </section>
 
         <section id="agendamento">
           <h1>Agendamento</h1>
           <div className="box-line"></div>
-          <h3 className="pergunta-label">Melhor horário para você ser atendido</h3>
+          <br></br>
+          <h3 className="pergunta-label">Melhor horário para você ser atendido:</h3>
 
-          <Label id="horario-manha" label="Manhã"/>
+          <LabelCheck id="horario-manha" label="Manhã"/>
           <input {...register("agendamento")} type="radio" value="Manhã" />
-          <Label id="horario-tarde" label="Tarde"/>
+          <LabelCheck id="horario-tarde" label="Tarde"/>
           <input {...register("agendamento")} type="radio" value=" Tarde" />
-          <Label id="horario-noite" label="Noite"/>
+          <LabelCheck id="horario-noite" label="Noite"/>
           <input {...register("agendamento")} type="radio" value=" Noite" />
 
           <h3 className="pergunta-label">Aceita que o serviço seja realizado durante o final de semana?</h3>
-          <Label id="agendamento-sim" label="Sim"/>
+          <LabelCheck id="agendamento-sim" label="Sim"/>
           <input {...register("finaldesemana", { required: true })} type="radio" value="Sim" />
-          <Label id="agendamento-nao" label="Não"/>
+          <LabelCheck id="agendamento-nao" label="Não"/>
           <input {...register("finaldesemana", { required: true })} type="radio" value=" Não" />
 
           <h3 className="pergunta-label">Pra quando precisa do serviço?</h3>
-          <input type="checkbox" placeholder="data-servico" {...register("data-servico", {required: true})} />
-          <Label id="servico-urgente" label="Urgente"/>
-          <input type="checkbox" placeholder="data-servico" {...register("data-servic", {required: true})} />
-          <Label id="servico-prox-semana" label="Na próxima semana"/>
-          <input type="checkbox" placeholder="data-servico" {...register("data-servico", {required: true})} />
-          <Label id="servico-um-mes" label="Daqui a um mês"/>
-          <input type="checkbox" placeholder="data-servico" {...register("data-servico", {required: true})} />
-          <Label id="servico-seis-meses" label="6 meses ou mais"/>
+
+          <div className="data-servico">
+            <ul type="none">
+              <li>
+                <input type="checkbox" placeholder="data-servico" {...register("data-servico", {required: true})} />
+                <LabelServ id="data-servico" label="Urgente"/>
+              </li>
+
+              <li>
+                <input type="checkbox" placeholder="data-servico" {...register("data-servic", {required: true})} />
+                <LabelServ id="data-servico" label="Na próxima semana"/>
+              </li>
+
+              <li>
+                <input type="checkbox" placeholder="data-servico" {...register("data-servico", {required: true})} />
+                <LabelServ id="data-servico" label="Daqui a um mês"/>
+              </li>
+
+              <li>
+                <input type="checkbox" placeholder="data-servico" {...register("data-servico", {required: true})} />
+                <LabelServ id="data-servico" label="6 meses ou mais"/>
+              </li>
+            </ul>
+          </div>
+          
 
           <h3 className="pergunta-label">Há alguma observação sobre o ambiente (norma, restrição ou necessidade especial)?</h3>
           <Label id="observacao" />
-          <input type="text" placeholder="Escreva aqui..." {...register("observacao", {})} />
+          <textarea placeholder="Digite aqui...." id="textbox" cols="30" rows="10"></textarea>
 
           <h3 className="pergunta-label">Qual é a sua prioridade para contratar este serviço?</h3>
+          <br></br>
 
           <div id="checklistServicos" className={`dropdown-check-list ${isCheckListVisible ? 'visible' : ''}`} tabIndex="100">
             <span className="anchor" onClick={toggleCheckList}>Marque quantas opções desejar</span>
@@ -291,22 +331,49 @@ function ClientForm() {
         <section id="indicacao">
           <h1>Pesquisa</h1>
           <div className="box-line"></div>
-          <h3 className="pergunta-label">Quem indicou a Viverde Casa</h3>
+          <h3 className="pergunta-label">Quem indicou a Viverde Casa:</h3>
 
-          <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
-          <Label id="indicacao" label="Amigos"/>
-          <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
-          <Label id="indicacao" label="Projeto Social Parceiro"/>
-          <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
-          <Label id="indicacao" label="Profissional Parceiro"/>
-          <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
-          <Label id="indicacao" label="Estabelecimento conveniado"/>
-          <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
-          <Label id="indicacao" label="Instagram"/>
-          <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
-          <Label id="indicacao" label="Facebook"/>
-          <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
-          <Label id="indicacao" label="Outro"/>
+          <div>
+            <ul type="none">
+              <li>
+                <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
+                <LabelServ id="indicacao" label="Amigos"/>
+              </li>
+
+              <li>
+                <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
+                <LabelServ id="indicacao" label="Projeto Social Parceiro"/>
+              </li>
+
+              <li>
+                <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
+                <LabelServ id="indicacao" label="Profissional Parceiro"/>
+              </li>
+
+              <li>
+                <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
+                <LabelServ id="indicacao" label="Estabelecimento conveniado"/>
+              </li>
+
+              <li>
+                <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
+                <LabelServ id="indicacao" label="Instagram"/>
+              </li>
+
+              <li>
+                <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
+                <LabelServ id="indicacao" label="Facebook"/>
+              </li>
+
+              <li>
+                <input type="checkbox" placeholder="indicacao" {...register("indicacao", {required: true})} />
+                <LabelServ id="indicacao" label="Outro"/>
+              </li>
+            </ul>
+              
+          </div>
+
+          <br></br>
           <Label id="codigo-indicacao" label="Código de indicação:"/>
           <input type="text" id="codigo-indicacao" {...register("codigo-indicacao", {required: false, min: 10, maxLength: 50})} />
         </section>

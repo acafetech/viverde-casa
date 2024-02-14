@@ -37,7 +37,7 @@
 
 #client-form-container p {
     margin: 10px;
-    font-size: 15px;
+    font-size: 18px;
 }
 
 
@@ -143,10 +143,55 @@
 }
 
 #indicacao input[type="checkbox"]:checked + label:before {
-    background-color: #007bff;
+    background-color: #008037;
     color: #fff;
 }
 
+/*DATA DO SERVIÇO*/
+
+.data-servico input[type="checkbox"] {
+    display: none;
+}
+
+.data-servico input[type="checkbox"] + label {
+    display: block;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.data-servico input[type="checkbox"] + label:before {
+    content: "\2714";
+    font-size: 1.2em;
+    color: #008037;
+    display: inline-block;
+    width: 1.3em;
+    height: 1.3em;
+    line-height: 1.3em;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+    margin-right: 0.5em;
+}
+
+.data-servico input[type="checkbox"]:checked + label:before {
+    background-color: #008037;
+    color: #fff;
+}
+
+/*TEXTBOX*/
+
+#client-form-container textarea {
+    width: 40%;
+    height: 43px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #D9D9D9;
+    border-style: none;
+    font-size: 1.125rem;
+    padding-left: 14px;
+    margin-top: 5px;
+}
 
 /* BOTÃO DE ENVIO */
 
@@ -161,5 +206,7 @@
     border-style: none;
     margin-top: 20px;
 }
+
+
 
 
