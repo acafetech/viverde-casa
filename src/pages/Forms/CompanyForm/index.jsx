@@ -2,214 +2,213 @@ import './style.css';
 import Label from '../../../components/Label';
 import LabelCheck from '../../../components/LabelCheck';
 import LabelServ from '../../../components/LabelServices';
-import { useFormik } from "formik";
-
-//React hook form import
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 
-
-// Yup import
-import { string, number, object} from 'yup';
-
+//React hook form import
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 
 export default function CompanyForm() {
+    const [ isCheckListVisible, setCheckListVisible ] = useState(false);
+    //deixa visivel a checkbox
 
-    const schema = object().shape({
+    const toggleCheckList = () => {  
+     setCheckListVisible(!isCheckListVisible);
+    };
+
+    //validationSchema: schema//
+    const workerSchema = Yup.object().shape({
         //Dados da Empresa
         
-        razaoSocial: string()
+        razaoSocial: Yup.string()
             .required("Razão Social obrigatório.")
             .max(40, "Quantidade de caracteres excedida."),
         
-        cnpj: string() // bugado 
+        cnpj: Yup.string()
             .required("O CNPJ é obrigatório.")
             .matches(/[0-9]{14}/, "O campo CNPJ pode conter apenas digitos.")
             .max(14, "CNPJ invalido")
             .min(14,  "CNPJ inválido."),
         
-        telefoneEmpresa: string()
+        telefoneEmpresa: Yup.string()
             .required("Número Obrigatório")
             .matches(/[0-9]{11}/, "Formato de telefone invalido.")
             .min(11, "O telefone deve ter no mínimo 11 caracteres.")
             .max(11,"O telefone deve ter no máximo 11 caracteres."),
         
-        nomeFantasia: string()
+        nomeFantasia: Yup.string()
             .required("Nome Fantasia obrigatório.")
             .max(40, "Quantidade de caracteres excedida."),
         
         
-        qtdColaboradores: string()
+        qtdColaboradores: Yup.string()
             .required("Quantidade de colaboradores obrigatório."),
         
-        enderecoEletronico: string()
+        enderecoEletronico: Yup.string()
             .required("O endereço eletronico é obrigatório.")
             .email('Endereço Eletrônico Inválido.'),
         
         //Endereço
         
-        endereco: string()
+        endereco: Yup.string()
             .required("O logradouro é obrigatório.")
             .max(60, "quantidade máxima de caracteres atingida para o Endereço."),
         
-        bairro: string()
+        bairro: Yup.string()
             .required("O bairro é obrigatório.")
             .max(60, "quantidade máxima de caracteres atingida para o Bairro."),
         
-        cidade: string()
+        cidade: Yup.string()
             .required("A cicade é obrigatória.")
             .max(60, "quantidade máxima de caracteres atingida para a Cidade."),
         
-        cep: string("O campo CEP pode conter apenas dígitos.") //BUGADO
+        cep: Yup.string("O campo CEP pode conter apenas dígitos.")
             .typeError('CEP deve ser um número')
-            .positive('CEP deve ser um número positivo')
-            .integer('CEP deve ser um número inteiro')
             .required('CEP é obrigatório')
             .max(8, "CEP invalido"),
         
-        numero: string()
+        numero: Yup.string()
             .required("O Número é obrigatório.")
             .max(5, "Número não pode conter mais de 5 dígitos."),
         
-        estado: string()
+        estado: Yup.string()
             .required("O estado é obrigatória.")
             .max(16, "quantidade máxima de caracteres atingida para o Estado."),
         
         //Dados da(o) representante 
         
-        nomeCompleto: string()
+        nomeCompleto: Yup.string()
             .required("Nome completo obrigatório")
             .min(10, "Nome precisa ter no mínimo 10 caracteres")
             .max(50, "quantidade máxima de caracteres atingida"),
         
-        telefoneRepresentante: string()
+        telefoneRepresentante: Yup.string()
             .required("O número do telefone é obrigatório")
             .matches(/[0-9]{11}/, "Formato de telefone invalido.")
             .min(11, "O telefone deve ter no mínimo 11 caracteres.")
             .max(11,"O telefone deve ter no máximo 11 caracteres."),
         
-        cargoEmpresa: string()
+        cargoEmpresa: Yup.string()
             .required("Nome do cargo Obrigatório")
             .max(20, "quantidade máxima de caracteres atingida"),
         
-        emailRepresentante: string()
+        emailRepresentante: Yup.string()
             .required("O endereço eletronico é obrigatório.")
             .email('Endereço Eletrônico Inválido.'),
         
-        indicacao: string()
+        indicacao: Yup.string()
             .required("Nome do cargo Obrigatório")
             .max(40, "quantidade máxima de caracteres atingida"),
         
-        codigoIndicaco: string() // BUGADO
+        codigoIndicacao: Yup.string()
             .required("Código de incação obrigatório")
             .min(10, "Código invalido")
             .max(40, "Código invalido"),
         
          // Informações da Solicitação
         
-        servicoInfo: string(),
+        servicoInfo: Yup.string()
+        .required("Você de escilher pelo menos um campo"),
         
-        servicoOutro: string()
-            .max(14, "Máximo de caracters excedido")
+        servicoOutro: Yup.string()
+            .max(30, "Máximo de caracters excedido")
             .min(14, "Mínimo de caracters 14"),
         
-        iniciativaInfo: string()
-            .required("Campo obrigatório"), // mensagem de erro do bugada/ esse campo não pode ser string
+        iniciativaInfo: Yup.array("Selecione, no mínimo, uma opção.")
+        .min(1).of(Yup.string().required())
+        .required("Selecione, no mínimo, uma opção."),
             
         
-        comentarioSolicitacao: string()
-            .min(10, "Nó mínimo 10 caracteres")
-            .max(50, "Máximo de caracteres escedido"),
+        comentarioSolicitacao: Yup.string()
+            .min(10, "Nó mínimo 10 caracteres"),
         
          // Vínculos, questôes éticas e morais 
         
-         CampanhasPoliticas: string()
+         CampanhasPoliticas: Yup.string()
             .required("Campo obrigatório"),
         
-         CargoPublic: string()
+         CargoPublico: Yup.string()
             .required("Campo obrigatório"),
         
-         VinculoPolitico: string(),
+         VinculoPolitico: Yup.string(),
         
-         escandalo: string()
+         escandalo: Yup.string()
             .required("Campo obrigatório"),
         
-         escandaloAssedio: string()
+         escandaloAssedio: Yup.string()
             .required("Campo obrigatório"),
         
-         PlanoImpacto: string()
+         PlanoImpacto: Yup.string()
             .required("Campo obrigatório"),
         
-         ImpactoPositivo: string()
+         ImpactoPositivo: Yup.string()
             .required("Campo obrigatório"),
         
-         ImpactoSocial: string()
+         ImpactoSocial: Yup.string()
             .required("Campo obrigatório"),
         
-         PoliticaDiversidade: string()
+         PoliticaDiversidade: Yup.string()
             .required("Campo obrigatório"),
         
-        })//TODOS OS DADOS DO PORTIFOLIO SERAM ASDICIONADOS AQUI DENTRO
-        
-        //
+        });
+        //TODOS OS DADOS DO PORTIFOLIO SERAM ASDICIONADOS AQUI DENTRO//
         
         const formik = useFormik ({
+            validationSchema: workerSchema,
+            validateOnBlur: false,
+            validateOnChange: false,   
             initialValues: { 
-                razaoSocial:'', 
-                cnpj:'',  
-                telefoneEmpresa:'', 
-                nomeFantasia:'', 
-                qtdColaboradores:'', 
-                enderecoEletronico:'', 
-                endereco:'', bairro:'', 
-                cidade:'', cep:'', 
-                numero:'', 
-                estado:'', 
-                nomeCompleto:'', 
-                telefoneRepresentante:'', 
-                cargoEmpresa:'', 
-                emailRepresentante:'', 
-                indicacao:'', 
-                codigoIndicaco:'', 
-                servicoInfo:'', 
-                servicoOutro:'', 
-                iniciativaInfo:'', 
-                comentarioSolicitacao:'', 
-                CampanhasPoliticas:'', 
-                CargoPublic:'', 
-                VinculoPolitico:'', 
+                razaoSocial: '', 
+                cnpj: '',  
+                telefoneEmpresa: '', 
+                nomeFantasia: '', 
+                qtdColaboradores: '', 
+                enderecoEletronico: '', 
+                endereco: '', 
+                bairro: '', 
+                cidade: '', 
+                cep: '', 
+                numero: '', 
+                estado: '', 
+                nomeCompleto: '', 
+                telefoneRepresentante: '', 
+                cargoEmpresa: '', 
+                emailRepresentante: '', 
+                indicacao: '', 
+                codigoIndicacao: '', 
+                servicoInfo: [], 
+                servicoOutro: '', 
+                iniciativaInfo: [], 
+                comentarioSolicitacao: '', 
+                CampanhasPoliticas: '', 
+                CargoPublico: '', 
+                VinculoPolitico: '', 
                 escandalo:'',  
-                escandaloAssedio:'',  
-                PlanoImpacto:'',  
-                ImpactoPositivo:'', 
-                ImpactoSocial:[], 
-                PoliticaDiversidade:'',},
-            //validationSchema: schema,
+                escandaloAssedio: '',  
+                PlanoImpacto: '',  
+                ImpactoPositivo: '', 
+                ImpactoSocial: '', 
+                PoliticaDiversidade: '',
+            },
+            
             onSubmit: values => {
+                alert(JSON.stringify(values, null, 2));
                 console.log(values)
             }
         })
         
-    const [isCheckListVisible, setCheckListVisible] = useState(false);
-    const toggleCheckList = () => {
-      setCheckListVisible(!isCheckListVisible);
-    };
-
-  const { 
-    register, 
-    handleSubmit, 
-    formState: { errors } } = useForm({resolver: yupResolver(schema)});
-
-const onSubmit = data => console.log(data);
-console.log(errors);
+        const {
+            register, 
+        } = useForm({
+        });
 
 
 
   return ( 
     <main id="company-form">
-        <form id="form-container" onSubmit={handleSubmit(onSubmit) }>
+        <form id="form-container" onSubmit={formik.handleSubmit}>
             <section className='dadosEmpresa'>
                 <h1>Dados da Empresa</h1>
                 <div className="box-line"></div>
@@ -217,24 +216,24 @@ console.log(errors);
                     <div className="left">
                         <Label id="razao-social" label="Razão Social" />
                         <input type="text" id="razao-social" {...register("razaoSocial",)} onChange={formik.handleChange} value={formik.values.razaoSocial} />
-                        <p className="error-message">{errors?.razaoSocial?.message}</p>
+                        <p className="error-message">{formik.errors.razaoSocial}</p>
                        
 
                         <Label id="cnpj" label="CNPJ" />
                         <p className="caracteres">Apenas números</p>
                         <input id="cnpj" type="text" {...register("cnpj",)} onChange={formik.handleChange} value={formik.values.cnpj}/>
-                        <p className="error-message">{errors?.cnpj?.message}</p>
+                        <p className="error-message">{formik.errors.cnpj}</p>
 
                         <Label id="telefone-empresa" label="Telefone"/>
                         <p className='caracteres'>Apenas números</p>
                         <input type="tel" id="telefone-empresa" {...register("telefoneEmpresa",)} onChange={formik.handleChange} value={formik.values.telefoneEmpresa}/>
-                        <p className="error-message">{errors?.telefoneEmpresa?.message}</p>
+                        <p className="error-message">{formik.errors.telefoneEmpresa}</p>
                         
                     </div>
                     <div className='right'>
                         <Label id="nome-fantasia" label="Nome Fantasia" />
                         <input type="text" id="nome-fantasia" {...register("nomeFantasia",)} onChange={formik.handleChange} value={formik.values.nomeFantasia}/>
-                        <p className="error-message">{errors?.nomeFantasia?.message}</p>
+                        <p className="error-message">{formik.errors.nomeFantasia}</p>
 
                         <h3 className='pergunta-label'> Quantos colaboradores?</h3>
                         <p className='caracteres'>Escolha uma opção</p>
@@ -259,13 +258,13 @@ console.log(errors);
                                 <LabelServ id="acima50" label="Mais de 50" />
                             </li>
                         </ul>
-                        <p className="error-message">{errors?.qtdColaboradores?.message}</p>
+                        <p className="error-message">{formik.errors.qtdColaboradores}</p>
                         </div>
 
                         <Label id="endereco-eletronico" label="Endereço Eletrônico" />
                         <p className='caracteres'>E-mail ou link de rede social</p>
                         <input type="text" id="endereco-eletronico" {...register("enderecoEletronico",)} onChange={formik.handleChange} value={formik.values.enderecoEletronico}/>
-                        <p className="error-message">{errors?.enderecoEletronico?.message}</p>
+                        <p className="error-message">{formik.errors?.enderecoEletronico}</p>
 
                     </div>
                     </section>
@@ -276,33 +275,33 @@ console.log(errors);
                                 <div className="left">
                                 <Label id="endereco" label="Logadouro"/>
                                 <input type="text" id="endereco" {...register("endereco")} onChange={formik.handleChange} value={formik.values.endereco}/>
-                                <p className="error-message">{errors?.endereco?.message}</p>
+                                <p className="error-message">{formik.errors.endereco}</p>
 
                                 <Label id="bairro" label="Bairro"/>
                                 <input type="text" id="bairro" {...register("bairro")} onChange={formik.handleChange} value={formik.values.bairro}/>
-                                <p className="error-message">{errors?.bairro?.message}</p>
+                                <p className="error-message">{formik.errors.bairro}</p>
                               
                                 
                                 <Label id="cidade" label="Cidade"/>
                                 <input type="text" id="cidade" {...register("cidade")} onChange={formik.handleChange} value={formik.values.cidade}/>
-                                <p className="error-message">{errors?.cidade?.message}</p>
+                                <p className="error-message">{formik.errors.cidade}</p>
                             
                             </div>
                                 
                             <div className="right">
                             <Label id="cep" label="CEP"/>
                                 <input type="number" id="cep" {...register("cep")} onChange={formik.handleChange} value={formik.values.cep}/>  
-                                <p className="error-message">{errors?.cep?.message}</p>
+                                <p className="error-message">{formik.errors.cep}</p>
                                    
 
                                 <Label id="numero" label="Número"/>
                                 <input type="number" id="numero" {...register("numero")} onChange={formik.handleChange} value={formik.values.numero}/>
-                                <p className="error-message">{errors?.numero?.message}</p>
+                                <p className="error-message">{formik.errors.numero}</p>
                            
                                 
                                 <Label id="estado" label="Estado"/>
                                 <input type="text" id="estado" {...register("estado")} onChange={formik.handleChange} value={formik.values.estado}/>
-                                <p className="error-message">{errors?.estado?.message}</p>
+                                <p className="error-message">{formik.errors.estado}</p>
 
                                 
                             </div>
@@ -317,38 +316,38 @@ console.log(errors);
                     <div className="left">
                         <Label id="nome-completo" label="Nome Completo"/>
                         <input type="text" id="nome-completo" {...register("nomeCompleto")} onChange={formik.handleChange} value={formik.values.nomeCompleto}/>
-                        <p className="error-message">{errors?.nomeCompleto?.message}</p>
+                        <p className="error-message">{formik.errors.nomeCompleto}</p>
                     
                     </div> 
                     <div className="right">              
                     <Label id="telefone-representante" label="Telefone"/>
                         <input type="tel" id="telefone-representante" {...register("telefoneRepresentante")} onChange={formik.handleChange} value={formik.values.telefoneRepresentante}/>
-                        <p className="error-message">{errors?.telefoneRepresentante?.message}</p>
+                        <p className="error-message">{formik.errors.telefoneRepresentante}</p>
                      
                     </div>
                 </section>
 
                 <Label id="cargo-empresa" label="Cargo que ocupa na empresa" />
                 <input type="text" id="cargo-empresa" {...register("cargoEmpresa")} onChange={formik.handleChange} value={formik.values.cargoEmpresa}/>
-                <p className="error-message">{errors?.cargoEmpresa?.message}</p>
+                <p className="error-message">{formik.errors.cargoEmpresa}</p>
              
                 
                 <Label id="email-representante" label="Informe seu melhor e-mail" />
                 <input type="email" id="email-representante" {...register("emailRepresentante")} onChange={formik.handleChange} value={formik.values.emailRepresentante}/>
-                <p className="error-message">{errors?.emailRepresentante?.message}</p>
+                <p className="error-message">{formik.errors.emailRepresentante}</p>
              
 
                 <section className="left-right">
                     <div className="left">
                         <Label id="indicacao" label="Quem lhe indicou à Viverde Casa?" />
                         <input type="text" id="indicacao" {...register("indicacao")} onChange={formik.handleChange} value={formik.values.indicacao}/>
-                        <p className="error-message">{errors?.indicacao?.message}</p>
+                        <p className="error-message">{formik.errors.indicacao}</p>
                         
                     </div>
                     <div className='right'>
                         <Label id="indicacao" label="Cód. de Indicação" />
-                        <input type="text" id="codigo-indicacao" {...register("codigoIndicacao")} onChange={formik.handleChange} value={formik.values.codigoIndicaco}/>
-                        <p className="error-message">{errors?.codigoIndicaco?.message}</p>
+                        <input type="text" id="codigo-indicacao" {...register("codigoIndicacao")} onChange={formik.handleChange} value={formik.values.codigoIndicacao}/>
+                        <p className="error-message">{formik.errors.codigoIndicacao}</p>
                     </div>
 
                 </section>                   
@@ -379,6 +378,7 @@ console.log(errors);
                             <LabelServ id="apoio-acoes" label="Apoio a ações ESG (Quero investir em ações de impacto social e ambiental com a Viverde Casa) " />
                         </li>
                     </ul>
+                    <p className="error-message">{formik.errors.servicoInfo}</p>
                     </div>
 
                     <Label id="servicoOutro" label="Outro" />
@@ -396,20 +396,20 @@ console.log(errors);
                         </li>
                         <li>
                             <input type="checkbox" id="viverde-athis" value="viverdeATHIS" {...register("iniciativaInfo")} onChange={formik.handleChange}/>
-                            <LabelServ id="viverde-athis" label="Viverde ATHIS (Programa de melhorias habitacionais de interesse social) " />
+                            <LabelServ id="viverde-athis" label="Viverde ATHIS (Programa de melhorias habitacionais de interesse social)" />
                         </li>
                         <li>
                             <input type="checkbox" id="viverde-hub" value="viverdeHub" {...register("iniciativaInfo")} onChange={formik.handleChange}/>
-                            <LabelServ id="viverde-hub" label="Viverde HUB (Programa de incentivo a pesquisa, desenvolvimento e inovação) " />
+                            <LabelServ id="viverde-hub" label="Viverde HUB (Programa de incentivo a pesquisa, desenvolvimento e inovação)" />
                         </li>          
                     </ul>
-                  
+                    <p className="error-message">{formik.errors.iniciativaInfo}</p>
                 </div>
 
                 <Label id="comentarioSolicitacao" label="Comentário" />
                     <textarea id="comentarioSolicitacao" {...register("comentarioSolicitacao")} onChange={formik.handleChange} value={formik.values.comentarioSolicitacao}/>
                     
-                    <p className="error-message">{errors?.comentarioSolicitacao?.message}</p>
+                    <p className="error-message">{formik.errors.comentarioSolicitacao}</p>
             </section>
 
             <section className="Veiculos-Que">
@@ -423,28 +423,28 @@ console.log(errors);
 
                 <div className="inputs-escolha">
                     <input id="CampanhasSim" {...register("CampanhasPoliticas")} 
-                    type="radio" value="Sim" />
+                    type="radio" value="Sim"  onChange={formik.handleChange}/>
                     <LabelCheck id="CampanhasSim" label="Sim"/>
 
                     <input id="CampanhasNao" {...register("CampanhasPoliticas")} 
-                    type="radio" value=" Não" />
+                    type="radio" value=" Não" onChange={formik.handleChange}/>
                     <LabelCheck id="CampanhasNao" label="Não"/>
 
-                    <p className="error-message">{errors?.CampanhasPoliticas?.message}</p>
+                    <p className="error-message">{formik.errors.CampanhasPoliticas}</p>
                  </div>
                  <p className='questions'>Você ou algum outro dirigente da empresa tem ou teve algum parente de 
                   até 2º ocupando cargo publico nos últimos 20 anos?</p>
 
                   <div className="inputs-escolha">
-                    <input id="CargoSim" {...register("CargoPublic")} 
-                    type="radio" value="Sim" />
+                    <input id="CargoSim" {...register("CargoPublico")} 
+                    type="radio" value="Sim" onChange={formik.handleChange}/>
                     <LabelCheck id="CargoSim" label="Sim"/>
 
-                    <input id="CargoNao" {...register("CargoPublic")} 
-                    type="radio" value=" Não" />
-                    <LabelCheck id="CargoNao" label="Não"/>
+                    <input id="CargoNao" {...register("CargoPublico")} 
+                    type="radio" value=" Não" onChange={formik.handleChange}/>
+                    <LabelCheck id="CargoNao" label="Não" />
 
-                    <p className="error-message">{errors?.CargoPublic?.message}</p>
+                    <p className="error-message">{formik.errors.CargoPublico}</p>
                   </div>
 
                   <Label id="VinculoPolitico" label="Se a sua resposta para as perguntas anteriores for sim; 
@@ -455,65 +455,65 @@ console.log(errors);
                    <p className='questions'>Sua empresa ou algum de seus representantes tem ou teve envolvimento em algum 
                     escândalo envolvendo questões de trabalho escravo desde a sua fundação?</p>
                     <div className="inputs-escolha">
-                        <input id="EscandaloSim" {...register("escandalo")} type="radio" value="Sim" />
+                        <input id="EscandaloSim" {...register("escandalo")} type="radio" value="Sim" onChange={formik.handleChange}/>
                         <LabelCheck id="EscandaloSim" label="Sim"/>
 
-                        <input id="EscandaloNao" {...register("escandalo")} type="radio" value=" Não" />
+                        <input id="EscandaloNao" {...register("escandalo")} type="radio" value=" Não" onChange={formik.handleChange}/>
                         <LabelCheck id="EscandaloNao" label="Não"/>
 
-                        <p className="error-message">{errors?.escandalo?.message}</p>
+                        <p className="error-message">{formik.errors.escandalo}</p>
                     </div>
 
                     <p className='questions'>Sua empresa ou algum de seus representantes tem ou teve envolvimento em algum escândalo
                        envolvendo questões de assédio físico ou moral desde a sua fundação?</p>
                     <div className="inputs-escolha">
                        <input id="AssedioSim" {...register("escandaloAssedio")} 
-                       type="radio" value="Sim" />
+                       type="radio" value="Sim" onChange={formik.handleChange}/>
                        <LabelCheck id="AssedioSim" label="Sim"/>
 
                        <input id="AssedioNao" {...register("escandaloAssedio")} 
-                       type="radio" value=" Não" />
+                       type="radio" value=" Não" onChange={formik.handleChange}/>
                        <LabelCheck id="AssedioNao" label="Não"/>
 
-                       <p className="error-message">{errors?.escandaloAssedio?.message}</p>
+                       <p className="error-message">{formik.errors.escandaloAssedio}</p>
                     </div>
 
                     <p className='questions'>Sua empresa ou organização já possui um plano de impacto positivo, 
                       com parâmetros claros e definidos,que esteja em prática? </p>
                       <div className="inputs-escolha">
                         <input id="PlanoSim" {...register("PlanoImpacto")} 
-                        type="radio" value="Sim" />
+                        type="radio" value="Sim" onChange={formik.handleChange}/>
                             <LabelCheck id="PlanoSim" label="Sim"/>
 
                         <input id="PlanoNão" {...register("PlanoImpacto")}
-                        type="radio" value=" Não" />
+                        type="radio" value=" Não" onChange={formik.handleChange}/>
                             <LabelCheck id="PlanoNão" label="Não"/>
 
-                        <p className="error-message">{errors?.PlanoImpacto?.message}</p>
+                        <p className="error-message">{formik.errors.PlanoImpacto}</p>
                     </div>
 
                     <Label id="ImpactoPositivo" label="O que você enxerga de possível melhoria para ampliar 
                       o impacto positivo gerando por sua empresa ou organização?"/>
-                      <input type="text" id="ImpactoPositivo" {...register("ImpactoPositivo")} />
-                      <p className="error-message">{errors?.ImpactoPositivo?.message}</p>
+                      <input type="text" id="ImpactoPositivo" {...register("ImpactoPositivo")} onChange={formik.handleChange} value={formik.values.ImpactoPositivo}/>
+                      <p className="error-message">{formik.errors.ImpactoPositivo}</p>
 
                       <Label id="ImpactoSocial" label="Quais os setores da sua organização que investem em 
                       impacto social ou ambiental positivo?"/>
-                      <input type="text" id="ImpactoSocial" {...register("ImpactoSocial")} />
-                      <p className="error-message">{errors?.ImpactoSocial?.message}</p>
+                      <input type="text" id="ImpactoSocial" {...register("ImpactoSocial")} onChange={formik.handleChange} value={formik.values.ImpactoSocial}/>
+                      <p className="error-message">{formik.errors.ImpactoSocial}</p>
 
                       <p className='questions'>Sua organização já possui uma política de diversidade implantada em algum 
                       setor?</p>
                       <div className="inputs-escolha">
                         <input id="DiversidadeSim" {...register("PoliticaDiversidade")}
-                        type="radio" value="Sim" />
+                        type="radio" value="Sim" onChange={formik.handleChange}/>
                         <LabelCheck id="DiversidadeSim" label="Sim"/>
 
                         <input id="DiversidadeNão" {...register("PoliticaDiversidade")} 
-                        type="radio" value=" Não" />
+                        type="radio" value=" Não" onChange={formik.handleChange}/>
                         <LabelCheck id="DiversidadeNão" label="Não"/>
 
-                        <p className="error-message">{errors?.PoliticaDiversidade?.message}</p>
+                        <p className="error-message">{formik.errors.PoliticaDiversidade}</p>
                     </div>
             </section>
 
@@ -522,4 +522,5 @@ console.log(errors);
             </div>
         </form>
     </main>
-  )}
+  );
+}
