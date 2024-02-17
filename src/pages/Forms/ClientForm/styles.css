@@ -40,6 +40,12 @@
     font-size: 18px;
 }
 
+/* TELEFONES */
+
+#client-form-container .telefones {
+    display: flex;
+    flex-direction: row;
+}
 
 /* DROPDOWN */
 
@@ -206,7 +212,5 @@
     border-style: none;
     margin-top: 20px;
 }
-
-
 
 
