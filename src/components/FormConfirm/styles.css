@@ -1,0 +1,25 @@
+.box-confirmacao {
+    top: 165px;
+    left: 80px;
+    position: relative;
+    width: 530px;
+    height: 236px;
+    background-color: #ece8e8;
+    border-radius: 77px;
+    padding: 60px;
+}
+
+.bem-vindo {
+    font-weight: 700;
+    color: #008037;
+    font-size: 34px;
+    line-height: normal;
+}
+
+.mensagem-confirmacao {
+    color: #008037;
+    font-size: 29px;
+    font-weight: 500;
+    line-height: normal;
+}
+

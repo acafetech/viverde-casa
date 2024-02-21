@@ -1,3 +1,4 @@
+
 import './styles.css'
 import Label from '../../../components/Label';
 import LabelCheck from '../../../components/LabelCheck';
@@ -8,6 +9,11 @@ import { useState } from 'react';
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+
+import "./styles.css"
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import Label from "../../../components/FormInput";
 
 export default function WorkerForm() {
     const [isCheckListVisible, setCheckListVisible] = useState(false);
@@ -434,6 +440,7 @@ export default function WorkerForm() {
                 <LabelCheck id="nao-cart-assinada" label="Não"/>
                 <p className="error-message">{formik.errors.cartAssinada }</p>
             </div>
+
         </section>
 
         <section id="financeiro">
@@ -496,5 +503,6 @@ export default function WorkerForm() {
         </form>
         
     </main>
+
   );
 }
