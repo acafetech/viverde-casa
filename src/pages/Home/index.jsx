@@ -2,7 +2,6 @@
 import Header from "../../components/Header";
 import ContrateOpcoes from "../../components/HeroSection";
 import ServiceTray from "../../components/ServiceTray";
-import Button from "../../components/Button";
 import Footer from "../../components/Footer/index"
 import QuemSomos from "../../components/AboutContainer/index";
 
@@ -13,8 +12,8 @@ function App() {
       <Header />
       <ContrateOpcoes />
       <ServiceTray />  
-        <QuemSomos/>
-        <Footer/>
+      <QuemSomos/>
+      <Footer/>
     </>
   );
 

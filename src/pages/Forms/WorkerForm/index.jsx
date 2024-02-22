@@ -11,6 +11,11 @@ export default function WorkerForm() {
     const [mostrarTipoDeficiencia, setMostrarTipoDeficiencia] = useState(false);
 
 
+import "./styles.css"
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import Label from "../../../components/FormInput";
+
     const toggleCheckList = () => {
       setCheckListVisible(!isCheckListVisible);
     };
@@ -370,11 +375,13 @@ console.log(errors);
                 <input id="nao-cart-assinada"{...register("cart-assinada", { required: true })} type="radio" value=" Não" /> 
                 <LabelCheck id="nao-cart-assinada" label="Não"/>
             </div>
+
         </section>
 
         <section id="financeiro">
 
             <h1>Financeiro</h1>
+
             <div className="box-line"></div>
 
             <div className="financeiro-servico">
@@ -400,10 +407,12 @@ console.log(errors);
                 <p className="caracteres">  Ex.: Se cobrar por diária, quanto custa sua diária? </p>
                 <input type="text" id="preco-medio" {...register("preco-medio", {required: true})} />
             </div>
+
         </section>
 
         <section id="experiencia-profissional">
             <h1>Experiência Profissional</h1>
+
             <div className="box-line"></div>
             <section className="informe">
                 <h3 className="pergunta-label"> Informe pelo menos um contato de  referência profissional:
@@ -431,5 +440,6 @@ console.log(errors);
         </form>
         
     </main>
+
   );
 }

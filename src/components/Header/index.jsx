@@ -28,6 +28,7 @@ function Header() {
                 <div className="nav-button">
                     <a href="" className="find-pro">Encontre um profissional</a>
                     <a href="" className="offer-serv">Ofereça seus serviços</a>
+                    <a href="" className="offer-part">Seja uma parceira(o)</a>
                 </div>
             </nav>
 
