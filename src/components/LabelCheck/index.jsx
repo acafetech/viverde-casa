@@ -1,4 +1,6 @@
-function LabelType({ id, label, classe }){
+
+function LabelType({ id, label }){
+
     return (
         <label htmlFor={id} className="escolha-horario sim-nao">
             {label} 

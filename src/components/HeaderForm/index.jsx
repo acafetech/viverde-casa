@@ -8,4 +8,4 @@ function HeaderForm() {
     )
 }
 
-export default HeaderForm
+export default HeaderForm;
