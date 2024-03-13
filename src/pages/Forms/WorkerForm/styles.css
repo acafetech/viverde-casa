@@ -1,5 +1,6 @@
 * {
     font-family: Inter;
+    color: #008037;
     margin: 0;
     padding: 0;
 }
@@ -16,6 +17,7 @@ html {
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: #008037; 
+
 }
 
 #worker-form svg {
@@ -93,6 +95,7 @@ input[type="tel"] {
       padding-left: 14px;
       margin-top: 5px;
 }
+
   
 input[type="date"] { width: 50%;}
 
@@ -297,5 +300,3 @@ button {
     }
 
   }
-
-

@@ -11,4 +11,3 @@ function FormInput({ id, label, examples, type, name }) {
 }
 
 export default FormInput;
-

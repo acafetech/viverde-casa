@@ -261,6 +261,7 @@ export default function CompanyForm() {
                             </li>
                         </ul>
                         <p className="error-message">{formik.errors.qtdColaboradores}</p>
+
                         </div>
 
                         <Label id="endereco-eletronico" label="Endereço Eletrônico" />
@@ -288,6 +289,7 @@ export default function CompanyForm() {
                                 <input type="text" id="cidade" {...register("cidade")} onChange={formik.handleChange} value={formik.values.cidade} />
                                 <p className="error-message">{formik.errors.cidade}</p>
                             
+
                             </div>
                                 
                             <div className="right">
@@ -385,6 +387,7 @@ export default function CompanyForm() {
 
                     <Label id="servicoOutro" label="Outro" />
                     <input id="servicoOutro" type="text" {...register("servicoOutro")} onChange={formik.handleChange} value={formik.values.servicoOutro} />
+
                     
                     
                     <p className='questions'>Que iniciativa de impacto gostaria de apoiar?</p>
@@ -433,6 +436,7 @@ export default function CompanyForm() {
                     <LabelCheck id="CampanhasNao" label="Não"/>
 
                     <p className="error-message">{formik.errors.CampanhasPoliticas}</p>
+
                  </div>
                  <p className='questions'>Você ou algum outro dirigente da empresa tem ou teve algum parente de 
                   até 2º ocupando cargo publico nos últimos 20 anos?</p>
@@ -447,6 +451,7 @@ export default function CompanyForm() {
                     <LabelCheck id="CargoNao" label="Não" />
 
                     <p className="error-message">{formik.errors.CargoPublico}</p>
+
                   </div>
 
                   <Label id="VinculoPolitico" label="Se a sua resposta para as perguntas anteriores for sim; 
@@ -464,6 +469,7 @@ export default function CompanyForm() {
                         <LabelCheck id="EscandaloNao" label="Não"/>
 
                         <p className="error-message">{formik.errors.escandalo}</p>
+
                     </div>
 
                     <p className='questions'>Sua empresa ou algum de seus representantes tem ou teve envolvimento em algum escândalo
@@ -478,6 +484,7 @@ export default function CompanyForm() {
                        <LabelCheck id="AssedioNao" label="Não"/>
 
                        <p className="error-message">{formik.errors.escandaloAssedio}</p>
+
                     </div>
 
                     <p className='questions'>Sua empresa ou organização já possui um plano de impacto positivo, 
@@ -492,10 +499,12 @@ export default function CompanyForm() {
                             <LabelCheck id="PlanoNão" label="Não"/>
 
                         <p className="error-message">{formik.errors.PlanoImpacto}</p>
+
                     </div>
 
                     <Label id="ImpactoPositivo" label="O que você enxerga de possível melhoria para ampliar 
                       o impacto positivo gerando por sua empresa ou organização?"/>
+
                       <input type="text" id="ImpactoPositivo" {...register("ImpactoPositivo")} onChange={formik.handleChange} value={formik.values.ImpactoPositivo} />
                       <p className="error-message">{formik.errors.ImpactoPositivo}</p>
 
@@ -503,6 +512,7 @@ export default function CompanyForm() {
                       impacto social ou ambiental positivo?"/>
                       <input type="text" id="ImpactoSocial" {...register("ImpactoSocial")} onChange={formik.handleChange} value={formik.values.ImpactoSocial} />
                       <p className="error-message">{formik.errors.ImpactoSocial}</p>
+
 
                       <p className='questions'>Sua organização já possui uma política de diversidade implantada em algum 
                       setor?</p>
@@ -516,6 +526,7 @@ export default function CompanyForm() {
                         <LabelCheck id="DiversidadeNão" label="Não"/>
 
                         <p className="error-message">{formik.errors.PoliticaDiversidade}</p>
+
                     </div>
             </section>
 

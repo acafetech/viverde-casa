@@ -11,6 +11,17 @@ export default function WorkerForm() {
     const [mostrarTipoDeficiencia, setMostrarTipoDeficiencia] = useState(false);
 
 
+import './styles.css'
+import Label from '../../../components/Label';
+import LabelCheck from '../../../components/LabelCheck';
+import LabelServ from '../../../components/LabelServices';
+import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+/*import { yupResolver } from "@hookform/resolvers/yup";*/
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
+
 import "./styles.css"
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -42,6 +53,7 @@ console.log(errors);
                     <div className="left">
                         <h3 className="pergunta-label"><Label id="nome-completo" label="Nome Completo"/> </h3>
                         <p className='caracteres'>Conforme consta nos seus documentos</p>
+
                         <input type="text" id="nome-completo" {...register("nomeCompleto", {required: true, minLength: 10, maxLength: 100})} />
                         {errors.nomeCompleto && errors.nomeCompleto.type === "required" && (
                             <p className="error-message">O nome completo é obrigatório.</p>
@@ -73,6 +85,7 @@ console.log(errors);
                     <div className="right">
                         <Label id="RG" label="RG"/> 
                         <p className='caracteres'>Apenas números</p>
+
                         <input type="text" id="RG" {...register("RG", {required: true, maxLength: 18})} />
                         {errors.RG && errors.RG.type === "required" && (
                             <p className="error-message">O RG é obrigatório.</p>
@@ -112,6 +125,7 @@ console.log(errors);
                         <div className="left-right">
                             <div className="left">
                             <Label id="endereco" label="Logadouro"/>
+
                             <input type="text" id="endereco" {...register("endereco", {required: true, maxLength: 100})} />
                             {errors.endereco && errors.endereco.type === "required" && (
                                 <p className="error-message">O logradouro é obrigatório.</p>
@@ -174,7 +188,6 @@ console.log(errors);
                     <div className="port-deficiencia">
                         <h3 className="pergunta-label">Você é uma pessoa com deficiência?</h3>
 
-                        
                         <input type="radio" id="sim-deficiencia" value="Sim" {...register("port-deficiencia", { required: true  })} onChange={() => {
                         setMostrarTipoDeficiencia(true);
                         }} />
@@ -214,6 +227,7 @@ console.log(errors);
 
             <h1>Dados Profissionais</h1>
             <div className="box-line"></div>
+
 
             <div className="cnpj">
                 <h3 className="pergunta-label">Possui CNPJ?</h3>
@@ -350,6 +364,7 @@ console.log(errors);
 
             <div className="horarios">
                <h3 className="pergunta-label">Qual sua disponibilidade de horário?</h3>
+
                 <input id="manha" {...register("horarios", { required: true })} type="radio" value="Manhã" />
                 <LabelCheck id="manha" label="Manhã"/>
 
@@ -381,13 +396,12 @@ console.log(errors);
         <section id="financeiro">
 
             <h1>Financeiro</h1>
-
             <div className="box-line"></div>
 
+            <div className="box-line"></div>
             <div className="financeiro-servico">
                 <h3 className="pergunta-label">Como você costuma cobrar pelo serviço?</h3>
 
-                
                 <input id="por-hora" type="radio" value="Por Hora"  {...register("cobrar-servico", { required: true })} />
                 <LabelCheck id="por-hora" label="Por Hora"/>
 
@@ -408,10 +422,19 @@ console.log(errors);
                 <input type="text" id="preco-medio" {...register("preco-medio", {required: true})} />
             </div>
 
+               <Label id="preco-medio" />
+                <p className="caracteres">  Ex.: Se cobrar por diária, quanto custa sua diária? </p>
+                <input type="text" id="preco-medio" {...register("precoMedio")} onChange={formik.handleChange} value={formik.values.precoMedio}/>
+                <p className="error-message">{formik.errors.precoMedio }</p>
+            </div>
         </section>
 
         <section id="experiencia-profissional">
             <h1>Experiência Profissional</h1>
+            <div className="box-line"></div>
+            <section className="informe">
+                <h3 className="pergunta-label"> Informe pelo menos um contato de  referência profissional:
+                </h3>
 
             <div className="box-line"></div>
             <section className="informe">
