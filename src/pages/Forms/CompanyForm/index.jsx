@@ -5,6 +5,8 @@ import LabelServ from '../../../components/LabelServices';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 
+/* Dados da empresa */ /*Não ta pengando os dados nem o botão de enviar*/ 
+
 //React hook form import
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -205,7 +207,6 @@ export default function CompanyForm() {
             register, 
         } = useForm({
         });
-
 
 
   return ( 

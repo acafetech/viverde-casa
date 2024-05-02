@@ -2,37 +2,23 @@ import './styles.css'
 import Label from '../../../components/Label';
 import LabelCheck from '../../../components/LabelCheck';
 import LabelServ from '../../../components/LabelServices';
-
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+
+/*import { yupResolver } from "@hookform/resolvers/yup";*/
+//React hook form import
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
+/* Dados do Trabalhador*/ /*apaga e joga no lixo*/
 
 export default function WorkerForm() {
     const [isCheckListVisible, setCheckListVisible] = useState(false);
     const [mostrarTipoDeficiencia, setMostrarTipoDeficiencia] = useState(false);
 
-
-import './styles.css'
-import Label from '../../../components/Label';
-import LabelCheck from '../../../components/LabelCheck';
-import LabelServ from '../../../components/LabelServices';
-import { useForm } from 'react-hook-form';
-import { useState } from 'react';
-/*import { yupResolver } from "@hookform/resolvers/yup";*/
-import { useFormik } from "formik";
-import * as Yup from "yup";
-
-
-import "./styles.css"
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import Label from "../../../components/FormInput";
-
     const toggleCheckList = () => {
       setCheckListVisible(!isCheckListVisible);
     };
-
-    
-
 
   const { 
     register, 
@@ -420,7 +406,7 @@ console.log(errors);
                <Label id="preco-medio" />
                 <p className="caracteres">  Ex.: Se cobrar por diária, quanto custa sua diária? </p>
                 <input type="text" id="preco-medio" {...register("preco-medio", {required: true})} />
-            </div>
+            
 
                <Label id="preco-medio" />
                 <p className="caracteres">  Ex.: Se cobrar por diária, quanto custa sua diária? </p>
@@ -437,7 +423,7 @@ console.log(errors);
                 </h3>
 
             <div className="box-line"></div>
-            <section className="informe">
+             <section className="informe">
                 <h3 className="pergunta-label"> Informe pelo menos um contato de  referência profissional:
                 </h3>
 
@@ -451,6 +437,7 @@ console.log(errors);
                     <h3><Label id="certificado" label="Possui certifições complementares? Quais? (opcional)" /></h3>
                     <input id="certificado" type="text"  
                     {...register("certificacoes", {})} />
+                </section>
 
             </section>
 
