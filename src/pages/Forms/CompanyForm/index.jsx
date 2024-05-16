@@ -4,6 +4,8 @@ import LabelCheck from '../../../components/LabelCheck';
 import LabelServ from '../../../components/LabelServices';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import HeaderForm from '../../../components/HeaderForm';
+import Footer from '../../../components/Footer'
 
 /* Dados da empresa */ /*Não ta pengando os dados nem o botão de enviar*/ 
 
@@ -211,6 +213,7 @@ export default function CompanyForm() {
 
   return ( 
     <main id="company-form">
+        <HeaderForm/>
         <form id="form-container" onSubmit={formik.handleSubmit}>
             <section className='dadosEmpresa'>
                 <h1>Dados da Empresa</h1>
@@ -535,6 +538,7 @@ export default function CompanyForm() {
                 <button type="submit">Enviar</button>
             </div>
         </form>
+        <Footer/>
     </main>
   );
 }

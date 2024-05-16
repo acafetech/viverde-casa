@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useFormik } from 'formik';
 import * as Yup from "yup";
+import HeaderForm from '../../../components/HeaderForm'
+import Footer from '../../../components/Footer';
 
 /*Dados do Cliente*/ /* DEU RUIM NÃO TÁ ABRINDO */
 
@@ -142,6 +144,7 @@ function ClientForm() {
 
   return (
     <main className="client-form">
+        <HeaderForm/>
       <form id="client-form-container" onSubmit={formik.handleSubmit}>
         <section id="dados-pessoais">
           <h1>Dados Pessoais</h1>
@@ -536,6 +539,7 @@ function ClientForm() {
 
         <button type="submit">Enviar</button> 
       </form>
+      <Footer/>
     </main>
   )
 }
