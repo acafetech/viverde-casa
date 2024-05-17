@@ -96,6 +96,8 @@ function ClientForm() {
     codigoIndicacao: Yup.string()
       .min(2, "Número mínimo de 2 caracteres.")
       .max(20, "Número máximo de 20 caracteres."),
+    termoPrivacidade: Yup.string()
+    .required("Termo obrigatorio."),
   });
 
   const formik = useFormik({
@@ -129,6 +131,7 @@ function ClientForm() {
             dataServico: [],
             indicacao: [],
             codigoIndicacao: '',
+            termoPrivacidade:'',
           },
 
           onSubmit: values => {
@@ -426,23 +429,35 @@ function ClientForm() {
           <div className="data-servico">
             <ul type="none">
               <li>
-                <input type="checkbox" placeholder="data-servico" {...register("dataServico")} onChange={formik.handleChange} />
-                <LabelServ id="data-servico" label="Urgente"/>
+                <input type="checkbox" 
+                id="servico-urgente" 
+                value="urgente"
+                {...register("dataServico")} onChange={formik.handleChange} />
+                <LabelServ id="servico-urgente" label="Urgente"/>
               </li>
 
               <li>
-                <input type="checkbox" placeholder="data-servico" {...register("dataServico")} onChange={formik.handleChange} />
-                <LabelServ id="data-servico" label="Na próxima semana"/>
+                <input type="checkbox" 
+                id="proxima-semana" 
+                value="proximaSemana"
+                {...register("dataServico")} onChange={formik.handleChange} />
+                <LabelServ id="proxima-semana" label="Na próxima semana"/>
               </li>
 
               <li>
-                <input type="checkbox" placeholder="data-servico" {...register("dataServico")} onChange={formik.handleChange} />
-                <LabelServ id="data-servico" label="Daqui a um mês"/>
+                <input type="checkbox" 
+                id="um-mes" 
+                value="umMes"
+                {...register("dataServico")} onChange={formik.handleChange} />
+                <LabelServ id="um-mes" label="Daqui a um mês"/>
               </li>
 
               <li>
-                <input type="checkbox" placeholder="data-servico" {...register("dataServico")} onChange={formik.handleChange} />
-                <LabelServ id="data-servico" label="6 meses ou mais"/>
+                <input type="checkbox" 
+                id="seis-meses" 
+                value="seisMeses"
+                {...register("dataServico")} onChange={formik.handleChange} />
+                <LabelServ id="seis-meses" label="6 meses ou mais"/>
               </li>
             </ul>
             <p className="error-message">{formik.errors.dataServico}</p>
@@ -536,6 +551,24 @@ function ClientForm() {
           <input type="text" id="codigo-indicacao" {...register("codigoIndicacao")} onChange={formik.handleChange} value={formik.values.codigoIndicacao} />
           <p className="error-message">{formik.errors.codigoIndicacao}</p>
         </section>
+
+        <div className='termoUso'>
+            <h1>Politica de privacidade</h1>
+            <div className="box-line"></div>
+
+              <a className='link' href="https://drive.google.com/drive/folders/1dR4AAgwrhY0Znqs-TDwCzoKYNDyU52Ip">Política de Privacidade</a>
+
+              <a className='link' href="https://drive.google.com/file/d/1jIJbR4bSmUH-CG-tEnTdYBD9uDFR2Sof/view?usp=sharing">Termo de Uso</a>
+
+            <p>Li e compreendi os Termos de Uso, a Lei Geral de Proteção de Dados Pessoais (LGPD) e a Política de Privacidade da Viverde Casa.</p>
+
+            <LabelCheck id="termo-sim" label="Sim"/>
+              <input type="radio" id="termo-privacidade" value="Sim" {...register("dadosPcd")} onChange={formik.handleChange} />
+              <LabelCheck id="termo-nao" label="Não"/>
+              <input type="radio" id="termo-privacidade"  value="Nao" {...register("dadosPcd")} onChange={formik.handleChange} />
+              <p className="error-message">{formik.errors.termoPrivacidade}</p>
+
+        </div>
 
         <button type="submit">Enviar</button> 
       </form>

@@ -48,6 +48,12 @@ textarea {
     margin-bottom: 14px;
 }
 
+#company-form .link{
+    color: #D55707;
+    margin: 10px;
+}
+
+
 @media screen and (max-width: 768px) {
     #company-form textarea {
         width: 90%;

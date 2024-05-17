@@ -157,6 +157,9 @@ export default function CompanyForm() {
         
          PoliticaDiversidade: Yup.string()
             .required("Campo obrigatório"),
+
+        termoPrivacidade: Yup.string ()
+        .required("Termo obrigatório"),
         
         });
         //TODOS OS DADOS DO PORTIFOLIO SERAM ASDICIONADOS AQUI DENTRO//
@@ -197,6 +200,7 @@ export default function CompanyForm() {
                 ImpactoPositivo: '', 
                 ImpactoSocial: '', 
                 PoliticaDiversidade: '',
+                termoPrivacidade:'',
             },
             
             onSubmit: values => { // BUGUE Os dados não estão sendo armazendados e nem mostrados no console. 
@@ -533,6 +537,24 @@ export default function CompanyForm() {
 
                     </div>
             </section>
+
+            <div className='termoUso'>
+            <h1>Politica de privacidade</h1>
+            <div className="box-line"></div>
+
+              <a className='link' href="https://drive.google.com/drive/folders/1dR4AAgwrhY0Znqs-TDwCzoKYNDyU52Ip">Política de Privacidade</a>
+
+              <a className='link' href="https://drive.google.com/file/d/1jIJbR4bSmUH-CG-tEnTdYBD9uDFR2Sof/view?usp=sharing">Termo de Uso</a>
+
+            <p>Li e compreendi os Termos de Uso, a Lei Geral de Proteção de Dados Pessoais (LGPD) e a Política de Privacidade da Viverde Casa.</p>
+
+            <LabelCheck id="termo-sim" label="Sim"/>
+              <input type="radio" id="termo-privacidade" value="Sim" {...register("dadosPcd")} onChange={formik.handleChange} />
+              <LabelCheck id="termo-nao" label="Não"/>
+              <input type="radio" id="termo-privacidade"  value="Nao" {...register("dadosPcd")} onChange={formik.handleChange} />
+              <p className="error-message">{formik.errors.termoPrivacidade}</p>
+
+        </div>
 
             <div id="button">            
                 <button type="submit">Enviar</button>

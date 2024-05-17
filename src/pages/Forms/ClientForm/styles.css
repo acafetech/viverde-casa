@@ -42,7 +42,7 @@
 
 /* TELEFONES */
 
-#client-form-container .telefones {
+#client-form-container .telefone {
     display: flex;
     flex-direction: row;
 }
@@ -188,8 +188,8 @@
 /*TEXTBOX*/
 
 #client-form-container textarea {
-    width: 40%;
-    height: 43px;
+    width: 100%;
+    height: 70px;
     flex-shrink: 0;
     border-radius: 15px;
     background: #D9D9D9;
@@ -197,6 +197,7 @@
     font-size: 1.125rem;
     padding-left: 14px;
     margin-top: 5px;
+    resize: none;
 }
 
 /* BOTÃO DE ENVIO */
@@ -213,4 +214,28 @@
     margin-top: 20px;
 }
 
+#client-form-container .link{
+    color: #D55707;
+    margin: 10px;
+
+}
+
+@media screen and (max-width: 768px) {
+    body {
+      background-image: none;
+    }
+  
+    #client-form-container {
+      width: 80%;
+      height: auto;
+      margin: auto;
+      margin-top: 20px;
+      margin-bottom: 100px;
+      overflow-x: hidden;
+      padding: 20px;
+  }
+      
+ 
+
+  }
 
