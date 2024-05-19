@@ -1,4 +1,5 @@
 import "./styles.css";
+import Home from "../../pages/Home"
 
 function HeaderForm() {
     return (
@@ -6,7 +7,7 @@ function HeaderForm() {
     <header>
 
     <div className="seta">
-        <img src="" alt="Seta de voltar" />
+        <a href="src\pages\Home"><img src="src\assets\seta.png" class="imagem-seta"/></a>
     </div>
 
         <img className="logo" src="src\assets\LogoNavbar.png" alt="logo da Viverde Casa" />
