@@ -54,15 +54,18 @@ textarea {
     font-size: 0.9rem;
     font-weight: 600;
     font-style: italic;
-    color: -webkit-link #D55707;
     cursor: pointer;
+  }
+  .termoUso a:hover{
+    color: #008037;
+    color: -webkit-link #008037;
     text-decoration: underline;
-}
-.termoUso p{
+  }
+  .termoUso p{
     font-size: 16px;
     font-weight: 600;
     padding: 12px 0px 8px 0px;
-}
+  }
 
 
 @media screen and (max-width: 768px) {
