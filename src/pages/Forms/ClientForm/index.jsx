@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useFormik } from 'formik';
 import * as Yup from "yup";
+import HeaderForm from '../../../components/HeaderForm';
+import Footer from '../../../components/Footer'
 
 /*Dados do Cliente*/ /* DEU RUIM NÃO TÁ ABRINDO */
 
@@ -94,6 +96,8 @@ function ClientForm() {
     codigoIndicacao: Yup.string()
       .min(2, "Número mínimo de 2 caracteres.")
       .max(20, "Número máximo de 20 caracteres."),
+      PoliticaPrivacidade: Yup.string()
+        .required("Campo obrigatório"),
   });
 
   const formik = useFormik({
@@ -127,6 +131,7 @@ function ClientForm() {
             dataServico: [],
             indicacao: [],
             codigoIndicacao: '',
+            PoliticaPrivacidade:'',
           },
 
           onSubmit: values => {
@@ -142,6 +147,7 @@ function ClientForm() {
 
   return (
     <main className="client-form">
+      <HeaderForm/>
       <form id="client-form-container" onSubmit={formik.handleSubmit}>
         <section id="dados-pessoais">
           <h1>Dados Pessoais</h1>
@@ -547,8 +553,32 @@ function ClientForm() {
           <p className="error-message">{formik.errors.codigoIndicacao}</p>
         </section>
 
+        <section className='termoUso'>
+            <h1>Política de Privacidade</h1>
+            <div className='box-line'></div>
+            <a href="https://drive.google.com/drive/folders/1dR4AAgwrhY0Znqs-TDwCzoKYNDyU52Ip" target="_blank">Política de Privacidade</a>
+            <a href="https://drive.google.com/file/d/1jIJbR4bSmUH-CG-tEnTdYBD9uDFR2Sof/view?usp=sharing" target="_blank">Termo de Privacidade</a>
+            <p>
+                 Li e compreendi os Termos de Uso, a Lei Geral de Proteção de Dados Pessoais (LGPD) e a Política de Privacidade da Viverde Casa.
+            </p>
+
+            <div className="Termo-sim-nao">
+    
+                <input id="TermoSim" {...register("PoliticaPrivacidade")}
+                type="radio" value="Sim" onChange={formik.handleChange} />
+                <LabelCheck id="TermoSim" label="Sim"/>
+
+                <input id="TermoNão" {...register("PoliticaPrivacidade")} 
+                        type="radio" value=" Não" onChange={formik.handleChange} />
+                        <LabelCheck id="TermoNão" label="Não"/>
+                    <p className="error-message">{formik.errors.PoliticaPrivacidade}</p>
+
+            </div>
+            </section> 
+
         <button type="submit">Enviar</button> 
       </form>
+      <Footer/>
     </main>
   )
 }
