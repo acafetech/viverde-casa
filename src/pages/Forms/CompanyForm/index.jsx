@@ -109,9 +109,7 @@ export default function CompanyForm() {
             .max(40, "quantidade máxima de caracteres atingida"),
         
         codigoIndicacao: Yup.string()
-            .required("Código de incação obrigatório")
-            .min(10, "Código invalido")
-            .max(40, "Código invalido"),
+            .max(20, "Código invalido"),
         
          // Informações da Solicitação
         
@@ -531,9 +529,9 @@ export default function CompanyForm() {
                         type="radio" value="Sim" onChange={formik.handleChange} />
                         <LabelCheck id="DiversidadeSim" label="Sim"/>
 
-                        <input id="DiversidadeNão" {...register("PoliticaDiversidade")} 
+                        <input id="DiversidadeNao" {...register("PoliticaDiversidade")} 
                         type="radio" value=" Não" onChange={formik.handleChange} />
-                        <LabelCheck id="DiversidadeNão" label="Não"/>
+                        <LabelCheck id="DiversidadeNao" label="Não"/>
 
                         <p className="error-message">{formik.errors.PoliticaDiversidade}</p>
 
