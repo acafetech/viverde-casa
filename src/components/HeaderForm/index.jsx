@@ -5,8 +5,8 @@ function HeaderForm() {
     return (
         
     <header>
+        <div className="Seta">
 
-<div className="Seta">
         <a href="src\pages\Home"><img src="src\assets\Seta.png" class="Seta-Voltar-Home"/></a>
         </div>
         
