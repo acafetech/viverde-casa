@@ -4,6 +4,8 @@ import LabelCheck from '../../../components/LabelCheck';
 import LabelServ from '../../../components/LabelServices';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import HeaderForm from '../../../components/HeaderForm';
+import Footer from '../../../components/Footer'
 
 /* Dados da empresa */ /*Não ta pengando os dados nem o botão de enviar*/ 
 
@@ -155,6 +157,10 @@ export default function CompanyForm() {
         
          PoliticaDiversidade: Yup.string()
             .required("Campo obrigatório"),
+
+        PoliticaPrivacidade: Yup.string()
+            .required("Campo obrigatório")
+
         
         });
         //TODOS OS DADOS DO PORTIFOLIO SERAM ASDICIONADOS AQUI DENTRO//
@@ -195,6 +201,8 @@ export default function CompanyForm() {
                 ImpactoPositivo: '', 
                 ImpactoSocial: '', 
                 PoliticaDiversidade: '',
+                PoliticaPrivacidade:'',
+
             },
             
             onSubmit: values => { // BUGUE Os dados não estão sendo armazendados e nem mostrados no console. 
@@ -211,6 +219,7 @@ export default function CompanyForm() {
 
   return ( 
     <main id="company-form">
+        <HeaderForm/>
         <form id="form-container" onSubmit={formik.handleSubmit}>
             <section className='dadosEmpresa'>
                 <h1>Dados da Empresa</h1>
@@ -531,10 +540,36 @@ export default function CompanyForm() {
                     </div>
             </section>
 
+        <section className='termoUso'>
+            <h1>Política de Privacidade</h1>
+            <div className='box-line'></div>
+            <a href="https://drive.google.com/drive/folders/1dR4AAgwrhY0Znqs-TDwCzoKYNDyU52Ip" target="_blank">Política de Privacidade</a>
+            <a href="https://drive.google.com/file/d/1jIJbR4bSmUH-CG-tEnTdYBD9uDFR2Sof/view?usp=sharing" target="_blank">Termo de Privacidade</a>
+            <p>
+                 Li e compreendi os Termos de Uso, a Lei Geral de Proteção de Dados Pessoais (LGPD) e a Política de Privacidade da Viverde Casa.
+            </p>
+
+            <div className="Termo-sim-nao">
+                
+                        <input id="TermoSim" {...register("PoliticaPrivacidade")}
+                        type="radio" value="Sim" onChange={formik.handleChange} />
+                        <LabelCheck id="TermoSim" label="Sim"/>
+
+                        <input id="TermoNão" {...register("PoliticaPrivacidade")} 
+                        type="radio" value=" Não" onChange={formik.handleChange} />
+                        <LabelCheck id="TermoNão" label="Não"/>
+
+                        <p className="error-message">{formik.errors.PoliticaPrivacidade}</p>
+
+                    </div>
+
+        </section>
+
             <div id="button">            
                 <button type="submit">Enviar</button>
             </div>
         </form>
+        <Footer/>
     </main>
   );
 }
