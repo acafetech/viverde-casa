@@ -134,7 +134,7 @@
 }
 
 #indicacao input[type="checkbox"] + label:before {
-    content: "\2714";
+    content: ""; /* Removendo o conteúdo antes */
     font-size: 1.2em;
     color: #008037;
     display: inline-block;
@@ -149,6 +149,7 @@
 }
 
 #indicacao input[type="checkbox"]:checked + label:before {
+    content: "\2714"; /* Adicionando o conteúdo (símbolo de marca de seleção) se o checkbox estiver marcado */
     background-color: #008037;
     color: #fff;
 }
@@ -166,7 +167,7 @@
 }
 
 .data-servico input[type="checkbox"] + label:before {
-    content: "\2714";
+    content: "";
     font-size: 1.2em;
     color: #008037;
     display: inline-block;
@@ -181,6 +182,7 @@
 }
 
 .data-servico input[type="checkbox"]:checked + label:before {
+    content: "\2714";
     background-color: #008037;
     color: #fff;
 }
@@ -213,14 +215,25 @@
     border-style: none;
     margin-top: 20px;
 }
-
-#client-form-container .link{
+.termoUso a{
     color: #D55707;
     margin: 10px;
-
-}
-
-@media screen and (max-width: 768px) {
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-style: italic;
+    cursor: pointer;
+  }
+  .termoUso a:hover{
+    color: #008037;
+    color: -webkit-link #008037;
+    text-decoration: underline;
+  }
+  .termoUso p{
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 0px 8px 0px;
+  }
+  @media screen and (max-width: 768px) {
     body {
       background-image: none;
     }
@@ -238,4 +251,6 @@
  
 
   }
+  
+
 

@@ -6,8 +6,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useFormik } from 'formik';
 import * as Yup from "yup";
-import HeaderForm from '../../../components/HeaderForm'
-import Footer from '../../../components/Footer';
+import HeaderForm from '../../../components/HeaderForm';
+import Footer from '../../../components/Footer'
 
 /*Dados do Cliente*/ /* DEU RUIM NÃO TÁ ABRINDO */
 
@@ -96,8 +96,9 @@ function ClientForm() {
     codigoIndicacao: Yup.string()
       .min(2, "Número mínimo de 2 caracteres.")
       .max(20, "Número máximo de 20 caracteres."),
-    termoPrivacidade: Yup.string()
-    .required("Termo obrigatorio."),
+      PoliticaPrivacidade: Yup.string()
+        .required("Campo obrigatório"),
+
   });
 
   const formik = useFormik({
@@ -131,7 +132,8 @@ function ClientForm() {
             dataServico: [],
             indicacao: [],
             codigoIndicacao: '',
-            termoPrivacidade:'',
+            PoliticaPrivacidade:'',
+
           },
 
           onSubmit: values => {
@@ -147,7 +149,8 @@ function ClientForm() {
 
   return (
     <main className="client-form">
-        <HeaderForm/>
+      <HeaderForm/>
+
       <form id="client-form-container" onSubmit={formik.handleSubmit}>
         <section id="dados-pessoais">
           <h1>Dados Pessoais</h1>
@@ -180,11 +183,14 @@ function ClientForm() {
             <br></br>
             <h3>Você é uma pessoa com deficiência?</h3>
             <br></br>
+
             <div className="pcdSimNao">
+              
+              <input type="radio" id="pcd-sim" value="Sim" {...register("dadosPcd")} onChange={formik.handleChange} />
               <LabelCheck id="pcd-sim" label="Sim"/>
-              <input type="radio" id="port-deficiencia" value="Sim" {...register("dadosPcd")} onChange={formik.handleChange} />
+              
+              <input type="radio" id="pcd-nao"  value="Nao" {...register("dadosPcd")} onChange={formik.handleChange} />
               <LabelCheck id="pcd-nao" label="Não"/>
-              <input type="radio" id="port-deficiencia"  value="Nao" {...register("dadosPcd")} onChange={formik.handleChange} />
               <p className="error-message">{formik.errors.dadosPcd}</p>
             </div>
 
@@ -192,18 +198,23 @@ function ClientForm() {
             <h3>Se sim, qual tipo de deficiência?</h3>
             <br></br>
             <div className="pcdTipo">
-              <input type="radio" id="pcd-tipo"  value="fisica"{...register("tipoPcd")} onChange={formik.handleChange} />
-              <LabelCheck id="pcd-tipo" label="Física" />
-              <input type="radio" id="pcd-tipo"  value="intelectual"{...register("tipoPcd")} onChange={formik.handleChange} />
-              <LabelCheck id="pcd-tipo" label="Intelectual" />
-              <input type="radio" id="pcd-tipo"  value="motora"{...register("tipoPcd")} onChange={formik.handleChange} />
-              <LabelCheck id="pcd-tipo" label="Motora" />
-              <input type="radio" id="pcd-tipo"  value="visual"{...register("tipoPcd")} onChange={formik.handleChange} />
-              <LabelCheck id="pcd-tipo" label="Visual" />
-              <input type="radio" id="pcd-tipo"  value="auditiva"{...register("tipoPcd")} onChange={formik.handleChange} />
-              <LabelCheck id="pcd-tipo" label="Auditiva" />
-              <input type="radio" id="pcd-tipo"  value="outra"{...register("tipoPcd")} onChange={formik.handleChange} />
-              <LabelCheck id="pcd-tipo" label="Outra" />
+              <input type="radio" id="pcd-fisica"  value="fisica"{...register("tipoPcd")} onChange={formik.handleChange} />
+              <LabelCheck id="pcd-fisica" label="Física" />
+              
+              <input type="radio" id="pcd-intelectual"  value="intelectual"{...register("tipoPcd")} onChange={formik.handleChange} />
+              <LabelCheck id="pcd-intelectual" label="Intelectual" />
+              
+              <input type="radio" id="pcd-motora"  value="motora"{...register("tipoPcd")} onChange={formik.handleChange} />
+              <LabelCheck id="pcd-motora" label="Motora" />
+              
+              <input type="radio" id="pcd-visual"  value="visual"{...register("tipoPcd")} onChange={formik.handleChange} />
+              <LabelCheck id="pcd-visual" label="Visual" />
+              
+              <input type="radio" id="pcd-auditiva"  value="auditiva"{...register("tipoPcd")} onChange={formik.handleChange} />
+              <LabelCheck id="pcd-auditiva" label="Auditiva" />
+              
+              <input type="radio" id="pcd-outra"  value="outra"{...register("tipoPcd")} onChange={formik.handleChange} />
+              <LabelCheck id="pcd-outra" label="Outra" />
               <p className="error-message">{formik.errors.tipoPcd}</p>
             </div>
             
@@ -409,19 +420,24 @@ function ClientForm() {
           <br></br>
           <h3 className="pergunta-label">Melhor horário para você ser atendido:</h3>
 
+          
+          <input {...register("agendamento")} onChange={formik.handleChange} id="horario-manha" type="radio" value="Manhã" />
           <LabelCheck id="horario-manha" label="Manhã"/>
-          <input {...register("agendamento")} onChange={formik.handleChange} type="radio" value="Manhã" />
+          
+          <input {...register("agendamento")} onChange={formik.handleChange} id="horario-tarde" type="radio" value=" Tarde" />
           <LabelCheck id="horario-tarde" label="Tarde"/>
-          <input {...register("agendamento")} onChange={formik.handleChange} type="radio" value=" Tarde" />
+          
+          <input {...register("agendamento")} onChange={formik.handleChange} id="horario-noite" type="radio" value=" Noite" />
           <LabelCheck id="horario-noite" label="Noite"/>
-          <input {...register("agendamento")} onChange={formik.handleChange} type="radio" value=" Noite" />
           <p className="error-message">{formik.errors.agendamento}</p>
 
           <h3 className="pergunta-label">Aceita que o serviço seja realizado durante o final de semana?</h3>
+          
+          <input {...register("agendamentoFimDeSemana")} onChange={formik.handleChange} id="agendamento-sim"  type="radio" value="Sim" />
           <LabelCheck id="agendamento-sim" label="Sim"/>
-          <input {...register("agendamentoFimDeSemana")} onChange={formik.handleChange} type="radio" value="Sim" />
+          
+          <input {...register("agendamentoFimDeSemana")} onChange={formik.handleChange} id="agendamento-nao" type="radio" value=" Não" />
           <LabelCheck id="agendamento-nao" label="Não"/>
-          <input {...register("agendamentoFimDeSemana")} onChange={formik.handleChange} type="radio" value=" Não" />
           <p className="error-message">{formik.errors.agendamentoFimDeSemana}</p>
 
           <h3 className="pergunta-label">Pra quando precisa do serviço?</h3>
@@ -429,35 +445,23 @@ function ClientForm() {
           <div className="data-servico">
             <ul type="none">
               <li>
-                <input type="checkbox" 
-                id="servico-urgente" 
-                value="urgente"
-                {...register("dataServico")} onChange={formik.handleChange} />
-                <LabelServ id="servico-urgente" label="Urgente"/>
+                <input type="checkbox" id="srvc-urgente" placeholder="data-servico" {...register("dataServico")} onChange={formik.handleChange} />
+                <LabelServ id="srvc-urgente" label="Urgente"/>
               </li>
 
               <li>
-                <input type="checkbox" 
-                id="proxima-semana" 
-                value="proximaSemana"
-                {...register("dataServico")} onChange={formik.handleChange} />
-                <LabelServ id="proxima-semana" label="Na próxima semana"/>
+                <input type="checkbox" id="srvc-proxsem" placeholder="data-servico" {...register("dataServico")} onChange={formik.handleChange} />
+                <LabelServ id="srvc-proxsem" label="Na próxima semana"/>
               </li>
 
               <li>
-                <input type="checkbox" 
-                id="um-mes" 
-                value="umMes"
-                {...register("dataServico")} onChange={formik.handleChange} />
-                <LabelServ id="um-mes" label="Daqui a um mês"/>
+                <input type="checkbox" id="srvc-mes" placeholder="data-servico" {...register("dataServico")} onChange={formik.handleChange} />
+                <LabelServ id="srvc-mes" label="Daqui a um mês"/>
               </li>
 
               <li>
-                <input type="checkbox" 
-                id="seis-meses" 
-                value="seisMeses"
-                {...register("dataServico")} onChange={formik.handleChange} />
-                <LabelServ id="seis-meses" label="6 meses ou mais"/>
+                <input type="checkbox" id="srvc-seismeses" placeholder="data-servico" {...register("dataServico")} onChange={formik.handleChange} />
+                <LabelServ id="srvc-seismeses" label="6 meses ou mais"/>
               </li>
             </ul>
             <p className="error-message">{formik.errors.dataServico}</p>
@@ -508,38 +512,38 @@ function ClientForm() {
           <div>
             <ul type="none">
               <li>
-                <input type="checkbox" placeholder="indicacao" {...register("indicacao")} onChange={formik.handleChange} />
-                <LabelServ id="indicacao" label="Amigos"/>
+                <input type="checkbox" id="indic-amigos"  placeholder="indicacao" {...register("indicacao")} onChange={formik.handleChange} />
+                <LabelServ id="indic-amigos" label="Amigos"/>
               </li>
 
               <li>
-                <input type="checkbox" placeholder="indicacao" {...register("indicacao")} onChange={formik.handleChange} />
-                <LabelServ id="indicacao" label="Projeto Social Parceiro"/>
+                <input type="checkbox" id="indic-projsocparceiro" placeholder="indicacao" {...register("indicacao")} onChange={formik.handleChange} />
+                <LabelServ id="indic-projsocparceiro" label="Projeto Social Parceiro"/>
               </li>
 
               <li>
-                <input type="checkbox" placeholder="indicacao" {...register("indicacao")} onChange={formik.handleChange} />
-                <LabelServ id="indicacao" label="Profissional Parceiro"/>
+                <input type="checkbox" id="indic-profparc"  placeholder="indicacao" {...register("indicacao")} onChange={formik.handleChange} />
+                <LabelServ id="indic-profparc" label="Profissional Parceiro"/>
               </li>
 
               <li>
-                <input type="checkbox" placeholder="indicacao" {...register("indicacao")} onChange={formik.handleChange} />
-                <LabelServ id="indicacao" label="Estabelecimento conveniado"/>
+                <input type="checkbox" id="indic-estabelecimento" placeholder="indicacao" {...register("indicacao")} onChange={formik.handleChange} />
+                <LabelServ id="indic-estabelecimento" label="Estabelecimento conveniado"/>
               </li>
 
               <li>
-                <input type="checkbox" placeholder="indicacao" {...register("indicacao")} onChange={formik.handleChange} />
-                <LabelServ id="indicacao" label="Instagram"/>
+                <input type="checkbox" id="indic-insta" placeholder="indicacao" {...register("indicacao")} onChange={formik.handleChange} />
+                <LabelServ id="indic-insta" label="Instagram"/>
               </li>
 
               <li>
-                <input type="checkbox" placeholder="indicacao" {...register("indicacao")} onChange={formik.handleChange} />
-                <LabelServ id="indicacao" label="Facebook"/>
+                <input type="checkbox"  id="indic-face" placeholder="indicacao" {...register("indicacao")} onChange={formik.handleChange} />
+                <LabelServ id="indic-face" label="Facebook"/>
               </li>
 
               <li>
-                <input type="checkbox" placeholder="indicacao" {...register("indicacao")} onChange={formik.handleChange} />
-                <LabelServ id="indicacao" label="Outro"/>
+                <input type="checkbox" id="indic-outro" placeholder="indicacao" {...register("indicacao")} onChange={formik.handleChange} />
+                <LabelServ id="indic-outro" label="Outro"/>
               </li>
               <p className="error-message">{formik.errors.indicacao}</p>
             </ul>
@@ -552,23 +556,29 @@ function ClientForm() {
           <p className="error-message">{formik.errors.codigoIndicacao}</p>
         </section>
 
-        <div className='termoUso'>
-            <h1>Politica de privacidade</h1>
-            <div className="box-line"></div>
+        <section className='termoUso'>
+            <h1>Política de Privacidade</h1>
+            <div className='box-line'></div>
+            <a href="https://drive.google.com/drive/folders/1dR4AAgwrhY0Znqs-TDwCzoKYNDyU52Ip" target="_blank">Política de Privacidade</a>
+            <a href="https://drive.google.com/file/d/1jIJbR4bSmUH-CG-tEnTdYBD9uDFR2Sof/view?usp=sharing" target="_blank">Termo de Privacidade</a>
+            <p>
+                 Li e compreendi os Termos de Uso, a Lei Geral de Proteção de Dados Pessoais (LGPD) e a Política de Privacidade da Viverde Casa.
+            </p>
 
-              <a className='link' href="https://drive.google.com/drive/folders/1dR4AAgwrhY0Znqs-TDwCzoKYNDyU52Ip">Política de Privacidade</a>
+            <div className="Termo-sim-nao">
+    
+                <input id="TermoSim" {...register("PoliticaPrivacidade")}
+                type="radio" value="Sim" onChange={formik.handleChange} />
+                <LabelCheck id="TermoSim" label="Sim"/>
 
-              <a className='link' href="https://drive.google.com/file/d/1jIJbR4bSmUH-CG-tEnTdYBD9uDFR2Sof/view?usp=sharing">Termo de Uso</a>
+                <input id="TermoNão" {...register("PoliticaPrivacidade")} 
+                        type="radio" value=" Não" onChange={formik.handleChange} />
+                        <LabelCheck id="TermoNão" label="Não"/>
+                    <p className="error-message">{formik.errors.PoliticaPrivacidade}</p>
 
-            <p>Li e compreendi os Termos de Uso, a Lei Geral de Proteção de Dados Pessoais (LGPD) e a Política de Privacidade da Viverde Casa.</p>
+            </div>
+            </section> 
 
-            <LabelCheck id="termo-sim" label="Sim"/>
-              <input type="radio" id="termo-privacidade" value="Sim" {...register("dadosPcd")} onChange={formik.handleChange} />
-              <LabelCheck id="termo-nao" label="Não"/>
-              <input type="radio" id="termo-privacidade"  value="Nao" {...register("dadosPcd")} onChange={formik.handleChange} />
-              <p className="error-message">{formik.errors.termoPrivacidade}</p>
-
-        </div>
 
         <button type="submit">Enviar</button> 
       </form>
