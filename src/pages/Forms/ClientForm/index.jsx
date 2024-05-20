@@ -98,6 +98,7 @@ function ClientForm() {
       .max(20, "Número máximo de 20 caracteres."),
       PoliticaPrivacidade: Yup.string()
         .required("Campo obrigatório"),
+
   });
 
   const formik = useFormik({
@@ -132,6 +133,7 @@ function ClientForm() {
             indicacao: [],
             codigoIndicacao: '',
             PoliticaPrivacidade:'',
+
           },
 
           onSubmit: values => {
@@ -148,6 +150,7 @@ function ClientForm() {
   return (
     <main className="client-form">
       <HeaderForm/>
+
       <form id="client-form-container" onSubmit={formik.handleSubmit}>
         <section id="dados-pessoais">
           <h1>Dados Pessoais</h1>
@@ -575,6 +578,7 @@ function ClientForm() {
 
             </div>
             </section> 
+
 
         <button type="submit">Enviar</button> 
       </form>

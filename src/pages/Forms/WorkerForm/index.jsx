@@ -4,6 +4,8 @@ import LabelCheck from '../../../components/LabelCheck';
 import LabelServ from '../../../components/LabelServices';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import HeaderForm from '../../../components/HeaderForm'
+import Footer from '../../../components/Footer';
 
 /*import { yupResolver } from "@hookform/resolvers/yup";*/
 //React hook form import
@@ -31,6 +33,7 @@ console.log(errors);
 
   return (
     <main id="worker-form">
+        <HeaderForm/>
         <form id="form-container" onSubmit={handleSubmit(onSubmit) }>
             <section className="Dadospessoas">
                 <h1>Dados Pessoais</h1>
@@ -448,7 +451,7 @@ console.log(errors);
             <button type="submit">Enviar</button>
         </div>
         </form>
-        
+        <Footer/>
     </main>
 
   );

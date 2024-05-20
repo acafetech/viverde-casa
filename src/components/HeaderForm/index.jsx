@@ -3,6 +3,7 @@ import Home from "../../pages/Home"
 
 function HeaderForm() {
     return (
+        
     <header>
 
 <div className="Seta">
@@ -11,6 +12,8 @@ function HeaderForm() {
         
         <img className="logo" src="src\assets\LogoNavbar.png" alt="logo da Viverde Casa" />
     </header>
+
+    
     )
 }
 
