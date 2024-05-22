@@ -7,9 +7,9 @@ function Footer(){
                     <img src="src\assets\Logo Branca.png" alt="Logo Viverde Branca" />
                 </picture>
                 
-                    <a href="#">Redes Sociais</a>
-                    <a href="#">Viverde na Mídia</a>
-                    <a href="#">Clientes, Parceiros e  Apoiadores</a>
+                    <a href="https://www.instagram.com/viverdecasa/" target="_blank">Redes Sociais</a>
+                    <a href="#" target="_blank">Viverde na Mídia</a>
+                    <a href="#" target="_blank">Clientes, Parceiros e  Apoiadores</a>
                 </div>
 
                 <div className="rodape">
