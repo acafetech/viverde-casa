@@ -154,6 +154,12 @@
     color: #fff;
 }
 
+.pcdTipo input[type="checkbox"]{
+    display: none;
+}
+#agendamento input[type="checkbox"]{
+    display: none;
+}
 /*DATA DO SERVIÇO*/
 
 .data-servico input[type="checkbox"] {

@@ -37,9 +37,7 @@ function ClientForm() {
       .matches(/[0-9]/, 'Formato de telefone inválido'),
     dadosPcd: Yup.string()
       .required("Selecione uma opção."),
-    tipoPcd: Yup.array("Selecione, no mínimo, uma opção.") /* BUGADO */
-      .min().of(Yup.array().required())
-      .required(1, "Selecione, no mínimo, uma opção."),
+    tipoPcd: Yup.array(),
     cepPessoal: Yup.string()
       .matches(/[0-9]/, "O campo CEP pode conter apenas dígitos.")
       .min(8, "O CEP deve conter 8 dígitos.")
@@ -77,22 +75,22 @@ function ClientForm() {
       .min(2, "Número mínimo de 2 caracteres.")
       .max(20, "Número máximo de 20 caracteres."),
     servicos: Yup.array("Selecione, no mínimo, uma opção.")
-      .min(1).of(Yup.array().required())
-      .required("Selecione, no mínimo, uma opção."), /* BUGADO */
+    .min(1).of(Yup.string().required())
+    .required("Selecione, no mínimo, uma opção."), /* BUGADO */
     textbox: Yup.string()
       .min(2, "Número mínimo de 10 caracteres.")
       .max(2500, "Número máximo de excedido caracteres."),
-    agendamento: Yup.array("Selecione, no mínimo, uma opção.")
-      .min(1).of(Yup.array().required())
-      .required("Selecione, no mínimo, uma opção."), /* BUGADO */
+    agendamento: Yup.array()
+    .min(1).of(Yup.string().required())
+    .required("Selecione, no mínimo, uma opção."), /*Arrumar Mensagem */
     agendamentoFimDeSemana: Yup.string()
       .required("Selecione uma opção."),
-    dataServico: Yup.array("Selecione, no mínimo, uma opção.") /* BUGADO */
-      .min(1).of(Yup.array().required())
-      .required("Selecione, no mínimo, uma opção."),
+    dataServico: Yup.array("Selecione, no mínimo, uma opção.")
+    .min(1).of(Yup.string().required())
+    .required("Selecione, no mínimo, uma opção."),
     indicacao: Yup.array("Selecione, no mínimo, uma opção.")
-      .min(1).of(Yup.array().required()) /* BUGADO */
-      .required("Selecione, no mínimo, uma opção."), /* BUGADO */
+    .min(1).of(Yup.string().required())
+    .required("Selecione, no mínimo, uma opção."), /* BUGADO */
     codigoIndicacao: Yup.string()
       .min(2, "Número mínimo de 2 caracteres.")
       .max(50, "Número máximo de 20 caracteres."),
@@ -198,22 +196,22 @@ function ClientForm() {
             <h3>Se sim, qual tipo de deficiência?</h3>
             <br></br>
             <div className="pcdTipo">
-              <input type="radio" id="pcd-fisica"  value="fisica"{...register("tipoPcd")} onChange={formik.handleChange} />
+              <input type="checkbox" id="pcd-fisica"  value="fisica"{...register("tipoPcd")} onChange={formik.handleChange} />
               <LabelCheck id="pcd-fisica" label="Física" />
               
-              <input type="radio" id="pcd-intelectual"  value="intelectual"{...register("tipoPcd")} onChange={formik.handleChange} />
+              <input type="checkbox" id="pcd-intelectual"  value="intelectual"{...register("tipoPcd")} onChange={formik.handleChange} />
               <LabelCheck id="pcd-intelectual" label="Intelectual" />
               
-              <input type="radio" id="pcd-motora"  value="motora"{...register("tipoPcd")} onChange={formik.handleChange} />
+              <input type="checkbox" id="pcd-motora"  value="motora"{...register("tipoPcd")} onChange={formik.handleChange} />
               <LabelCheck id="pcd-motora" label="Motora" />
               
-              <input type="radio" id="pcd-visual"  value="visual"{...register("tipoPcd")} onChange={formik.handleChange} />
+              <input type="checkbox" id="pcd-visual"  value="visual"{...register("tipoPcd")} onChange={formik.handleChange} />
               <LabelCheck id="pcd-visual" label="Visual" />
               
-              <input type="radio" id="pcd-auditiva"  value="auditiva"{...register("tipoPcd")} onChange={formik.handleChange} />
+              <input type="checkbox" id="pcd-auditiva"  value="auditiva"{...register("tipoPcd")} onChange={formik.handleChange} />
               <LabelCheck id="pcd-auditiva" label="Auditiva" />
               
-              <input type="radio" id="pcd-outra"  value="outra"{...register("tipoPcd")} onChange={formik.handleChange} />
+              <input type="checkbox" id="pcd-outra"  value="outra"{...register("tipoPcd")} onChange={formik.handleChange} />
               <LabelCheck id="pcd-outra" label="Outra" />
               <p className="error-message">{formik.errors.tipoPcd}</p>
             </div>
@@ -421,13 +419,13 @@ function ClientForm() {
           <h3 className="pergunta-label">Melhor horário para você ser atendido:</h3>
 
           
-          <input {...register("agendamento")} onChange={formik.handleChange} id="horario-manha" type="radio" value="Manhã" />
+          <input {...register("agendamento")} onChange={formik.handleChange} id="horario-manha" type="checkbox" value="Manhã" />
           <LabelCheck id="horario-manha" label="Manhã"/>
           
-          <input {...register("agendamento")} onChange={formik.handleChange} id="horario-tarde" type="radio" value=" Tarde" />
+          <input {...register("agendamento")} onChange={formik.handleChange} id="horario-tarde" type="checkbox" value=" Tarde" />
           <LabelCheck id="horario-tarde" label="Tarde"/>
           
-          <input {...register("agendamento")} onChange={formik.handleChange} id="horario-noite" type="radio" value=" Noite" />
+          <input {...register("agendamento")} onChange={formik.handleChange} id="horario-noite" type="checkbox" value=" Noite" />
           <LabelCheck id="horario-noite" label="Noite"/>
           <p className="error-message">{formik.errors.agendamento}</p>
 
