@@ -10,7 +10,7 @@ header {
     width: 10%;
     height: 100%;
     position: relative;
-    left: 54px;
+    left: 20px;
     display: flex; 
     align-items: center; 
     justify-content: center;
@@ -25,24 +25,24 @@ header {
     align-items: center;
     justify-content: space-between;
     height: 100%;
-    margin-left: 10%;
+    margin-left: 5%;
     z-index: 1;
     }
 
 .nav-options a {
-    padding: 10px 30px;
+    padding: 10px 10px;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
 }
 
 
-.nav-text {
+.nav-texts {
     color:#008037;
 }
 
 .hover:hover {
-    color: #ff914c;
+    color: #f28e50;
 }
 
 .nav-button {
@@ -62,7 +62,7 @@ header {
 }
 
 .find-pro {
-    background-color: #ff914c;
+    background-color: #f28e50;
     margin-right: 20px;
 }
 
