@@ -6,6 +6,9 @@
     background-attachment: fixed;
     color: #D55707;
 }
+#company-form form{
+    padding-bottom: 110px;
+}
 
 .dadosEmpresa .dropdown-check-list ul.items {
     width: 133px;
