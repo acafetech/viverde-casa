@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import ClientForm from "./pages/Forms/ClientForm";
 import WorkerForm from "./pages/Forms/WorkerForm";
 import CompanyForm from "./pages/Forms/CompanyForm";
+import HeaderForm from "./components/HeaderForm";
+
 
 function App() {
   return (

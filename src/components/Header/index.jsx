@@ -2,6 +2,10 @@
 import Button from "../../components/Button";
 import { useState } from 'react';
 import "./styles.css";
+import { Link } from "react-router-dom";
+import ClientForm from "../../pages/Forms/ClientForm"
+import CompanyForm from "../../pages/Forms/CompanyForm"
+import WorkerForm from "../../pages/Forms/WorkerForm"
 
 function Header() {
 
@@ -26,9 +30,18 @@ function Header() {
                 </div>
 
                 <div className="nav-button">
-                    <a href="" className="find-pro">Encontre um profissional</a>
-                    <a href="" className="offer-serv">Ofereça seus serviços</a>
-                    <a href="" className="offer-part">Seja uma parceira(o)</a>
+                    <Link to="/contrate">
+                        <a href="" className="find-pro">Encontre um profissional</a>
+                    </Link>
+                    
+                    <Link to="/trabalhe">
+                        <a href="" className="offer-serv">Ofereça seus serviços</a>
+                    </Link>
+
+                    <Link to="/parceria">
+                        <a href="" className="offer-part">Seja uma parceira(o)</a>
+                    </Link>
+                    
                 </div>
             </nav>
 

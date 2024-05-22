@@ -5,11 +5,16 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 42px;
+    
 }
 
 .logo {
-    margin: 0 auto;
+    
     width: 76px;
     height: 76px;
     padding: 10px 10px;
+}
+    
+.logoNav {
+    margin: 0 auto;
 }

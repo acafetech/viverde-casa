@@ -1,19 +1,26 @@
 import "./styles.css";
+import { NavLink } from "react-router-dom";
 import Home from "../../pages/Home"
 
 function HeaderForm() {
-    return (
-        
+    return (      
     <header>
-        <div className="Seta">
-
-        <a href="src\pages\Home"><img src="src\assets\Seta.png" class="Seta-Voltar-Home"/></a>
-        </div>
         
-        <img className="logo" src="src\assets\LogoNavbar.png" alt="logo da Viverde Casa" />
+            <NavLink to="/">
+                <a href={Home}> 
+                    <img src="src\assets\Seta.png" alt="" /> 
+                </a>
+            </NavLink>
+            
+            <NavLink className="logoNav" to="/">
+                <a href={Home}>
+                    <img className="logo" src="src\assets\LogoNavbar.png" alt="" />
+                </a>
+            </NavLink>
+            
+
     </header>
 
-    
     )
 }
 
