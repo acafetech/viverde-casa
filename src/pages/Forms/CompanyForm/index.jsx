@@ -24,8 +24,7 @@ export default function CompanyForm() {
 
     //validationSchema: schema//
     const workerSchema = Yup.object().shape({
-        //Dados da Empresa
-        
+        //Dados da Empresa       
         razaoSocial: Yup.string()
             .required("Razão Social obrigatório.")
             .min(3, "A razão social deve conter no mínimo 3 caracteres.")
@@ -109,7 +108,8 @@ export default function CompanyForm() {
             .max(40, "quantidade máxima de caracteres atingida"),
         
         codigoIndicacao: Yup.string()
-            .max(20, "Código invalido"),
+            .min(2, "Número mínimo de 2 caracteres.")
+            .max(50, "Número máximo de 20 caracteres."),
         
          // Informações da Solicitação
         
@@ -163,7 +163,7 @@ export default function CompanyForm() {
         });
         //TODOS OS DADOS DO PORTIFOLIO SERAM ASDICIONADOS AQUI DENTRO//
         
-        const formik = useFormik ({ 
+        const formik = useFormik({ 
             validationSchema: workerSchema,
             validateOnBlur: false,
             validateOnChange: false,   
@@ -202,23 +202,23 @@ export default function CompanyForm() {
                 PoliticaPrivacidade:'',
 
             },
-            
-            onSubmit: values => { // BUGUE Os dados não estão sendo armazendados e nem mostrados no console. 
+            onSubmit: values => {
                 alert(JSON.stringify(values, null, 2));
                 console.log(values)
             }
         })
-        
-        const {
-            register, 
-        } = useForm({
-        });
+    
+    const { 
+        register, 
+    } = useForm({
+    });
 
 
   return ( 
     <main id="company-form">
         <HeaderForm/>
         <form id="form-container" onSubmit={formik.handleSubmit}>
+
             <section className='dadosEmpresa'>
                 <h1>Dados da Empresa</h1>
                 <div className="box-line"></div>
@@ -563,9 +563,9 @@ export default function CompanyForm() {
 
         </section>
 
-            <div id="button">            
-                <button type="submit">Enviar</button>
-            </div>
+        <div id="button">            
+            <button type="submit">Enviar</button>
+        </div>
         </form>
         <Footer/>
     </main>

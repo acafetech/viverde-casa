@@ -9,7 +9,7 @@ import * as Yup from "yup";
 import HeaderForm from '../../../components/HeaderForm';
 import Footer from '../../../components/Footer'
 
-/*Dados do Cliente*/ /* DEU RUIM NÃO TÁ ABRINDO */
+/* TEMOS 6 BUGS DE ARREY BUGAD */
 
 function ClientForm() {
   const [isCheckListVisible, setCheckListVisible] = useState(false);
@@ -26,10 +26,10 @@ function ClientForm() {
       .required("O nome completo é obrigatório")
       .min(10, "Você precisa inserir pelo menos 10 caracteres."),
     nomeSocial: Yup.string()
-      .min(10, "Você precisa inserir pelo menos 10 caracteres."),
+      .min(3, "Você precisa inserir pelo menos 10 caracteres."),
     telefone1: Yup.string()
-      .min(11, 'O telefone deve ter no mínimo 11 caracteres')
-      .max(11, 'O telefone deve ter no máximo 11 caracteres')
+      .min(10, 'O telefone deve ter no mínimo 11 caracteres')
+      .max(12, 'O telefone deve ter no máximo 11 caracteres')
       .matches(/[0-9]/, 'Formato de telefone inválido'),
     telefone2: Yup.string()
       .min(11, 'O telefone deve ter no mínimo 11 caracteres')
@@ -37,8 +37,8 @@ function ClientForm() {
       .matches(/[0-9]/, 'Formato de telefone inválido'),
     dadosPcd: Yup.string()
       .required("Selecione uma opção."),
-    tipoPcd: Yup.array("Selecione, no mínimo, uma opção.")
-      .min(1).of(Yup.array().required())
+    tipoPcd: Yup.array("Selecione, no mínimo, uma opção.") /* BUGADO */
+      .min().of(Yup.array().required())
       .required(1, "Selecione, no mínimo, uma opção."),
     cepPessoal: Yup.string()
       .matches(/[0-9]/, "O campo CEP pode conter apenas dígitos.")
@@ -78,24 +78,24 @@ function ClientForm() {
       .max(20, "Número máximo de 20 caracteres."),
     servicos: Yup.array("Selecione, no mínimo, uma opção.")
       .min(1).of(Yup.array().required())
-      .required("Selecione, no mínimo, uma opção."),
+      .required("Selecione, no mínimo, uma opção."), /* BUGADO */
     textbox: Yup.string()
       .min(2, "Número mínimo de 10 caracteres.")
-      .max(20, "Número máximo de 2500 caracteres."),
+      .max(2500, "Número máximo de excedido caracteres."),
     agendamento: Yup.array("Selecione, no mínimo, uma opção.")
       .min(1).of(Yup.array().required())
-      .required("Selecione, no mínimo, uma opção."),
+      .required("Selecione, no mínimo, uma opção."), /* BUGADO */
     agendamentoFimDeSemana: Yup.string()
       .required("Selecione uma opção."),
-    dataServico: Yup.array("Selecione, no mínimo, uma opção.")
+    dataServico: Yup.array("Selecione, no mínimo, uma opção.") /* BUGADO */
       .min(1).of(Yup.array().required())
       .required("Selecione, no mínimo, uma opção."),
     indicacao: Yup.array("Selecione, no mínimo, uma opção.")
-      .min(1).of(Yup.array().required())
-      .required("Selecione, no mínimo, uma opção."),
+      .min(1).of(Yup.array().required()) /* BUGADO */
+      .required("Selecione, no mínimo, uma opção."), /* BUGADO */
     codigoIndicacao: Yup.string()
       .min(2, "Número mínimo de 2 caracteres.")
-      .max(20, "Número máximo de 20 caracteres."),
+      .max(50, "Número máximo de 20 caracteres."),
       PoliticaPrivacidade: Yup.string()
         .required("Campo obrigatório"),
 

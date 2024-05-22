@@ -518,7 +518,9 @@ export default function WorkerForm() {
                     <p className="error-message">{formik.errors.PoliticaPrivacidade}</p>
 
             </div>
+
             </section> 
+            
         <div id="button">            
             <button type="submit">Enviar</button>
         </div>
