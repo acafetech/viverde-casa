@@ -9,6 +9,9 @@ html {
   background-color: #008037 !important;
 }
 
+#worker-form form {
+  padding-bottom: 110px;
+}
 
 #worker-form {
 background-image: url('src/assets/background-form.svg') !important;
